@@ -1,0 +1,16 @@
+AllCops:
+  NewCops: enable
+  SuggestExtensions: false
+
+Layout/LineLength:
+  Enabled: false
+
+Metrics:
+  Enabled: false
+
+Naming/FileName:
+ Exclude:
+   - lib/rubocop-rails_deprecation.rb
+
+Style/Documentation:
+  Enabled: false
