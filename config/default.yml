@@ -1,4 +1,4 @@
-RailsDeprecation/ToFormattedS:
+Sevencop/ToFormattedS:
   Description: Use `to_fs(...)` instead of `to_s(...)`.
   Enabled: true
   VersionAdded: '0.1'

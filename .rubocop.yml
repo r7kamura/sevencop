@@ -1,6 +1,7 @@
 AllCops:
   NewCops: enable
   SuggestExtensions: false
+  TargetRubyVersion: 2.6
 
 Layout/LineLength:
   Enabled: false
@@ -10,7 +11,7 @@ Metrics:
 
 Naming/FileName:
  Exclude:
-   - lib/rubocop-rails_deprecation.rb
+   - lib/sevencop.rb
 
 Style/Documentation:
   Enabled: false

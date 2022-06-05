@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-# Specify your gem's dependencies in rubocop-rails_deprecation.gemspec
+# Specify your gem's dependencies in sevencop.gemspec
 gemspec
 
 gem 'rake', '~> 13.0'

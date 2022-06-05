@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::RailsDeprecation::ToFormattedS, :config do
+RSpec.describe RuboCop::Cop::Sevencop::ToFormattedS, :config do
   let(:config) do
     RuboCop::Config.new(
       'AllCops' => {
@@ -25,18 +25,6 @@ RSpec.describe RuboCop::Cop::RailsDeprecation::ToFormattedS, :config do
     it 'does not register an offense' do
       expect_no_offenses(<<~RUBY)
         1.to_s
-      RUBY
-    end
-  end
-
-  context 'with #to_s with arguments on Rails 6.1' do
-    let(:target_rails_version) do
-      6.1
-    end
-
-    it 'registers an offense' do
-      expect_no_offenses(<<~RUBY)
-        to_s(:delimited)
       RUBY
     end
   end

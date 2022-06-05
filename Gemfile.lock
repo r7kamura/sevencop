@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    rubocop-rails_deprecation (0.6.0)
+    sevencop (0.1.0)
       rubocop (>= 1.27)
 
 GEM
@@ -50,7 +50,7 @@ DEPENDENCIES
   rake (~> 13.0)
   rspec (~> 3.0)
   rubocop (~> 1.21)
-  rubocop-rails_deprecation!
+  sevencop!
 
 BUNDLED WITH
    2.3.6

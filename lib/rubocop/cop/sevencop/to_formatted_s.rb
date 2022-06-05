@@ -2,7 +2,7 @@
 
 module RuboCop
   module Cop
-    module RailsDeprecation
+    module Sevencop
       # This cop identifies passing a format to `#to_s`.
       #
       # @safety
@@ -24,8 +24,6 @@ module RuboCop
       #
       class ToFormattedS < Base
         extend AutoCorrector
-
-        self.minimum_target_rails_version = 7.0
 
         MSG = 'Use `to_fs(...)` instead of `to_s(...)`.'
 
