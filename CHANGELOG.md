@@ -5,3 +5,4 @@
 ### Added
 
 - Initial release.
+- Add `Sevencop/RedundantExistenceCheck` cop.

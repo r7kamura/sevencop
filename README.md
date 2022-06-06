@@ -32,3 +32,23 @@ gem install sevencop
 require:
   - sevencop
 ```
+
+## Cops
+
+### `Sevencop/RedundantExistenceCheck`
+
+Identifies redundant existent check before file operation.
+
+```ruby
+# bad
+FileUtils.mkdir(a) unless FileTest.exist?(a)
+
+# good
+FileUtils.mkdir(a)
+
+# bad
+FileUtils.rm(a) if FileTest.exist?(a)
+
+# good
+FileUtils.rm(a)
+```

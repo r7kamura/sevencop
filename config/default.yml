@@ -1,4 +1,5 @@
-Sevencop/ToFormattedS:
-  Description: Use `to_fs(...)` instead of `to_s(...)`.
+Sevencop/RedundantExistenceCheck:
+  Description: Avoid redundant existent check before file operation.
   Enabled: true
+  Safe: false
   VersionAdded: '0.1'
