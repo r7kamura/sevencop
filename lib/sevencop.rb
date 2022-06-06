@@ -6,7 +6,7 @@ require 'yaml'
 require_relative 'sevencop/inject'
 require_relative 'sevencop/version'
 
-require_relative 'rubocop/cop/sevencop/to_formatted_s'
+require_relative 'rubocop/cop/sevencop/redundant_existence_check'
 
 module Sevencop
   PROJECT_ROOT = ::Pathname.new(__dir__).parent.expand_path.freeze
