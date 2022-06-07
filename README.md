@@ -44,11 +44,11 @@ Identifies redundant existent check before file operation.
 FileUtils.mkdir(a) unless FileTest.exist?(a)
 
 # good
-FileUtils.mkdir(a)
+FileUtils.mkdir_p(a)
 
 # bad
 FileUtils.rm(a) if FileTest.exist?(a)
 
 # good
-FileUtils.rm(a)
+FileUtils.rm_f(a)
 ```
