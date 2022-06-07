@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.2.0 - 2022-06-07
+
 ### Changed
 
 - Correct to enforced operation at `Sevencop/RedundantExistenceCheck`.
