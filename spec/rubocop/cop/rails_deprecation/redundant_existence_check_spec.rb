@@ -92,15 +92,15 @@ RSpec.describe RuboCop::Cop::Sevencop::RedundantExistenceCheck, :config do
     end
   end
 
-  context 'with FileUtils.mkdir(a, force: true, verbose: true)' do
+  context 'with FileUtils.rm(a, force: true, verbose: true)' do
     it 'autocorrects offense' do
       expect_offense(<<~TEXT)
-        FileUtils.mkdir(a, force: true, verbose: true) unless FileTest.exist?(a)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Avoid redundant existent check before file operation.
+        FileUtils.rm(a, force: true, verbose: true) if File.exist?(a)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Avoid redundant existent check before file operation.
       TEXT
 
       expect_correction(<<~RUBY)
-        FileUtils.mkdir(a, force: true, verbose: true)
+        FileUtils.rm(a, force: true, verbose: true)
       RUBY
     end
   end
