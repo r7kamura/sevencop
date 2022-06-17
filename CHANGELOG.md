@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+- Add `Sevencop/UniquenessValidatorExplicitCaseSensitivity` cop.
+
 ## 0.2.0 - 2022-06-07
 
 ### Changed
