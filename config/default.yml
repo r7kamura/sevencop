@@ -3,3 +3,9 @@ Sevencop/RedundantExistenceCheck:
   Enabled: true
   Safe: false
   VersionAdded: '0.1'
+
+Sevencop/UniquenessValidatorExplicitCaseSensitivity:
+  Description: Specify :case_sensitivity option on use of UniquenessValidator.
+  Enabled: false
+  Safe: false
+  VersionAdded: '0.3'

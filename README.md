@@ -52,3 +52,25 @@ FileUtils.rm(a) if FileTest.exist?(a)
 # good
 FileUtils.rm_f(a)
 ```
+
+### `Sevencop/UniquenessValidatorExplicitCaseSensitivity`
+
+Identifies use of UniquenessValidator without :case_sensitive option.
+
+```ruby
+# bad
+validates :name, uniqueness: true
+
+# good
+validates :name, uniqueness: { case_sensitive: true }
+
+# bad
+validates :name, uniqueness: { allow_nil: true, scope: :user_id }
+
+# good
+validates :name, uniqueness: { allow_nil: true, scope: :user_id, case_sensitive: true }
+```
+
+Useful to keep the same behavior between Rails 6.0 and 6.1 where case insensitive collation is used in MySQL.
+
+Note that this cop is `Enabled: false` by default.
