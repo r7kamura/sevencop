@@ -64,6 +64,9 @@ validates :name, uniqueness: true
 # good
 validates :name, uniqueness: { case_sensitive: true }
 
+# good
+validates :name, uniqueness: { case_sensitive: false }
+
 # bad
 validates :name, uniqueness: { allow_nil: true, scope: :user_id }
 
