@@ -5,6 +5,7 @@
 ### Changed
 
 - Improve performance of `Sevencop/UniquenessValidatorExplicitCaseSensitivity` cop.
+- Improve offense location of `Sevencop/UniquenessValidatorExplicitCaseSensitivity` cop.
 
 ## 0.3.0 - 2022-06-18
 

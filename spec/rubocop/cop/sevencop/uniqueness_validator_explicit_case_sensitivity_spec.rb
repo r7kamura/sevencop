@@ -5,7 +5,7 @@ RSpec.describe RuboCop::Cop::Sevencop::UniquenessValidatorExplicitCaseSensitivit
     it 'autocorrects offense' do
       expect_offense(<<~TEXT)
         validates :name, uniqueness: true
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Specify :case_sensitivity option on use of UniquenessValidator.
+                                     ^^^^ Specify :case_sensitivity option on use of UniquenessValidator.
       TEXT
 
       expect_correction(<<~RUBY)
@@ -18,7 +18,7 @@ RSpec.describe RuboCop::Cop::Sevencop::UniquenessValidatorExplicitCaseSensitivit
     it 'autocorrects offense' do
       expect_offense(<<~TEXT)
         validates :name, uniqueness: { allow_nil: true, scope: :user_id }
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Specify :case_sensitivity option on use of UniquenessValidator.
+                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Specify :case_sensitivity option on use of UniquenessValidator.
       TEXT
 
       expect_correction(<<~RUBY)

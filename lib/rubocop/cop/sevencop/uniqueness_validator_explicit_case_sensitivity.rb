@@ -67,8 +67,8 @@ module RuboCop
         def on_send(node)
           return unless validates_uniqueness?(node) && !validates_uniqueness_with_case_sensitivity?(node)
 
-          add_offense(node) do |corrector|
-            uniqueness_value = find_uniqueness_value(node)
+          uniqueness_value = find_uniqueness_value(node)
+          add_offense(uniqueness_value) do |corrector|
             if uniqueness_value.true_type?
               corrector.replace(
                 uniqueness_value.source_range,
