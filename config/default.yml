@@ -1,3 +1,9 @@
+Sevencop/OrderField:
+  Description: Wrap safe SQL String by `Arel.sql`.
+  Enabled: false
+  Safe: false
+  VersionAdded: '0.4'
+
 Sevencop/RedundantExistenceCheck:
   Description: Avoid redundant existent check before file operation.
   Enabled: true
