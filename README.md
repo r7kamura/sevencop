@@ -35,6 +35,26 @@ require:
 
 ## Cops
 
+### Sevencop/OrderField
+
+Identifies a String including "field" is passed to `order` or `reorder`.
+
+```ruby
+# bad
+articles.order('field(id, ?)', a)
+
+# good
+articles.order(Arel.sql('field(id, ?)'), a)
+
+# bad
+reorder('field(id, ?)', a)
+
+# good
+reorder(Arel.sql('field(id, ?)'), a)
+```
+
+`Enabled: false` by default.
+
 ### `Sevencop/RedundantExistenceCheck`
 
 Identifies redundant existent check before file operation.
@@ -76,4 +96,4 @@ validates :name, uniqueness: { allow_nil: true, scope: :user_id, case_sensitive:
 
 Useful to keep the same behavior between Rails 6.0 and 6.1 where case insensitive collation is used in MySQL.
 
-Note that this cop is `Enabled: false` by default.
+`Enabled: false` by default.

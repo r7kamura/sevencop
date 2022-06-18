@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+- Add `Sevencop/OrderField` cop.
+
 ### Changed
 
 - Improve performance of `Sevencop/UniquenessValidatorExplicitCaseSensitivity` cop.
