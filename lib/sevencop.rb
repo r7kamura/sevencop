@@ -6,10 +6,6 @@ require 'yaml'
 require_relative 'sevencop/inject'
 require_relative 'sevencop/version'
 
-require_relative 'rubocop/cop/sevencop/order_field'
-require_relative 'rubocop/cop/sevencop/redundant_existence_check'
-require_relative 'rubocop/cop/sevencop/uniqueness_validator_explicit_case_sensitivity'
-
 module Sevencop
   PROJECT_ROOT = ::Pathname.new(__dir__).parent.expand_path.freeze
 
@@ -21,3 +17,5 @@ module Sevencop
 end
 
 Sevencop::Inject.defaults!
+
+require_relative 'rubocop/cop/sevencop'
