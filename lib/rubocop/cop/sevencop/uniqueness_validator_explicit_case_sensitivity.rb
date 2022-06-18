@@ -31,6 +31,8 @@ module RuboCop
 
         MSG = 'Specify :case_sensitivity option on use of UniquenessValidator.'
 
+        RESTRICT_ON_SEND = %i[validates].freeze
+
         def_node_matcher :validates_uniqueness?, <<~PATTERN
           (send nil? :validates
             _
