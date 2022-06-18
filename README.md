@@ -55,7 +55,7 @@ reorder(Arel.sql('field(id, ?)'), a)
 
 `Enabled: false` by default.
 
-### `Sevencop/RedundantExistenceCheck`
+### Sevencop/RedundantExistenceCheck
 
 Identifies redundant existent check before file operation.
 
@@ -73,7 +73,7 @@ FileUtils.rm(a) if FileTest.exist?(a)
 FileUtils.rm_f(a)
 ```
 
-### `Sevencop/UniquenessValidatorExplicitCaseSensitivity`
+### Sevencop/UniquenessValidatorExplicitCaseSensitivity
 
 Identifies use of UniquenessValidator without :case_sensitive option.
 
