@@ -55,4 +55,17 @@ RSpec.describe RuboCop::Cop::Sevencop::OrderField, :config do
       RUBY
     end
   end
+
+  context 'with dstr' do
+    it 'autocorrects offense' do
+      expect_offense(<<~'TEXT')
+        articles.order("field(id, #{ids.join(', ')})")
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Wrap safe SQL String by `Arel.sql`.
+      TEXT
+
+      expect_correction(<<~'RUBY')
+        articles.order(Arel.sql("field(id, #{ids.join(', ')})"))
+      RUBY
+    end
+  end
 end

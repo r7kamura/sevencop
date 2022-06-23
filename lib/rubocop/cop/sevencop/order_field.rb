@@ -37,7 +37,10 @@ module RuboCop
         def_node_matcher :order_with_field?, <<~PATTERN
           (send
             _ ORDER_METHOD_NAMES
-            (str /field\(.+\)/)
+            {
+              (str /field\(.+\)/) |
+              (dstr <(str /field\(.+\)/) ...>)
+            }
             ...
           )
         PATTERN
