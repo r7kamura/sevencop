@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.4.0 - 2022-06-18
+
 ### Added
 
 - Add `Sevencop/OrderField` cop.
