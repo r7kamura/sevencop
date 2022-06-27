@@ -29,15 +29,15 @@ module RuboCop
         ].freeze
 
         def_node_matcher :without_options?, <<~PATTERN
-          (send _ _ _)
+          (send _ _ _ (block ...)?)
         PATTERN
 
         def_node_matcher :with_hash_options?, <<~PATTERN
-          (send _ _ _ (hash ...))
+          (send _ _ _ (block ...)? (hash ...))
         PATTERN
 
         def_node_matcher :with_optional?, <<~PATTERN
-          (send _ _ _ (hash <(pair (sym :optional) _) ...>))
+          (send _ _ _ (block ...)? (hash <(pair (sym :optional) _) ...>))
         PATTERN
 
         # @param [RuboCop::AST::SendNode] node
@@ -45,11 +45,7 @@ module RuboCop
           return unless without_options?(node) || (with_hash_options?(node) && !with_optional?(node))
 
           add_offense(node) do |corrector|
-            if node.arguments[-1].hash_type?
-              corrector.insert_after(node.arguments[-1], ', optional: true')
-            elsif node.arguments.length == 1
-              corrector.insert_after(node.arguments.first, ', optional: true')
-            end
+            corrector.insert_after(node.arguments[-1], ', optional: true')
           end
         end
       end

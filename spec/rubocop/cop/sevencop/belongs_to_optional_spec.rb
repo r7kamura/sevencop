@@ -58,4 +58,17 @@ RSpec.describe RuboCop::Cop::Sevencop::BelongsToOptional, :config do
       RUBY
     end
   end
+
+  context 'with scope' do
+    it 'autocorrects offense' do
+      expect_offense(<<~TEXT)
+        belongs_to :group, -> { a }
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^ Specify :optional option.
+      TEXT
+
+      expect_correction(<<~RUBY)
+        belongs_to :group, -> { a }, optional: true
+      RUBY
+    end
+  end
 end
