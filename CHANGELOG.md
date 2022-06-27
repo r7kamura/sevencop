@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.5.0 - 2022-06-27
+
 ### Added
 
 - Add `Sevencop/BelongsToOptional` cop.
