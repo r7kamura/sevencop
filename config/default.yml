@@ -1,3 +1,10 @@
+Sevencop/BelongsToOptional:
+  Description: |
+    Force `belongs_to` with `optional: true` option.
+  Enabled: false
+  Safe: false
+  VersionAdded: '0.5'
+
 Sevencop/OrderField:
   Description: Wrap safe SQL String by `Arel.sql`.
   Enabled: false
