@@ -10,6 +10,10 @@
 
 - Make `Sevencop/RedundantExistenceCheck` cop disabled by default.
 
+### Removed
+
+- Remove rubocop version dependency.
+
 ## 0.4.1 - 2022-06-23
 
 ### Fixed
