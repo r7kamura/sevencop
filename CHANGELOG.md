@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixed
+
+- Fix `Sevencop/BelongsToOptional` scope bug.
+
 ## 0.5.0 - 2022-06-27
 
 ### Added
