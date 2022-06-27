@@ -35,6 +35,8 @@ require:
 
 ## Cops
 
+All cops are `Enabled: false` by default.
+
 ### Sevencop/BelongsToOptional
 
 Force `belongs_to` with `optional: true` option.
@@ -55,8 +57,6 @@ belongs_to :group, options
 
 This is useful for migration of `config.active_record.belongs_to_required_by_default`.
 
-`Enabled: false` by default.
-
 ### Sevencop/OrderField
 
 Identifies a String including "field" is passed to `order` or `reorder`.
@@ -74,8 +74,6 @@ reorder('field(id, ?)', a)
 # good
 reorder(Arel.sql('field(id, ?)'), a)
 ```
-
-`Enabled: false` by default.
 
 ### Sevencop/RedundantExistenceCheck
 
@@ -117,5 +115,3 @@ validates :name, uniqueness: { allow_nil: true, scope: :user_id, case_sensitive:
 ```
 
 Useful to keep the same behavior between Rails 6.0 and 6.1 where case insensitive collation is used in MySQL.
-
-`Enabled: false` by default.

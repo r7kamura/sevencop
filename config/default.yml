@@ -13,7 +13,7 @@ Sevencop/OrderField:
 
 Sevencop/RedundantExistenceCheck:
   Description: Avoid redundant existent check before file operation.
-  Enabled: true
+  Enabled: false
   Safe: false
   VersionAdded: '0.1'
 

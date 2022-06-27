@@ -6,6 +6,10 @@
 
 - Add `Sevencop/BelongsToOptional` cop.
 
+### Changed
+
+- Make `Sevencop/RedundantExistenceCheck` cop disabled by default.
+
 ## 0.4.1 - 2022-06-23
 
 ### Fixed
