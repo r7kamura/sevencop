@@ -35,6 +35,28 @@ require:
 
 ## Cops
 
+### Sevencop/BelongsToOptional
+
+Force `belongs_to` with `optional: true` option.
+
+```ruby
+# bad
+belongs_to :group
+
+# good
+belongs_to :group, optional: true
+
+# good
+belongs_to :group, optional: false
+
+# good
+belongs_to :group, options
+```
+
+This is useful for migration of `config.active_record.belongs_to_required_by_default`.
+
+`Enabled: false` by default.
+
 ### Sevencop/OrderField
 
 Identifies a String including "field" is passed to `order` or `reorder`.
