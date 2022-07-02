@@ -32,11 +32,9 @@ module RuboCop
           reorder
         ].freeze
 
-        ORDER_METHOD_NAMES = RESTRICT_ON_SEND.to_set.freeze
-
         def_node_matcher :order_with_field?, <<~PATTERN
           (send
-            _ ORDER_METHOD_NAMES
+            _ _
             {
               (str /field\(.+\)/) |
               (dstr <(str /field\(.+\)/) ...>)
