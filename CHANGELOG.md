@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Removed
+
+- Remove unnecessary method names check on `Sevencop/OrderField`.
+
 ## 0.5.1 - 2022-06-28
 
 ### Fixed
