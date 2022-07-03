@@ -12,19 +12,22 @@ Sevencop/HashLiteralOrder:
   VersionAdded: '0.6'
 
 Sevencop/OrderField:
-  Description: Wrap safe SQL String by `Arel.sql`.
+  Description: |
+    Wrap safe SQL String by `Arel.sql`.
   Enabled: false
   Safe: false
   VersionAdded: '0.4'
 
 Sevencop/RedundantExistenceCheck:
-  Description: Avoid redundant existent check before file operation.
+  Description: |
+    Avoid redundant existent check before file operation.
   Enabled: false
   Safe: false
   VersionAdded: '0.1'
 
 Sevencop/UniquenessValidatorExplicitCaseSensitivity:
-  Description: Specify :case_sensitivity option on use of UniquenessValidator.
+  Description: |
+    Specify :case_sensitivity option on use of UniquenessValidator.
   Enabled: false
   Safe: false
   VersionAdded: '0.3'
