@@ -57,6 +57,26 @@ belongs_to :group, options
 
 This is useful for migration of `config.active_record.belongs_to_required_by_default`.
 
+### Sevencop/HashLiteralOrder
+
+Sort Hash literal by key.
+
+```ruby
+# bad
+{
+  b: 1,
+  a: 1,
+  c: 1
+}
+
+# good
+{
+  a: 1,
+  b: 1,
+  c: 1
+}
+```
+
 ### Sevencop/OrderField
 
 Identifies a String including "field" is passed to `order` or `reorder`.
