@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## Added
+
+- Add `Sevencop/HashLiteralOrder` cop.
+
 ### Removed
 
 - Remove unnecessary method names check on `Sevencop/OrderField`.
