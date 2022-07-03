@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Fixed
+
+- Fix `Sevencop/HashLiteralOrder` on surrounding-space-less Hash.
+
 ## 0.6.0 - 2022-07-04
 
 ### Added

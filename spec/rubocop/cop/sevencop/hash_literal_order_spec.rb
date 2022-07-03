@@ -71,4 +71,17 @@ RSpec.describe RuboCop::Cop::Sevencop::HashLiteralOrder, :config do
       RUBY
     end
   end
+
+  context 'with surrounding-space-less Hash' do
+    it 'autocorrects offense' do
+      expect_offense(<<~TEXT)
+        {b: 1, c: 1, a: 1}
+        ^^^^^^^^^^^^^^^^^^ Sort Hash literal entries by key.
+      TEXT
+
+      expect_correction(<<~RUBY)
+        {a: 1, b: 1, c: 1}
+      RUBY
+    end
+  end
 end

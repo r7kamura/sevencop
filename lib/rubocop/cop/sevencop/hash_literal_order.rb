@@ -54,12 +54,11 @@ module RuboCop
         # @param [RuboCop::AST::HashNode] node
         # @return [String]
         def autocorrect(node)
-          whitespace = whitespace_leading(node)
           [
             '{',
-            whitespace,
-            sort(node.pairs).map(&:source).join(",#{whitespace}"),
-            whitespace_ending(node),
+            whitespace_leading(node),
+            sort(node.pairs).map(&:source).join(",#{whitespace_between(node)}"),
+            whitespace_trailing(node),
             '}'
           ].join
         end
@@ -86,15 +85,27 @@ module RuboCop
 
         # @param [RuboCop::AST::HashNode] node
         # @return [String]
-        #   {    a: 1,    b: 1  }
-        #                     ^^
-        def whitespace_ending(node)
+        #   {    a: 1,   b: 1  }
+        #             ^^^
+        def whitespace_between(node)
+          if node.pairs.length >= 2
+            node.source[node.pairs[0].location.expression.end_pos + 1...node.pairs[1].location.expression.begin_pos]
+          else
+            ' '
+          end
+        end
+
+        # @param [RuboCop::AST::HashNode] node
+        # @return [String]
+        #   {    a: 1,   b: 1  }
+        #                    ^^
+        def whitespace_trailing(node)
           node.source[node.pairs[-1].location.expression.end_pos...node.location.end.begin_pos]
         end
 
         # @param [RuboCop::AST::HashNode] node
         # @return [String]
-        #   {    a: 1,    b: 1  }
+        #   {    a: 1,   b: 1  }
         #    ^^^^
         def whitespace_leading(node)
           node.source[node.location.begin.end_pos...node.pairs[0].location.expression.begin_pos]
