@@ -5,6 +5,12 @@ Sevencop/BelongsToOptional:
   Safe: false
   VersionAdded: '0.5'
 
+Sevencop/HashLiteralOrder:
+  Description: |
+    Sort Hash literal entries by key.
+  Enabled: false
+  VersionAdded: '0.6'
+
 Sevencop/OrderField:
   Description: Wrap safe SQL String by `Arel.sql`.
   Enabled: false
