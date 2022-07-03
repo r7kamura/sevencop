@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.6.0 - 2022-07-04
+
 ### Added
 
 - Add `Sevencop/HashLiteralOrder` cop.
