@@ -59,7 +59,7 @@ This is useful for migration of `config.active_record.belongs_to_required_by_def
 
 ### Sevencop/HashLiteralOrder
 
-Sort Hash literal by key.
+Sort Hash literal entries by key.
 
 ```ruby
 # bad
