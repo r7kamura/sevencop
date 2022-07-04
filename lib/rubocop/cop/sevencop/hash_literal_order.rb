@@ -63,12 +63,6 @@ module RuboCop
           ].join
         end
 
-        # @param [RuboCop::AST::HashNode] node
-        # @return [Boolean]
-        def multi_line?(node)
-          node.source.include?("\n")
-        end
-
         # @param [Array<RuboCop::AST::PairNode>] pairs
         # @return [Array<RuboCop::AST::PairNode>]
         def sort(pairs)
