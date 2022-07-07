@@ -27,10 +27,20 @@ gem install sevencop
 
 ## Usage
 
+Require sevencop from your .rubocop.yml:
+
 ```yaml
 # .rubocop.yml
 require:
   - sevencop
+```
+
+then enable the cops you want to use:
+
+```yaml
+# .rubocop.yml
+Sevencop/BelongsToOptional:
+  Enabled: true
 ```
 
 ## Cops
