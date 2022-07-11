@@ -9,9 +9,5 @@ Layout/LineLength:
 Metrics:
   Enabled: false
 
-Naming/FileName:
- Exclude:
-   - lib/sevencop.rb
-
 Style/Documentation:
   Enabled: false
