@@ -4,7 +4,7 @@ module RuboCop
   module Cop
     module Sevencop
       # Identifies use of UniquenessValidator without :case_sensitive option.
-      # This is useful to keep the same behavior between Rails 6.0 and 6.1 where case insensitive collation is used in MySQL.
+      # Useful to keep the same behavior between Rails 6.0 and 6.1 where case insensitive collation is used in MySQL.
       #
       # @safety
       #   This cop is unsafe because it can register a false positive.
