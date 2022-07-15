@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 0.7.0 - 2022-07-15
+
 ### Added
 
 - Add `Sevencop/WhereNot` cop.
