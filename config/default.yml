@@ -31,3 +31,10 @@ Sevencop/UniquenessValidatorExplicitCaseSensitivity:
   Enabled: false
   Safe: false
   VersionAdded: '0.3'
+
+Sevencop/WhereNot:
+  Description: |
+    Identifies passing multi-elements Hash literal to `where.not`.
+  Enabled: false
+  Safe: false
+  VersionAdded: '0.7'

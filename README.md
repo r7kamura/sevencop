@@ -145,3 +145,15 @@ validates :name, uniqueness: { allow_nil: true, scope: :user_id, case_sensitive:
 ```
 
 Useful to keep the same behavior between Rails 6.0 and 6.1 where case insensitive collation is used in MySQL.
+
+### Sevencop/WhereNot
+
+Identifies passing multi-elements Hash literal to `where.not`.
+
+```ruby
+# bad
+where.not(key1: value1, key2: value2)
+
+# good
+where.not(key1: value1).where.not(key2: value2)
+```
