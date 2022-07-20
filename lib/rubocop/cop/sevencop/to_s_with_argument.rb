@@ -18,6 +18,8 @@ module RuboCop
 
         MSG = 'Use `to_formatted_s(...)` instead of `to_s(...)`.'
 
+        RESTRICT_ON_SEND = %i[to_s].freeze
+
         def_node_matcher :to_s_with_any_argument?, <<~PATTERN
           (call _ :to_s _+)
         PATTERN
