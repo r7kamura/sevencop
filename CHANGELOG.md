@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+### Added
+
+ - Add `Sevencop/ToSWithArgument` cop.
+
 ## 0.7.0 - 2022-07-15
 
 ### Added

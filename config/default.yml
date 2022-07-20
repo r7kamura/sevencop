@@ -25,6 +25,13 @@ Sevencop/RedundantExistenceCheck:
   Safe: false
   VersionAdded: '0.1'
 
+Sevencop/ToSWithArgument:
+  Description: |
+    Identifies passing any argument to `#to_s`.
+  Enabled: false
+  Safe: false
+  VersionAdded: '0.8'
+
 Sevencop/UniquenessValidatorExplicitCaseSensitivity:
   Description: |
     Specify :case_sensitivity option on use of UniquenessValidator.
