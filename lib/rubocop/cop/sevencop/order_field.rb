@@ -36,8 +36,8 @@ module RuboCop
           (send
             _ _
             {
-              (str /field\(.+\)/) |
-              (dstr <(str /field\(.+\)/) ...>)
+              (str /field\(.+\)/i) |
+              (dstr <(str /field\(.+\)/i) ...>)
             }
             ...
           )
