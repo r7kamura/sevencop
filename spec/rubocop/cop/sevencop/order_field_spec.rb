@@ -43,6 +43,19 @@ RSpec.describe RuboCop::Cop::Sevencop::OrderField, :config do
     end
   end
 
+  context 'with FIELD' do
+    it 'autocorrects offense' do
+      expect_offense(<<~TEXT)
+        order('FIELD(id, ?)', a)
+              ^^^^^^^^^^^^^^ Wrap safe SQL String by `Arel.sql`.
+      TEXT
+
+      expect_correction(<<~RUBY)
+        order(Arel.sql('FIELD(id, ?)'), a)
+      RUBY
+    end
+  end
+
   context 'with reorder' do
     it 'autocorrects offense' do
       expect_offense(<<~TEXT)
