@@ -33,6 +33,7 @@ module RuboCop
 
         RESTRICT_ON_SEND = %i[validates].freeze
 
+        # @!method validates_uniqueness?(node)
         def_node_matcher :validates_uniqueness?, <<~PATTERN
           (send nil? :validates
             _
@@ -48,6 +49,7 @@ module RuboCop
           )
         PATTERN
 
+        # @!method validates_uniqueness_with_case_sensitivity?(node)
         def_node_matcher :validates_uniqueness_with_case_sensitivity?, <<~PATTERN
           (send nil? :validates
             _

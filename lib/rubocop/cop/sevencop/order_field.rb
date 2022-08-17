@@ -32,6 +32,7 @@ module RuboCop
           reorder
         ].freeze
 
+        # @!method order_with_field?(node)
         def_node_matcher :order_with_field?, <<~PATTERN
           (send
             _ _

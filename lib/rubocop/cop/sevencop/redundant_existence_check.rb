@@ -84,6 +84,7 @@ module RuboCop
 
         MSG = 'Avoid redundant existent check before file operation.'
 
+        # @!method make_unless_exist?(node)
         def_node_matcher :make_unless_exist?, <<~PATTERN
           (if
             (send (const nil? CLASS_NAMES_FOR_EXIST) METHOD_NAMES_FOR_EXIST _)
@@ -92,6 +93,7 @@ module RuboCop
           )
         PATTERN
 
+        # @!method remove_if_exist?(node)
         def_node_matcher :remove_if_exist?, <<~PATTERN
           (if
             (send (const nil? CLASS_NAMES_FOR_EXIST) METHOD_NAMES_FOR_EXIST _)

@@ -20,6 +20,7 @@ module RuboCop
 
         RESTRICT_ON_SEND = %i[to_s].freeze
 
+        # @!method to_s_with_any_argument?(node)
         def_node_matcher :to_s_with_any_argument?, <<~PATTERN
           (call _ :to_s _+)
         PATTERN
