@@ -26,6 +26,7 @@ module RuboCop
 
         MSG = 'Sort Hash literal entries by key.'
 
+        # @!method hash_literal?(node)
         def_node_matcher :hash_literal?, <<~PATTERN
           (hash
             (pair

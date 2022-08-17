@@ -1,3 +1,6 @@
+require:
+  - rubocop/cop/internal_affairs
+
 AllCops:
   NewCops: enable
   SuggestExtensions: false

@@ -28,14 +28,17 @@ module RuboCop
           belongs_to
         ].freeze
 
+        # @!method without_options?(node)
         def_node_matcher :without_options?, <<~PATTERN
           (send _ _ _ (block ...)?)
         PATTERN
 
+        # @!method with_hash_options?(node)
         def_node_matcher :with_hash_options?, <<~PATTERN
           (send _ _ _ (block ...)? (hash ...))
         PATTERN
 
+        # @!method with_optional?(node)
         def_node_matcher :with_optional?, <<~PATTERN
           (send _ _ _ (block ...)? (hash <(pair (sym :optional) _) ...>))
         PATTERN
