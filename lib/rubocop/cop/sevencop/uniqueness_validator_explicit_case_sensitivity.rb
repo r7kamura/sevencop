@@ -86,7 +86,6 @@ module RuboCop
         end
 
         # @param [RuboCop::AST::SendNode] node
-        # @param [RuboCop::AST::Node]
         def find_uniqueness_value(node)
           node.arguments[1].pairs.find { |pair| pair.key.value == :uniqueness }.value
         end
