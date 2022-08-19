@@ -87,6 +87,24 @@ Sort Hash literal entries by key.
 }
 ```
 
+### Sevencop/InferredSpecType
+
+Identifies redundant spec type.
+
+```ruby
+# bad
+# spec/models/user_spec.rb
+RSpec.describe User, type: :model
+
+# good
+# spec/models/user_spec.rb
+RSpec.describe User
+
+# good
+# spec/models/user_spec.rb
+RSpec.describe User, type: :request
+```
+
 ### Sevencop/OrderField
 
 Identifies a String including "field" is passed to `order` or `reorder`.
