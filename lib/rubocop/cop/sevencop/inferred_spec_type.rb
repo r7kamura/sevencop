@@ -113,7 +113,7 @@ module RuboCop
         # @return [Symbol, nil]
         def inferred_type_from_file_path
           INFERENCES.find do |inference|
-            break inference[:type] if file_path.start_with?(inference[:prefix])
+            break inference[:type] if file_path.include?(inference[:prefix])
           end
         end
       end
