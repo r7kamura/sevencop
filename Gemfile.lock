@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sevencop (0.9.2)
+    sevencop (0.9.3)
       rubocop
 
 GEM
