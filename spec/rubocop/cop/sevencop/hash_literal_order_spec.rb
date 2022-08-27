@@ -51,6 +51,19 @@ RSpec.describe RuboCop::Cop::Sevencop::HashLiteralOrder, :config do
     end
   end
 
+  context 'with keyword arguments' do
+    it 'autocorrects offense' do
+      expect_offense(<<~TEXT)
+        foo(b: 1, a: 1)
+            ^^^^^^^^^^ Sort Hash literal entries by key.
+      TEXT
+
+      expect_correction(<<~RUBY)
+        foo(a: 1, b: 1)
+      RUBY
+    end
+  end
+
   context 'with multi-lines Hash' do
     it 'autocorrects offense' do
       expect_offense(<<~TEXT)

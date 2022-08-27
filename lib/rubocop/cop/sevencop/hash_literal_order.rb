@@ -55,13 +55,13 @@ module RuboCop
         # @param [RuboCop::AST::HashNode] node
         # @return [String]
         def autocorrect(node)
-          [
-            '{',
+          parts = [
             whitespace_leading(node),
             sort(node.pairs).map(&:source).join(",#{whitespace_between(node)}"),
-            whitespace_trailing(node),
-            '}'
-          ].join
+            whitespace_trailing(node)
+          ]
+          parts = ['{', *parts, '}'] if node.braces?
+          parts.join
         end
 
         # @param [Array<RuboCop::AST::PairNode>] pairs
@@ -84,7 +84,9 @@ module RuboCop
         #             ^^^
         def whitespace_between(node)
           if node.pairs.length >= 2
-            node.source[node.pairs[0].location.expression.end_pos + 1...node.pairs[1].location.expression.begin_pos]
+            processed_source.raw_source[
+              node.pairs[0].location.expression.end_pos + 1...node.pairs[1].location.expression.begin_pos
+            ]
           else
             ' '
           end
@@ -95,7 +97,9 @@ module RuboCop
         #   {    a: 1,   b: 1  }
         #                    ^^
         def whitespace_trailing(node)
-          node.source[node.pairs[-1].location.expression.end_pos...node.location.end.begin_pos]
+          processed_source.raw_source[
+            node.pairs[-1].location.expression.end_pos...node.location.expression.end.begin_pos - offset_for(node)
+          ]
         end
 
         # @param [RuboCop::AST::HashNode] node
@@ -103,7 +107,19 @@ module RuboCop
         #   {    a: 1,   b: 1  }
         #    ^^^^
         def whitespace_leading(node)
-          node.source[node.location.begin.end_pos...node.pairs[0].location.expression.begin_pos]
+          processed_source.raw_source[
+            node.location.expression.begin.end_pos + offset_for(node)...node.pairs[0].location.expression.begin_pos
+          ]
+        end
+
+        # @param [RuboCop::AST::HashNode] node
+        # @return [Integer]
+        def offset_for(node)
+          if node.braces?
+            1
+          else
+            0
+          end
         end
       end
     end
