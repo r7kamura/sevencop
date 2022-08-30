@@ -5,6 +5,12 @@ Sevencop/BelongsToOptional:
   Safe: false
   VersionAdded: '0.5'
 
+Sevencop/FactoryBotCreateList:
+  Description: |
+    Finds possible substitutions for `FactoryBot.create_list`.
+  Enabled: false
+  VersionAdded: '0.10'
+
 Sevencop/HashLiteralOrder:
   Description: |
     Sort Hash literal entries by key.
