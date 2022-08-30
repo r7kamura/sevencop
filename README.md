@@ -67,6 +67,25 @@ belongs_to :group, options
 
 This is useful for migration of `config.active_record.belongs_to_required_by_default`.
 
+### Sevencop/FactoryBotCreateList
+
+Finds possible substitutions for `FactoryBot.create_list`.
+
+```ruby
+# bad
+Array.new(2) do
+  create(:user)
+end
+
+# good
+create_list(:user, 2)
+
+# good
+Array.new(2) do |i|
+  create(:user, order: i)
+end
+```
+
 ### Sevencop/HashLiteralOrder
 
 Sort Hash literal entries by key.
