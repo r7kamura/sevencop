@@ -1,8 +1,5 @@
 # frozen_string_literal: true
 
-require 'pathname'
-require 'yaml'
-
 require_relative 'sevencop/rubocop_extension'
 require_relative 'sevencop/version'
 
