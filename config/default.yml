@@ -23,6 +23,12 @@ Sevencop/InferredSpecType:
   Enabled: false
   VersionAdded: '0.9'
 
+Sevencop/MethodDefinitionMultilineArguments:
+  Description: |
+    Inserts new lines between method definition parameters.
+  Enabled: false
+  VersionAdded: '0.11'
+
 Sevencop/OrderField:
   Description: |
     Wrap safe SQL String by `Arel.sql`.
