@@ -22,6 +22,15 @@ RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionMultilineArguments, :conf
     end
   end
 
+  context 'when there are non-multilined multiple block arguments' do
+    it 'registers no offense' do
+      expect_no_offenses(<<~RUBY)
+        foo do |a, b|
+        end
+      RUBY
+    end
+  end
+
   context 'when there are non-multilined multiple arguments' do
     it 'registers an offense' do
       expect_offense(<<~TEXT)

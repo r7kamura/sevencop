@@ -26,7 +26,8 @@ module RuboCop
 
         # @param node [RuboCop::AST::ArgsNode]
         def on_args(node)
-          return if method_args?(node) && multilined?(node)
+          return unless method_args?(node)
+          return if multilined?(node)
 
           add_offense(node) do |corrector|
             autocorrect(corrector, node)
