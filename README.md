@@ -124,6 +124,26 @@ RSpec.describe User
 RSpec.describe User, type: :request
 ```
 
+### Sevencop/MethodDefinitionMultilineArguments
+
+Inserts new lines between method definition parameters.
+
+```ruby
+# bad
+def foo(a, b)
+end
+
+# good
+def foo(
+  a,
+  b
+)
+
+# good
+def foo(a)
+end
+```
+
 ### Sevencop/OrderField
 
 Identifies a String including "field" is passed to `order` or `reorder`.
