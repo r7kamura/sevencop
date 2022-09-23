@@ -3,6 +3,7 @@
 require_relative 'sevencop/rubocop_extension'
 require_relative 'sevencop/version'
 
+require_relative 'rubocop/cop/sevencop/autoload_ordered'
 require_relative 'rubocop/cop/sevencop/belongs_to_optional'
 require_relative 'rubocop/cop/sevencop/factory_bot_create_list'
 require_relative 'rubocop/cop/sevencop/hash_literal_order'

@@ -47,6 +47,20 @@ Sevencop/BelongsToOptional:
 
 All cops are `Enabled: false` by default.
 
+### Sevencop/AutoloadOrdered
+
+Sort `autoload` in alphabetical order.
+
+```ruby
+# bad
+autoload :B, 'b'
+autoload :A, 'a'
+
+# good
+autoload :A, 'a'
+autoload :B, 'b'
+```
+
 ### Sevencop/BelongsToOptional
 
 Force `belongs_to` with `optional: true` option.
