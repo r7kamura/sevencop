@@ -1,3 +1,9 @@
+Sevencop/AutoloadOrdered:
+  Description: |
+    Sort `autoload` in alphabetical order.
+  Enabled: false
+  VersionAdded: '0.12.0'
+
 Sevencop/BelongsToOptional:
   Description: |
     Force `belongs_to` with `optional: true` option.
