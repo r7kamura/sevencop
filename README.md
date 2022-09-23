@@ -49,7 +49,7 @@ All cops are `Enabled: false` by default.
 
 ### Sevencop/AutoloadOrdered
 
-Sort `autoload` in alphabetical order.
+Sort `autoload` in alphabetical order within their section.
 
 ```ruby
 # bad
@@ -59,6 +59,13 @@ autoload :A, 'a'
 # good
 autoload :A, 'a'
 autoload :B, 'b'
+
+# good
+autoload :B, 'b'
+autoload :D, 'd'
+
+autoload :A, 'a'
+autoload :C, 'a'
 ```
 
 ### Sevencop/BelongsToOptional
