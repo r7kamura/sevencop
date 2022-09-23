@@ -22,7 +22,7 @@ RSpec.describe RuboCop::Cop::Sevencop::ToSWithArgument, :config do
     end
   end
 
-  context 'argument and receiver' do
+  context 'with argument and receiver' do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         1.to_s(:delimited)
