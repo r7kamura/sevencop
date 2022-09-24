@@ -2,7 +2,7 @@ Sevencop/AutoloadOrdered:
   Description: |
     Sort `autoload` in alphabetical order.
   Enabled: false
-  VersionAdded: '0.12.0'
+  VersionAdded: '0.12'
 
 Sevencop/BelongsToOptional:
   Description: |
@@ -27,7 +27,7 @@ Sevencop/MethodDefinitionKeywordArgumentsOrdered:
   Description: |
     Sort method definition keyword arguments in alphabetical order.
   Enabled: false
-  VersionAdded: '0.13.0'
+  VersionAdded: '0.13'
 
 Sevencop/MethodDefinitionMultilineArguments:
   Description: |
