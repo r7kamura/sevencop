@@ -145,6 +145,24 @@ RSpec.describe User
 RSpec.describe User, type: :request
 ```
 
+### Sevencop/MethodDefinitionKeywordArgumentsOrdered
+
+Sort method definition keyword arguments in alphabetical order.
+
+```ruby
+# bad
+def foo(b:, a:); end
+
+# good
+def foo(a:, b:); end
+
+# bad
+def foo(c:, d:, b: 1, a: 2); end
+
+# good
+def foo(c:, d:, a: 2, b: 1); end
+```
+
 ### Sevencop/MethodDefinitionMultilineArguments
 
 Inserts new lines between method definition parameters.
