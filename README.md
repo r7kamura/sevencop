@@ -182,24 +182,6 @@ reorder('field(id, ?)', a)
 reorder(Arel.sql('field(id, ?)'), a)
 ```
 
-### Sevencop/RedundantExistenceCheck
-
-Identifies redundant existent check before file operation.
-
-```ruby
-# bad
-FileUtils.mkdir(a) unless FileTest.exist?(a)
-
-# good
-FileUtils.mkdir_p(a)
-
-# bad
-FileUtils.rm(a) if FileTest.exist?(a)
-
-# good
-FileUtils.rm_f(a)
-```
-
 ### Sevencop/UniquenessValidatorExplicitCaseSensitivity
 
 Identifies use of UniquenessValidator without :case_sensitive option.
