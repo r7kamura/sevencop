@@ -29,6 +29,12 @@ Sevencop/InferredSpecType:
   Enabled: false
   VersionAdded: '0.9'
 
+Sevencop/MethodDefinitionKeywordArgumentsOrdered:
+  Description: |
+    Sort method definition keyword arguments in alphabetical order.
+  Enabled: false
+  VersionAdded: '0.13.0'
+
 Sevencop/MethodDefinitionMultilineArguments:
   Description: |
     Inserts new lines between method definition parameters.
