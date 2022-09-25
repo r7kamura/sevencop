@@ -35,7 +35,7 @@ RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionArgumentsMultiline, :conf
     it 'registers an offense' do
       expect_offense(<<~TEXT)
         def foo(a, b)
-               ^^^^^^ Insert new lines between method definition parameters.
+               ^^^^^^ Insert new lines between method definition arguments.
         end
       TEXT
 
@@ -53,7 +53,7 @@ RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionArgumentsMultiline, :conf
     it 'registers an offense' do
       expect_offense(<<~TEXT)
         def foo a, b
-                ^^^^ Insert new lines between method definition parameters.
+                ^^^^ Insert new lines between method definition arguments.
         end
       TEXT
 

@@ -31,7 +31,7 @@ Sevencop/MethodDefinitionKeywordArgumentsOrdered:
 
 Sevencop/MethodDefinitionArgumentsMultiline:
   Description: |
-    Inserts new lines between method definition parameters.
+    Inserts new lines between method definition arguments.
   Enabled: false
   VersionAdded: '0.11'
 

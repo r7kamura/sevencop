@@ -146,7 +146,7 @@ def foo(c:, d:, a: 2, b: 1); end
 
 ### Sevencop/MethodDefinitionArgumentsMultiline
 
-Inserts new lines between method definition parameters.
+Inserts new lines between method definition arguments.
 
 ```ruby
 # bad
