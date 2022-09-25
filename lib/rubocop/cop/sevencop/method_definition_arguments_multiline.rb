@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Sevencop
-      # Inserts new lines between method definition parameters.
+      # Inserts new lines between method definition arguments.
       #
       # @example
       #   # bad
@@ -22,7 +22,7 @@ module RuboCop
       class MethodDefinitionArgumentsMultiline < Base
         extend AutoCorrector
 
-        MSG = 'Insert new lines between method definition parameters.'
+        MSG = 'Insert new lines between method definition arguments.'
 
         # @param node [RuboCop::AST::ArgsNode]
         def on_args(node)
