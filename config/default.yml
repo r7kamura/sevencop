@@ -11,9 +11,9 @@ Sevencop/BelongsToOptional:
   Safe: false
   VersionAdded: '0.5'
 
-Sevencop/HashLiteralOrder:
+Sevencop/HashElementOrdered:
   Description: |
-    Sort Hash literal entries by key.
+    Sort Hash elements by key.
   Enabled: false
   VersionAdded: '0.6'
 

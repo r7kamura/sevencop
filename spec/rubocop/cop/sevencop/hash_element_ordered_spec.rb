@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Sevencop::HashLiteralOrder, :config do
+RSpec.describe RuboCop::Cop::Sevencop::HashElementOrdered, :config do
   context 'with unrelated key' do
     it 'registers no offenses' do
       expect_no_offenses(<<~TEXT)
@@ -29,7 +29,7 @@ RSpec.describe RuboCop::Cop::Sevencop::HashLiteralOrder, :config do
     it 'autocorrects offense' do
       expect_offense(<<~TEXT)
         { b: 1, c: 1, a: 1 }
-        ^^^^^^^^^^^^^^^^^^^^ Sort Hash literal entries by key.
+        ^^^^^^^^^^^^^^^^^^^^ Sort Hash elements by key.
       TEXT
 
       expect_correction(<<~RUBY)
@@ -42,7 +42,7 @@ RSpec.describe RuboCop::Cop::Sevencop::HashLiteralOrder, :config do
     it 'autocorrects offense' do
       expect_offense(<<~TEXT)
         { 'b' => 1, 'c' => 1, 'a' => 1 }
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sort Hash literal entries by key.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Sort Hash elements by key.
       TEXT
 
       expect_correction(<<~RUBY)
@@ -55,7 +55,7 @@ RSpec.describe RuboCop::Cop::Sevencop::HashLiteralOrder, :config do
     it 'autocorrects offense' do
       expect_offense(<<~TEXT)
         foo(b: 1, a: 1)
-            ^^^^^^^^^^ Sort Hash literal entries by key.
+            ^^^^^^^^^^ Sort Hash elements by key.
       TEXT
 
       expect_correction(<<~RUBY)
@@ -68,7 +68,7 @@ RSpec.describe RuboCop::Cop::Sevencop::HashLiteralOrder, :config do
     it 'autocorrects offense' do
       expect_offense(<<~TEXT)
         {
-        ^ Sort Hash literal entries by key.
+        ^ Sort Hash elements by key.
           b: 1,
           c: 1,
           a: 1
@@ -89,7 +89,7 @@ RSpec.describe RuboCop::Cop::Sevencop::HashLiteralOrder, :config do
     it 'autocorrects offense' do
       expect_offense(<<~TEXT)
         {b: 1, c: 1, a: 1}
-        ^^^^^^^^^^^^^^^^^^ Sort Hash literal entries by key.
+        ^^^^^^^^^^^^^^^^^^ Sort Hash elements by key.
       TEXT
 
       expect_correction(<<~RUBY)
