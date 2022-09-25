@@ -19,7 +19,7 @@ module RuboCop
       #   # good
       #   def foo(a)
       #   end
-      class MethodDefinitionMultilineArguments < Base
+      class MethodDefinitionArgumentsMultiline < Base
         extend AutoCorrector
 
         MSG = 'Insert new lines between method definition parameters.'
