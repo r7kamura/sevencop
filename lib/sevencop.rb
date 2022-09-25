@@ -5,7 +5,7 @@ require_relative 'sevencop/version'
 
 require_relative 'rubocop/cop/sevencop/autoload_ordered'
 require_relative 'rubocop/cop/sevencop/belongs_to_optional'
-require_relative 'rubocop/cop/sevencop/hash_literal_order'
+require_relative 'rubocop/cop/sevencop/hash_element_ordered'
 require_relative 'rubocop/cop/sevencop/inferred_spec_type'
 require_relative 'rubocop/cop/sevencop/method_definition_keyword_arguments_ordered'
 require_relative 'rubocop/cop/sevencop/method_definition_arguments_multiline'

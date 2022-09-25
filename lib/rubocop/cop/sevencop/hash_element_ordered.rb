@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Sevencop
-      # Sort Hash literal entries by key.
+      # Sort Hash elements by key.
       #
       # @example
       #
@@ -21,10 +21,10 @@ module RuboCop
       #     c: 1
       #   }
       #
-      class HashLiteralOrder < Base
+      class HashElementOrdered < Base
         extend AutoCorrector
 
-        MSG = 'Sort Hash literal entries by key.'
+        MSG = 'Sort Hash elements by key.'
 
         # @!method hash_literal?(node)
         def_node_matcher :hash_literal?, <<~PATTERN

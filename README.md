@@ -88,9 +88,9 @@ belongs_to :group, options
 
 This is useful for migration of `config.active_record.belongs_to_required_by_default`.
 
-### Sevencop/HashLiteralOrder
+### Sevencop/HashElementOrdered
 
-Sort Hash literal entries by key.
+Sort Hash elements by key.
 
 ```ruby
 # bad
