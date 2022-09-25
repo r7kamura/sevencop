@@ -144,7 +144,7 @@ def foo(c:, d:, b: 1, a: 2); end
 def foo(c:, d:, a: 2, b: 1); end
 ```
 
-### Sevencop/MethodDefinitionMultilineArguments
+### Sevencop/MethodDefinitionArgumentsMultiline
 
 Inserts new lines between method definition parameters.
 

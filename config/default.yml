@@ -29,7 +29,7 @@ Sevencop/MethodDefinitionKeywordArgumentsOrdered:
   Enabled: false
   VersionAdded: '0.13'
 
-Sevencop/MethodDefinitionMultilineArguments:
+Sevencop/MethodDefinitionArgumentsMultiline:
   Description: |
     Inserts new lines between method definition parameters.
   Enabled: false

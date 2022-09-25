@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionMultilineArguments, :config do
+RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionArgumentsMultiline, :config do
   context 'when there is one argument' do
     it 'registers no offenses' do
       expect_no_offenses(<<~RUBY)
