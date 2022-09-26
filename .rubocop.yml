@@ -27,3 +27,6 @@ RSpec/MultipleExpectations:
 
 Style/Documentation:
   Enabled: false
+
+Style/MultilineBlockChain:
+  Enabled: false

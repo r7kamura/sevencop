@@ -29,6 +29,12 @@ Sevencop/MethodDefinitionArgumentsMultiline:
   Enabled: false
   VersionAdded: '0.11'
 
+Sevencop/MethodDefinitionOrdered:
+  Description: |
+    Sort method definitions in alphabetical order.
+  Enabled: false
+  VersionAdded: '0.14'
+
 Sevencop/MethodDefinitionKeywordArgumentsOrdered:
   Description: |
     Sort method definition keyword arguments in alphabetical order.

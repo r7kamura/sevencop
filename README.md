@@ -51,6 +51,7 @@ See YARD comments in each cop class for details:
 - [Sevencop/InferredSpecType](lib/rubocop/cop/sevencop/inferred_spec_type.rb)
 - [Sevencop/MethodDefinitionArgumentsMultiline](lib/rubocop/cop/sevencop/method_definition_arguments_multiline.rb)
 - [Sevencop/MethodDefinitionKeywordArgumentsOrdered](lib/rubocop/cop/sevencop/method_definition_keyword_arguments_ordered.rb)
+- [Sevencop/MethodDefinitionOrdered](lib/rubocop/cop/sevencop/method_definition_ordered.rb)
 - [Sevencop/OrderField](lib/rubocop/cop/sevencop/order_field.rb)
 - [Sevencop/UniquenessValidatorExplicitCaseSensitivity](lib/rubocop/cop/sevencop/uniqueness_validator_explicit_case_sensitivity.rb)
 - [Sevencop/WhereNot](lib/rubocop/cop/sevencop/where_not.rb)
