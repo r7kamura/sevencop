@@ -17,7 +17,7 @@ module RuboCop
       #
       #   # good
       #   def foo(c:, d:, a: 2, b: 1); end
-      class MethodDefinitionKeywordArgumentsOrdered < Base
+      class MethodDefinitionKeywordArgumentOrdered < Base
         extend AutoCorrector
 
         MSG = 'Sort method definition keyword arguments in alphabetical order.'

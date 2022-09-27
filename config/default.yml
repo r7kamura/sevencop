@@ -22,7 +22,7 @@ Sevencop/MethodDefinitionOrdered:
   Enabled: false
   VersionAdded: '0.14'
 
-Sevencop/MethodDefinitionKeywordArgumentsOrdered:
+Sevencop/MethodDefinitionKeywordArgumentOrdered:
   Description: |
     Sort method definition keyword arguments in alphabetical order.
   Enabled: false
