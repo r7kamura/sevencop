@@ -46,6 +46,7 @@ Sevencop/RailsBelongsToOptional:
 
 See YARD comments in each cop class for details:
 
+- [Sevencop/AutoloadOrdered](lib/rubocop/cop/sevencop/autoload_ordered.rb)
 - [Sevencop/HashElementOrdered](lib/rubocop/cop/sevencop/hash_element_ordered.rb)
 - [Sevencop/MethodDefinitionArgumentsMultiline](lib/rubocop/cop/sevencop/method_definition_arguments_multiline.rb)
 - [Sevencop/MethodDefinitionKeywordArgumentsOrdered](lib/rubocop/cop/sevencop/method_definition_keyword_arguments_ordered.rb)
