@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require_relative 'sevencop/cop_concerns'
 require_relative 'sevencop/rubocop_extension'
 require_relative 'sevencop/version'
 

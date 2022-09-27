@@ -30,6 +30,8 @@ module RuboCop
         include RangeHelp
         include VisibilityHelp
 
+        include ::Sevencop::CopConcerns::Ordered
+
         MSG = 'Sort method definition in alphabetical order.'
 
         # @param node [RuboCop::AST::DefNode]
@@ -43,7 +45,8 @@ module RuboCop
             swap(
               range_with_comments_and_lines(previous_older_sibling),
               range_with_comments_and_lines(node),
-              corrector: corrector
+              corrector: corrector,
+              newline: true
             )
           end
         end
@@ -71,26 +74,6 @@ module RuboCop
           end.reverse
         end
 
-        # @param node [RuboCop::AST::Node]
-        # @return [Paresr::Source::Range]
-        def range_with_comments(node)
-          comment = processed_source.ast_with_comments[node].first
-          if comment
-            node.location.expression.with(begin_pos: comment.location.expression.begin_pos)
-          else
-            node.location.expression
-          end
-        end
-
-        # @param node [RuboCop::AST::Node]
-        # @return [Parser::Source::Range]
-        def range_with_comments_and_lines(node)
-          range_by_whole_lines(
-            range_with_comments(node),
-            include_final_newline: true
-          )
-        end
-
         # @param node [RuboCop::AST::DefNode]
         # @return [#<=>]
         def sort_key_of(node)
@@ -98,17 +81,6 @@ module RuboCop
             node.method?(:initialize) ? 0 : 1,
             node.method_name
           ]
-        end
-
-        # @param range1 [Paresr::Source::Range]
-        # @param range2 [Paresr::Source::Range]
-        # @param corrector [RuboCop::AST::Corrector]
-        def swap(range1, range2, corrector:)
-          corrector.insert_before(
-            range1,
-            "#{range2.source}\n"
-          )
-          corrector.remove(range2)
         end
       end
     end

@@ -25,6 +25,8 @@ module RuboCop
 
         include RangeHelp
 
+        include ::Sevencop::CopConcerns::Ordered
+
         MSG = 'Sort `autoload` in alphabetical order.'
 
         RESTRICT_ON_SEND = %i[
