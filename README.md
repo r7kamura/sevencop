@@ -4,40 +4,22 @@
 
 Custom cops for [RuboCop](https://github.com/rubocop/rubocop).
 
-## Installation
+## Usage
 
-Add this line to your application's Gemfile:
+Install `sevencop` gem:
 
 ```ruby
+# Gemfile
 gem 'sevencop', require: false
 ```
 
-And then execute:
-
-```
-bundle install
-```
-
-Or install it yourself as:
-
-```
-gem install sevencop
-```
-
-## Usage
-
-Require sevencop from your .rubocop.yml:
+then require `sevencop` and enable the cops you want to use on .rubocop.yml:
 
 ```yaml
 # .rubocop.yml
 require:
   - sevencop
-```
 
-then enable the cops you want to use:
-
-```yaml
-# .rubocop.yml
 Sevencop/MethodDefinitionOrdered:
   Enabled: true
 ```
