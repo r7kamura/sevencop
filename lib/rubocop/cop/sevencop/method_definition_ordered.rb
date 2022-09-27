@@ -37,16 +37,12 @@ module RuboCop
           previous_older_sibling = find_previous_older_sibling(node)
           return unless previous_older_sibling
 
-          add_offense(node) do |corrector|
+          add_offense(
+            range_with_comments(node)
+          ) do |corrector|
             swap(
-              range_by_whole_lines(
-                range_with_comments(previous_older_sibling),
-                include_final_newline: true
-              ),
-              range_by_whole_lines(
-                range_with_comments(node),
-                include_final_newline: true
-              ),
+              range_with_comments_and_lines(previous_older_sibling),
+              range_with_comments_and_lines(node),
               corrector: corrector
             )
           end
@@ -84,6 +80,15 @@ module RuboCop
           else
             node.location.expression
           end
+        end
+
+        # @param node [RuboCop::AST::Node]
+        # @return [Parser::Source::Range]
+        def range_with_comments_and_lines(node)
+          range_by_whole_lines(
+            range_with_comments(node),
+            include_final_newline: true
+          )
         end
 
         # @param node [RuboCop::AST::DefNode]
