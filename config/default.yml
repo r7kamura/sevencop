@@ -61,3 +61,9 @@ Sevencop/RailsWhereNot:
   Enabled: false
   Safe: false
   VersionAdded: '0.7'
+
+Sevencop/RequireOrdered:
+  Description: |
+    Sort `require` and `require_relative` in alphabetical order.
+  Enabled: false
+  VersionAdded: '0.16'
