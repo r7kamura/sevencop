@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Sevencop::InferredSpecType, :config do
+RSpec.describe RuboCop::Cop::Sevencop::RailsInferredSpecType, :config do
   context 'with necessary type in keyword arguments' do
     it 'does not register any offense' do
       expect_no_offenses(<<~TEXT)

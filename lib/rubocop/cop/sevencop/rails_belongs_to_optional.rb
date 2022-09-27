@@ -19,7 +19,7 @@ module RuboCop
       #   # good (We cannot identify offenses in this case.)
       #   belongs_to :group, options
       #
-      class BelongsToOptional < Base
+      class RailsBelongsToOptional < Base
         extend AutoCorrector
 
         MSG = 'Specify :optional option.'
