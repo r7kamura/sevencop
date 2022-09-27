@@ -26,7 +26,7 @@ Sevencop/MethodDefinitionOrdered:
 
 ## Cops
 
-See YARD comments in each cop class for details:
+Choose the cops you want to use and enable them on your .rubocop.yml.
 
 - [Sevencop/AutoloadOrdered](lib/rubocop/cop/sevencop/autoload_ordered.rb)
 - [Sevencop/HashElementOrdered](lib/rubocop/cop/sevencop/hash_element_ordered.rb)
