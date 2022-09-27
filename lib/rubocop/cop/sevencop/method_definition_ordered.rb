@@ -35,6 +35,7 @@ module RuboCop
         MSG = 'Sort method definition in alphabetical order.'
 
         # @param node [RuboCop::AST::DefNode]
+        # @return [void]
         def on_def(node)
           previous_older_sibling = find_previous_older_sibling(node)
           return unless previous_older_sibling
@@ -55,7 +56,7 @@ module RuboCop
         private
 
         # @param node [RuboCop::AST::DefNode]
-        # @return [RuboCop::AST::DefNode]
+        # @return [RuboCop::AST::DefNode, nil]
         def find_previous_older_sibling(node)
           previous_siblings_in_same_section_of(node).find do |sibling|
             next if sibling.type != node.type
@@ -71,7 +72,7 @@ module RuboCop
 
           node.left_siblings.reverse.take_while do |sibling|
             !visibility_block?(sibling)
-          end.reverse
+          end
         end
 
         # @param node [RuboCop::AST::DefNode]

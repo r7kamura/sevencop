@@ -34,6 +34,7 @@ module RuboCop
         ].freeze
 
         # @param node [RuboCop::AST::SendNode]
+        # @return [void]
         def on_send(node)
           previous_older_sibling = find_previous_older_sibling(node)
           return unless previous_older_sibling
@@ -56,12 +57,12 @@ module RuboCop
         private
 
         # @param node [RuboCop::AST::SendNode]
-        # @return [RuboCop::AST::SendNode]
+        # @return [RuboCop::AST::SendNode, nil]
         def find_previous_older_sibling(node)
-          node.left_siblings.find do |sibling|
-            next unless sibling.send_type?
-            next unless sibling.method?(:autoload)
-            next unless in_same_section?(sibling, node)
+          node.left_siblings.reverse.find do |sibling|
+            break unless sibling.send_type?
+            break unless sibling.method?(:autoload)
+            break unless in_same_section?(sibling, node)
 
             node.first_argument.source < sibling.first_argument.source
           end
