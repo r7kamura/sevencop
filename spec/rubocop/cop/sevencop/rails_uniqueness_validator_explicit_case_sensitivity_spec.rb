@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Sevencop::UniquenessValidatorExplicitCaseSensitivity, :config do
+RSpec.describe RuboCop::Cop::Sevencop::RailsUniquenessValidatorExplicitCaseSensitivity, :config do
   context 'with simple boolean uniqueness' do
     it 'autocorrects offense' do
       expect_offense(<<~TEXT)

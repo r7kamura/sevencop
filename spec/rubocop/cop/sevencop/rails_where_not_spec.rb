@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Sevencop::WhereNot, :config do
+RSpec.describe RuboCop::Cop::Sevencop::RailsWhereNot, :config do
   context 'with where.not with single element Hash' do
     it 'does not register an offense' do
       expect_no_offenses(<<~RUBY)

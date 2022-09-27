@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Sevencop::OrderField, :config do
+RSpec.describe RuboCop::Cop::Sevencop::RailsOrderField, :config do
   context 'without field' do
     it 'registers no offense' do
       expect_no_offenses(<<~TEXT)

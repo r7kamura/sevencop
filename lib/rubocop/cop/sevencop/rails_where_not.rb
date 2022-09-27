@@ -13,13 +13,13 @@ module RuboCop
       #   # good
       #   where.not(key1: value1).where.not(key2: value2)
       #
-      class WhereNot < Base
+      class RailsWhereNot < Base
         extend AutoCorrector
 
         MSG = 'Use `where.not(key1: value1).where.not(key2: value2)` style.'
 
-        # @!method where_not_with_multiple_elements_hash?(node)
-        def_node_matcher :where_not_with_multiple_elements_hash?, <<~PATTERN
+        # @!method rails_where_not_with_multiple_elements_hash?(node)
+        def_node_matcher :rails_where_not_with_multiple_elements_hash?, <<~PATTERN
           (send
             (send _ :where) :not
             ({ hash | kwargs }
@@ -28,7 +28,7 @@ module RuboCop
         PATTERN
 
         def on_send(node)
-          return unless where_not_with_multiple_elements_hash?(node)
+          return unless rails_where_not_with_multiple_elements_hash?(node)
 
           add_offense(node) do |corrector|
             pairs = node.children[2].children

@@ -26,7 +26,7 @@ module RuboCop
       #   # good
       #   validates :name, uniqueness: { allow_nil: true, scope: :user_id, case_sensitive: true }
       #
-      class UniquenessValidatorExplicitCaseSensitivity < Base
+      class RailsUniquenessValidatorExplicitCaseSensitivity < Base
         extend AutoCorrector
 
         MSG = 'Specify :case_sensitivity option on use of UniquenessValidator.'

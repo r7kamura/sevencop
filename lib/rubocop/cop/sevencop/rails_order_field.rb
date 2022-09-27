@@ -22,7 +22,7 @@ module RuboCop
       #   # good
       #   reorder(Arel.sql('field(id, ?)'), a)
       #
-      class OrderField < Base
+      class RailsOrderField < Base
         extend AutoCorrector
 
         MSG = 'Wrap safe SQL String by `Arel.sql`.'

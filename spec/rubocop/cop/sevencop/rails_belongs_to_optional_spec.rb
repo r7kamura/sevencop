@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Sevencop::BelongsToOptional, :config do
+RSpec.describe RuboCop::Cop::Sevencop::RailsBelongsToOptional, :config do
   context 'with optional: true' do
     it 'registers no offense' do
       expect_no_offenses(<<~TEXT)

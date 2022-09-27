@@ -20,7 +20,7 @@ module RuboCop
       #   # spec/models/user_spec.rb
       #   RSpec.describe User, type: :request
       #
-      class InferredSpecType < Base
+      class RailsInferredSpecType < Base
         extend AutoCorrector
 
         # @return [Array<Hash>]

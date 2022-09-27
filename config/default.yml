@@ -4,24 +4,11 @@ Sevencop/AutoloadOrdered:
   Enabled: false
   VersionAdded: '0.12'
 
-Sevencop/BelongsToOptional:
-  Description: |
-    Force `belongs_to` with `optional: true` option.
-  Enabled: false
-  Safe: false
-  VersionAdded: '0.5'
-
 Sevencop/HashElementOrdered:
   Description: |
     Sort Hash elements by key.
   Enabled: false
   VersionAdded: '0.6'
-
-Sevencop/InferredSpecType:
-  Description: |
-    Identifies redundant spec type.
-  Enabled: false
-  VersionAdded: '0.9'
 
 Sevencop/MethodDefinitionArgumentsMultiline:
   Description: |
@@ -41,21 +28,34 @@ Sevencop/MethodDefinitionKeywordArgumentsOrdered:
   Enabled: false
   VersionAdded: '0.13'
 
-Sevencop/OrderField:
+Sevencop/RailsBelongsToOptional:
+  Description: |
+    Force `belongs_to` with `optional: true` option.
+  Enabled: false
+  Safe: false
+  VersionAdded: '0.5'
+
+Sevencop/RailsInferredSpecType:
+  Description: |
+    Identifies redundant spec type.
+  Enabled: false
+  VersionAdded: '0.9'
+
+Sevencop/RailsOrderField:
   Description: |
     Wrap safe SQL String by `Arel.sql`.
   Enabled: false
   Safe: false
   VersionAdded: '0.4'
 
-Sevencop/UniquenessValidatorExplicitCaseSensitivity:
+Sevencop/RailsUniquenessValidatorExplicitCaseSensitivity:
   Description: |
     Specify :case_sensitivity option on use of UniquenessValidator.
   Enabled: false
   Safe: false
   VersionAdded: '0.3'
 
-Sevencop/WhereNot:
+Sevencop/RailsWhereNot:
   Description: |
     Identifies passing multi-elements Hash literal to `where.not`.
   Enabled: false
