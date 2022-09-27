@@ -38,7 +38,7 @@ then enable the cops you want to use:
 
 ```yaml
 # .rubocop.yml
-Sevencop/RailsBelongsToOptional:
+Sevencop/MethodDefinitionOrdered:
   Enabled: true
 ```
 
