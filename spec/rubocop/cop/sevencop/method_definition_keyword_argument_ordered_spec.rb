@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionKeywordArgumentsOrdered, :config do
+RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionKeywordArgumentOrdered, :config do
   context 'when keyword arguments are sorted' do
     it 'does not register an offense' do
       expect_no_offenses(<<~RUBY)
