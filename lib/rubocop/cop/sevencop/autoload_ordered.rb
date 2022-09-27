@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Sevencop
-      # Sort `autoload` in alphabetical order within their section.
+      # Sort `autoload` in alphabetical order.
       #
       # @example
       #   # bad
@@ -25,7 +25,7 @@ module RuboCop
 
         include RangeHelp
 
-        MSG = 'Sort `autoload` in alphabetical order within their section.'
+        MSG = 'Sort `autoload` in alphabetical order.'
 
         RESTRICT_ON_SEND = %i[
           autoload

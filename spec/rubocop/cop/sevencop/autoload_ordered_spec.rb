@@ -27,7 +27,7 @@ RSpec.describe RuboCop::Cop::Sevencop::AutoloadOrdered, :config do
       expect_offense(<<~TEXT)
         autoload :B, 'b'
         autoload :A, 'a'
-        ^^^^^^^^^^^^^^^^ Sort `autoload` in alphabetical order within their section.
+        ^^^^^^^^^^^^^^^^ Sort `autoload` in alphabetical order.
       TEXT
 
       expect_correction(<<~RUBY)
