@@ -2,7 +2,7 @@
 
 [![test](https://github.com/r7kamura/sevencop/actions/workflows/test.yml/badge.svg)](https://github.com/r7kamura/sevencop/actions/workflows/test.yml)
 
-Custom cops for [RuboCop](https://github.com/rubocop/rubocop).
+Opinionated custom cops for [RuboCop](https://github.com/rubocop/rubocop).
 
 ## Usage
 

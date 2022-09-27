@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors = ['Ryo Nakamura']
   spec.email = ['r7kamura@gmail.com']
 
-  spec.summary = 'Custom cops for RuboCop.'
+  spec.summary = 'Opinionated custom cops for RuboCop.'
   spec.homepage = 'https://github.com/r7kamura/sevencop'
   spec.license = 'MIT'
   spec.required_ruby_version = '>= 2.6.0'
