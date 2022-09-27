@@ -70,7 +70,10 @@ module RuboCop
         # @param node1 [RuboCop::AST::SendNode]
         # @param node2 [RuboCop::AST::SendNode]
         # @return [Boolean]
-        def in_same_section?(node1, node2)
+        def in_same_section?(
+          node1,
+          node2
+        )
           !node1.location.expression.with(
             end_pos: node2.location.expression.end_pos
           ).source.include?("\n\n")
@@ -79,7 +82,11 @@ module RuboCop
         # @param range1 [Paresr::Source::Range]
         # @param range2 [Paresr::Source::Range]
         # @param corrector [RuboCop::AST::Corrector]
-        def swap(range1, range2, corrector:)
+        def swap(
+          range1,
+          range2,
+          corrector:
+        )
           corrector.insert_before(range1, range2.source)
           corrector.remove(range2)
         end

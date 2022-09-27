@@ -26,6 +26,18 @@ RSpec/ExampleLength:
 RSpec/MultipleExpectations:
   Enabled: false
 
+Sevencop/AutoloadOrdered:
+  Enabled: true
+
+Sevencop/HashElementOrdered:
+  Enabled: true
+
+Sevencop/MethodDefinitionArgumentsMultiline:
+  Enabled: true
+
+Sevencop/MethodDefinitionKeywordArgumentOrdered:
+  Enabled: true
+
 Sevencop/MethodDefinitionOrdered:
   Enabled: true
 

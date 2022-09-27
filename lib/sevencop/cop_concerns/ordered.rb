@@ -29,7 +29,12 @@ module Sevencop
       # @param range2 [Paresr::Source::Range]
       # @param corrector [RuboCop::AST::Corrector]
       # @param newline [Boolean]
-      def swap(range1, range2, corrector:, newline: false)
+      def swap(
+        range1,
+        range2,
+        corrector:,
+        newline: false
+      )
         inserted = range2.source
         inserted += "\n" if newline
         corrector.insert_before(range1, inserted)

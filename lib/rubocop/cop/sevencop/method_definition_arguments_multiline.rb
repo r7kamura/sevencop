@@ -39,7 +39,10 @@ module RuboCop
         # @param corrector [RuboCop::AST::Corrector]
         # @param node [RuboCop::AST::ArgsNode]
         # @return [String]
-        def autocorrect(corrector, node)
+        def autocorrect(
+          corrector,
+          node
+        )
           indent = ' ' * node.parent.location.expression.column
 
           corrector.replace(

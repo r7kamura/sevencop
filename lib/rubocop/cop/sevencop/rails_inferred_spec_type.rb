@@ -81,7 +81,10 @@ module RuboCop
 
         # @param [RuboCop::AST::Corrector] corrector
         # @param [RuboCop::AST::Node] node
-        def autocorrect(corrector, node)
+        def autocorrect(
+          corrector,
+          node
+        )
           corrector.remove(
             node.location.expression.with(
               begin_pos: node.left_sibling.location.expression.end_pos
