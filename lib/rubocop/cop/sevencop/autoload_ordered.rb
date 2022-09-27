@@ -33,13 +33,13 @@ module RuboCop
 
         # @param node [RuboCop::AST::SendNode]
         def on_send(node)
-          previous_older_autoload = find_previous_older_autoload(node)
-          return unless previous_older_autoload
+          previous_older_sibling = find_previous_older_sibling(node)
+          return unless previous_older_sibling
 
           add_offense(node) do |corrector|
             swap(
               range_by_whole_lines(
-                previous_older_autoload.location.expression,
+                previous_older_sibling.location.expression,
                 include_final_newline: true
               ),
               range_by_whole_lines(
@@ -55,7 +55,7 @@ module RuboCop
 
         # @param node [RuboCop::AST::SendNode]
         # @return [RuboCop::AST::SendNode]
-        def find_previous_older_autoload(node)
+        def find_previous_older_sibling(node)
           node.left_siblings.find do |sibling|
             next unless sibling.send_type?
             next unless sibling.method?(:autoload)
