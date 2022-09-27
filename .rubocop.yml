@@ -3,6 +3,7 @@ require:
   - rubocop-performance
   - rubocop-rake
   - rubocop-rspec
+  - sevencop
 
 AllCops:
   NewCops: enable
@@ -24,6 +25,9 @@ RSpec/ExampleLength:
 
 RSpec/MultipleExpectations:
   Enabled: false
+
+Sevencop/MethodDefinitionOrdered:
+  Enabled: true
 
 Style/Documentation:
   Enabled: false

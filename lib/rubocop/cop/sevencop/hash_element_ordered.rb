@@ -64,6 +64,16 @@ module RuboCop
           parts.join
         end
 
+        # @param [RuboCop::AST::HashNode] node
+        # @return [Integer]
+        def offset_for(node)
+          if node.braces?
+            1
+          else
+            0
+          end
+        end
+
         # @param [Array<RuboCop::AST::PairNode>] pairs
         # @return [Array<RuboCop::AST::PairNode>]
         def sort(pairs)
@@ -95,16 +105,6 @@ module RuboCop
         # @param [RuboCop::AST::HashNode] node
         # @return [String]
         #   {    a: 1,   b: 1  }
-        #                    ^^
-        def whitespace_trailing(node)
-          processed_source.raw_source[
-            node.pairs[-1].location.expression.end_pos...node.location.expression.end.begin_pos - offset_for(node)
-          ]
-        end
-
-        # @param [RuboCop::AST::HashNode] node
-        # @return [String]
-        #   {    a: 1,   b: 1  }
         #    ^^^^
         def whitespace_leading(node)
           processed_source.raw_source[
@@ -113,13 +113,13 @@ module RuboCop
         end
 
         # @param [RuboCop::AST::HashNode] node
-        # @return [Integer]
-        def offset_for(node)
-          if node.braces?
-            1
-          else
-            0
-          end
+        # @return [String]
+        #   {    a: 1,   b: 1  }
+        #                    ^^
+        def whitespace_trailing(node)
+          processed_source.raw_source[
+            node.pairs[-1].location.expression.end_pos...node.location.expression.end.begin_pos - offset_for(node)
+          ]
         end
       end
     end

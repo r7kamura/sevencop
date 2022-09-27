@@ -66,6 +66,11 @@ module RuboCop
         PATTERN
 
         # @param [RuboCop::AST::SendNode] node
+        def find_uniqueness_value(node)
+          node.arguments[1].pairs.find { |pair| pair.key.value == :uniqueness }.value
+        end
+
+        # @param [RuboCop::AST::SendNode] node
         def on_send(node)
           return unless validates_uniqueness?(node) && !validates_uniqueness_with_case_sensitivity?(node)
 
@@ -83,11 +88,6 @@ module RuboCop
               )
             end
           end
-        end
-
-        # @param [RuboCop::AST::SendNode] node
-        def find_uniqueness_value(node)
-          node.arguments[1].pairs.find { |pair| pair.key.value == :uniqueness }.value
         end
       end
     end

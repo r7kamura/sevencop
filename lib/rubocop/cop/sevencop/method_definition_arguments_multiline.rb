@@ -54,17 +54,17 @@ module RuboCop
           )
         end
 
+        # @return [Boolean]
+        def method_args?(node)
+          !node.parent.nil? && node.parent.def_type?
+        end
+
         # @param node [RuboCop::AST::ArgsNode]
         # @return [Boolean]
         def multilined?(node)
           node.children.map do |child|
             child.location.expression.line
           end.uniq.length == node.children.length
-        end
-
-        # @return [Boolean]
-        def method_args?(node)
-          !node.parent.nil? && node.parent.def_type?
         end
       end
     end

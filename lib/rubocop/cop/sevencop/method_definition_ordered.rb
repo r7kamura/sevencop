@@ -65,15 +65,6 @@ module RuboCop
           end
         end
 
-        # @param node [RuboCop::AST::DefNode]
-        # @return [#<=>]
-        def sort_key_of(node)
-          [
-            node.method?(:initialize) ? 0 : 1,
-            node.method_name
-          ]
-        end
-
         # @param node [RuboCop::AST::Node]
         # @return [Array<RuboCop::AST::Node>]
         def previous_siblings_in_same_section_of(node)
@@ -82,17 +73,6 @@ module RuboCop
           node.left_siblings.reverse.take_while do |sibling|
             !visibility_block?(sibling)
           end.reverse
-        end
-
-        # @param range1 [Paresr::Source::Range]
-        # @param range2 [Paresr::Source::Range]
-        # @param corrector [RuboCop::AST::Corrector]
-        def swap(range1, range2, corrector:)
-          corrector.insert_before(
-            range1,
-            "#{range2.source}\n"
-          )
-          corrector.remove(range2)
         end
 
         # @param node [RuboCop::AST::Node]
@@ -104,6 +84,26 @@ module RuboCop
           else
             node.location.expression
           end
+        end
+
+        # @param node [RuboCop::AST::DefNode]
+        # @return [#<=>]
+        def sort_key_of(node)
+          [
+            node.method?(:initialize) ? 0 : 1,
+            node.method_name
+          ]
+        end
+
+        # @param range1 [Paresr::Source::Range]
+        # @param range2 [Paresr::Source::Range]
+        # @param corrector [RuboCop::AST::Corrector]
+        def swap(range1, range2, corrector:)
+          corrector.insert_before(
+            range1,
+            "#{range2.source}\n"
+          )
+          corrector.remove(range2)
         end
       end
     end
