@@ -56,5 +56,6 @@ See YARD comments in each cop class for details:
 - [Sevencop/RailsOrderField](lib/rubocop/cop/sevencop/rails_order_field.rb)
 - [Sevencop/RailsUniquenessValidatorExplicitCaseSensitivity](lib/rubocop/cop/sevencop/rails_uniqueness_validator_explicit_case_sensitivity.rb)
 - [Sevencop/RailsWhereNot](lib/rubocop/cop/sevencop/rails_where_not.rb)
+- [Sevencop/RequireOrdered](lib/rubocop/cop/sevencop/require_ordered.rb)
 
 Note that all cops are `Enabled: false` by default.
