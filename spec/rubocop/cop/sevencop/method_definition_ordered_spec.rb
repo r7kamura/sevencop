@@ -1,6 +1,17 @@
 # frozen_string_literal: true
 
 RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionOrdered, :config do
+  context 'when there is only 1 method in class' do
+    it 'does not register an offense' do
+      expect_no_offenses(<<~RUBY)
+        class Foo
+          def a
+          end
+        end
+      RUBY
+    end
+  end
+
   context 'when `def` is sorted' do
     it 'does not register an offense' do
       expect_no_offenses(<<~RUBY)
