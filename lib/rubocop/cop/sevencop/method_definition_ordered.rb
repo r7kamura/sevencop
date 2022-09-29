@@ -68,9 +68,10 @@ module RuboCop
         # @param node [RuboCop::AST::Node]
         # @return [Array<RuboCop::AST::Node>]
         def previous_siblings_in_same_section_of(node)
-          return node.left_siblings if node.defs_type?
+          siblings = node.left_siblings.grep(::RuboCop::AST::Node)
+          return siblings if node.defs_type?
 
-          node.left_siblings.reverse.take_while do |sibling|
+          siblings.reverse.take_while do |sibling|
             !visibility_block?(sibling)
           end
         end
