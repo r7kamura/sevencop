@@ -1,6 +1,16 @@
 # frozen_string_literal: true
 
 RSpec.describe RuboCop::Cop::Sevencop::AutoloadOrdered, :config do
+  context 'when there is only one `autoload`' do
+    it 'does not register an offense' do
+      expect_no_offenses(<<~RUBY)
+        class Foo
+          autoload :A, 'a'
+        end
+      RUBY
+    end
+  end
+
   context 'when `autoload` is sorted' do
     it 'does not register an offense' do
       expect_no_offenses(<<~RUBY)
