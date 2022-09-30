@@ -59,7 +59,7 @@ module RuboCop
         # @param node [RuboCop::AST::SendNode]
         # @return [RuboCop::AST::SendNode, nil]
         def find_previous_older_sibling(node)
-          node.left_siblings.reverse.find do |sibling|
+          node.left_siblings.grep(::RuboCop::AST::Node).reverse.find do |sibling|
             break unless sibling.send_type?
             break unless sibling.method?(:autoload)
             break unless in_same_section?(sibling, node)
