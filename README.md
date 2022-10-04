@@ -39,5 +39,6 @@ Choose the cops you want to use and enable them on your .rubocop.yml.
 - [Sevencop/RailsUniquenessValidatorExplicitCaseSensitivity](lib/rubocop/cop/sevencop/rails_uniqueness_validator_explicit_case_sensitivity.rb)
 - [Sevencop/RailsWhereNot](lib/rubocop/cop/sevencop/rails_where_not.rb)
 - [Sevencop/RequireOrdered](lib/rubocop/cop/sevencop/require_ordered.rb)
+- [Sevencop/RSpecExamplesInSameGroup](lib/rubocop/cop/sevencop/rspec_examples_in_same_group.rb)
 
 Note that all cops are `Enabled: false` by default.

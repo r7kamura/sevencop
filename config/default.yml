@@ -67,3 +67,12 @@ Sevencop/RequireOrdered:
     Sort `require` and `require_relative` in alphabetical order.
   Enabled: false
   VersionAdded: '0.16'
+
+Sevencop/RSpecExamplesInSameGroup:
+  Description: |
+    Combine examples in the same groups in the time-consuming kinds of specs.
+  Enabled: false
+  VersionAdded: '0.17'
+  Include:
+    - spec/controllers/**/*
+    - spec/requests/**/*
