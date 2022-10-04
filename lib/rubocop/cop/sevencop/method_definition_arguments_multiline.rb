@@ -15,6 +15,7 @@ module RuboCop
       #     a,
       #     b
       #   )
+      #   end
       #
       #   # good
       #   def foo(a)
