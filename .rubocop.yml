@@ -23,6 +23,10 @@ RSpec:
 RSpec/ExampleLength:
   Enabled: false
 
+RSpec/FilePath:
+  CustomTransform:
+    RSpecExamplesInSameGroup: rspec_examples_in_same_group
+
 RSpec/MultipleExpectations:
   Enabled: false
 
