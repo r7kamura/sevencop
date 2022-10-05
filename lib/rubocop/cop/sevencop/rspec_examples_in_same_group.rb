@@ -28,8 +28,6 @@ module RuboCop
       #   end
       #
       class RSpecExamplesInSameGroup < Base
-        extend AutoCorrector
-
         EXAMPLE_METHOD_NAMES_REGULAR = ::Set[
           :it,
           :its,
