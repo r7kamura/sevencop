@@ -183,7 +183,7 @@ RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionOrdered, :config do
       end
     end
 
-    context 'when unsorted method has some comments' do
+    context 'with some comments before def' do
       it 'registers an offense' do
         expect_offense(<<~RUBY)
           class Foo
@@ -206,6 +206,36 @@ RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionOrdered, :config do
 
             # comment b
             def b
+            end
+
+          end
+        RUBY
+      end
+    end
+
+    context 'with some comments in def' do
+      it 'registers an offense' do
+        expect_offense(<<~RUBY)
+          class Foo
+            def b
+              # comment b
+            end
+
+            def a
+            ^^^^^ Sort method definition in alphabetical order.
+              # comment a
+            end
+          end
+        RUBY
+
+        expect_correction(<<~RUBY)
+          class Foo
+            def a
+              # comment a
+            end
+
+            def b
+              # comment b
             end
 
           end
