@@ -40,9 +40,7 @@ module RuboCop
           previous_older_sibling = find_previous_older_sibling(node)
           return unless previous_older_sibling
 
-          add_offense(
-            range_with_comments(node)
-          ) do |corrector|
+          add_offense(node) do |corrector|
             swap(
               range_with_comments_and_lines(previous_older_sibling),
               range_with_comments_and_lines(node),
