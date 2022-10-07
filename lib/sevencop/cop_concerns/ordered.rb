@@ -5,23 +5,30 @@ module Sevencop
     module Ordered
       private
 
+      # @param range1 [Paresr::Source::Range]
+      # @param range2 [Paresr::Source::Range]
+      # @return [Paresr::Source::Range]
+      def add_range(
+        range1,
+        range2
+      )
+        range1.with(
+          begin_pos: [range1.begin_pos, range2.begin_pos].min,
+          end_pos: [range1.end_pos, range2.end_pos].max
+        )
+      end
+
       # @param node [RuboCop::AST::Node]
       # @return [Paresr::Source::Range]
       def range_with_comments(node)
-        comment = processed_source.ast_with_comments[node].first
-        if comment
-          node.location.expression.with(
-            begin_pos: [
-              comment.location.expression.begin_pos,
-              node.location.expression.begin_pos
-            ].min,
-            end_pos: [
-              comment.location.expression.end_pos,
-              node.location.expression.end_pos
-            ].max
-          )
-        else
-          node.location.expression
+        ranges = [
+          node,
+          *processed_source.ast_with_comments[node]
+        ].map do |element|
+          element.location.expression
+        end
+        ranges.reduce do |result, range|
+          add_range(result, range)
         end
       end
 
