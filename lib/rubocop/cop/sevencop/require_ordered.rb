@@ -52,7 +52,7 @@ module RuboCop
           return unless previous_older_sibling
 
           add_offense(
-            range_with_comments(node),
+            node,
             message: "Sort `#{node.method_name}` in alphabetical order."
           ) do |corrector|
             swap(

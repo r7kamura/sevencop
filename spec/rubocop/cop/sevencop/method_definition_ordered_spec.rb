@@ -192,8 +192,8 @@ RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionOrdered, :config do
             end
 
             # comment a
-            ^^^^^^^^^^^ Sort method definition in alphabetical order.
             def a
+            ^^^^^ Sort method definition in alphabetical order.
             end
           end
         RUBY

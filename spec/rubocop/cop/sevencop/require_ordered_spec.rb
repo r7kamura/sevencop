@@ -57,8 +57,8 @@ RSpec.describe RuboCop::Cop::Sevencop::RequireOrdered, :config do
       expect_offense(<<~TEXT)
         require 'b'
         # comment
-        ^^^^^^^^^ Sort `require` in alphabetical order.
         require 'a'
+        ^^^^^^^^^^^ Sort `require` in alphabetical order.
       TEXT
 
       expect_correction(<<~RUBY)
