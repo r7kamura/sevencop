@@ -10,7 +10,16 @@ module Sevencop
       def range_with_comments(node)
         comment = processed_source.ast_with_comments[node].first
         if comment
-          node.location.expression.with(begin_pos: comment.location.expression.begin_pos)
+          node.location.expression.with(
+            begin_pos: [
+              comment.location.expression.begin_pos,
+              node.location.expression.begin_pos
+            ].min,
+            end_pos: [
+              comment.location.expression.end_pos,
+              node.location.expression.end_pos
+            ].max
+          )
         else
           node.location.expression
         end
