@@ -68,6 +68,14 @@ Sevencop/RequireOrdered:
   Enabled: false
   VersionAdded: '0.16'
 
+Sevencop/RSpecDescribeHttpEndpoint:
+  Description: |
+    Pass HTTP endpoint identifier to top-level `describe` on request-specs.
+  Enabled: false
+  VersionAdded: '0.18'
+  Include:
+    - spec/requests/**/*.rb
+
 Sevencop/RSpecExamplesInSameGroup:
   Description: |
     Combine examples in the same groups in the time-consuming kinds of specs.
