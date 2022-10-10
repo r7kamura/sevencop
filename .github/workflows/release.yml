@@ -9,4 +9,4 @@ jobs:
   release:
     uses: r7kamura/workflows/.github/workflows/gem-release.yml@feature/gem-release
     secrets:
-      rubygems-org-api-token: ${{ secrets.RUBYGEMS_ORG_API_TOKEN }}
+      rubygems-org-api-key: ${{ secrets.RUBYGEMS_ORG_API_KEY }}
