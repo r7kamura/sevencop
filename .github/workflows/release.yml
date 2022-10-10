@@ -7,8 +7,6 @@ on:
 
 jobs:
   release:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: r7kamura/workflows/.github/workflows/gem-release.yml@feature/gem-release
-        secrets:
-          rubygems-org-api-token: ${{ secrets.RUBYGEMS_ORG_API_TOKEN }}
+    uses: r7kamura/workflows/.github/workflows/gem-release.yml@feature/gem-release
+    secrets:
+      rubygems-org-api-token: ${{ secrets.RUBYGEMS_ORG_API_TOKEN }}
