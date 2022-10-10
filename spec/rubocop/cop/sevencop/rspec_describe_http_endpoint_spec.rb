@@ -19,4 +19,14 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecDescribeHttpEndpoint, :config do
       RUBY
     end
   end
+
+  context 'when top-level does not describe HTTP endpoint and there is metadata' do
+    it 'registers an offense' do
+      expect_offense(<<~RUBY)
+        RSpec.describe 'Users', type: :model do
+                       ^^^^^^^ Pass HTTP endpoint identifier to top-level `describe` on request-specs.
+        end
+      RUBY
+    end
+  end
 end

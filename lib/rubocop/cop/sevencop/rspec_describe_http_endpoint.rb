@@ -49,7 +49,7 @@ module RuboCop
           (send
             (const nil? :RSpec)
             :describe
-            _
+            ...
           )
         PATTERN
 
