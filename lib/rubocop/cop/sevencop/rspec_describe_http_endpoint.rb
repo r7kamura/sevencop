@@ -53,10 +53,10 @@ module RuboCop
           )
         PATTERN
 
-        # @param node [RuboCop::AST::Node]
+        # @param node [RuboCop::AST::Node, nil]
         # @return [Boolean]
         def http_endpoint_identifier?(node)
-          node.is_a?(::RuboCop::AST::StrNode) && node.value.match?(DESCRIPTION_PATTERN)
+          node&.str_type? && node.value.match?(DESCRIPTION_PATTERN)
         end
       end
     end
