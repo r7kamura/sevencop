@@ -16,6 +16,12 @@ Sevencop/MethodDefinitionArgumentsMultiline:
   Enabled: false
   VersionAdded: '0.11'
 
+Sevencop/MethodDefinitionInIncluded:
+  Description: |
+    Do not define methods in `included` blocks.
+  Enabled: false
+  VersionAdded: '0.19'
+
 Sevencop/MethodDefinitionOrdered:
   Description: |
     Sort method definitions in alphabetical order.
