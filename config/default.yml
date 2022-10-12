@@ -1,83 +1,73 @@
+Sevencop:
+  Enabled: false
+
 Sevencop/AutoloadOrdered:
   Description: |
     Sort `autoload` in alphabetical order.
-  Enabled: false
   VersionAdded: '0.12'
 
 Sevencop/HashElementOrdered:
   Description: |
     Sort Hash elements by key.
-  Enabled: false
   VersionAdded: '0.6'
 
 Sevencop/MethodDefinitionArgumentsMultiline:
   Description: |
     Inserts new lines between method definition arguments.
-  Enabled: false
   VersionAdded: '0.11'
 
 Sevencop/MethodDefinitionInIncluded:
   Description: |
     Do not define methods in `included` blocks.
-  Enabled: false
   VersionAdded: '0.19'
 
 Sevencop/MethodDefinitionOrdered:
   Description: |
     Sort method definitions in alphabetical order.
-  Enabled: false
   VersionAdded: '0.14'
 
 Sevencop/MethodDefinitionKeywordArgumentOrdered:
   Description: |
     Sort method definition keyword arguments in alphabetical order.
-  Enabled: false
   VersionAdded: '0.13'
 
 Sevencop/RailsBelongsToOptional:
   Description: |
     Force `belongs_to` with `optional: true` option.
-  Enabled: false
   Safe: false
   VersionAdded: '0.5'
 
 Sevencop/RailsInferredSpecType:
   Description: |
     Identifies redundant spec type.
-  Enabled: false
   VersionAdded: '0.9'
 
 Sevencop/RailsOrderField:
   Description: |
     Wrap safe SQL String by `Arel.sql`.
-  Enabled: false
   Safe: false
   VersionAdded: '0.4'
 
 Sevencop/RailsUniquenessValidatorExplicitCaseSensitivity:
   Description: |
     Specify :case_sensitivity option on use of UniquenessValidator.
-  Enabled: false
   Safe: false
   VersionAdded: '0.3'
 
 Sevencop/RailsWhereNot:
   Description: |
     Identifies passing multi-elements Hash literal to `where.not`.
-  Enabled: false
   Safe: false
   VersionAdded: '0.7'
 
 Sevencop/RequireOrdered:
   Description: |
     Sort `require` and `require_relative` in alphabetical order.
-  Enabled: false
   VersionAdded: '0.16'
 
 Sevencop/RSpecDescribeHttpEndpoint:
   Description: |
     Pass HTTP endpoint identifier to top-level `describe` on request-specs.
-  Enabled: false
   VersionAdded: '0.18'
   Include:
     - spec/requests/**/*.rb
@@ -85,7 +75,6 @@ Sevencop/RSpecDescribeHttpEndpoint:
 Sevencop/RSpecExamplesInSameGroup:
   Description: |
     Combine examples in the same groups in the time-consuming kinds of specs.
-  Enabled: false
   VersionAdded: '0.17'
   Include:
     - spec/controllers/**/*
