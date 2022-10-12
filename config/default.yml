@@ -2,12 +2,14 @@ Sevencop/AutoloadOrdered:
   Description: |
     Sort `autoload` in alphabetical order.
   Enabled: false
+  Safe: false
   VersionAdded: '0.12'
 
 Sevencop/HashElementOrdered:
   Description: |
     Sort Hash elements by key.
   Enabled: false
+  Safe: false
   VersionAdded: '0.6'
 
 Sevencop/MethodDefinitionArgumentsMultiline:
@@ -20,18 +22,21 @@ Sevencop/MethodDefinitionInIncluded:
   Description: |
     Do not define methods in `included` blocks.
   Enabled: false
+  Safe: false
   VersionAdded: '0.19'
 
 Sevencop/MethodDefinitionOrdered:
   Description: |
     Sort method definitions in alphabetical order.
   Enabled: false
+  Safe: false
   VersionAdded: '0.14'
 
 Sevencop/MethodDefinitionKeywordArgumentOrdered:
   Description: |
     Sort method definition keyword arguments in alphabetical order.
   Enabled: false
+  Safe: false
   VersionAdded: '0.13'
 
 Sevencop/RailsBelongsToOptional:
@@ -45,6 +50,7 @@ Sevencop/RailsInferredSpecType:
   Description: |
     Identifies redundant spec type.
   Enabled: false
+  Safe: false
   VersionAdded: '0.9'
 
 Sevencop/RailsOrderField:
@@ -72,6 +78,7 @@ Sevencop/RequireOrdered:
   Description: |
     Sort `require` and `require_relative` in alphabetical order.
   Enabled: false
+  Safe: false
   VersionAdded: '0.16'
 
 Sevencop/RSpecDescribeHttpEndpoint:
