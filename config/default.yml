@@ -53,6 +53,13 @@ Sevencop/RailsInferredSpecType:
   Safe: false
   VersionAdded: '0.9'
 
+Sevencop/RailsMigrationReservedWordMysql:
+  Description: |
+    Avoid using MySQL reserved words as identifiers.
+  Enabled: false
+  Safe: false
+  VersionAdded: '0.20'
+
 Sevencop/RailsOrderField:
   Description: |
     Wrap safe SQL String by `Arel.sql`.
