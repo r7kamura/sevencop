@@ -15,28 +15,6 @@ module RuboCop
       #   # good
       #   add_column :users, :some_other_good_name, :string
       class RailsMigrationReservedWordMysql < RuboCop::Cop::Base
-        MSG = 'Avoid using MySQL reserved words as identifiers.'
-
-        # Obtained from https://dev.mysql.com/doc/refman/8.0/en/keywords.html.
-        PATH_TO_RESERVED_WORDS_FILE = File.expand_path(
-          '../../../../data/reserved_words_mysql.txt',
-          __dir__
-        ).freeze
-
-        RESTRICT_ON_SEND = %i[
-          add_column
-          add_index
-          add_reference
-          create_join_table
-          create_table
-          string
-          rename
-          rename_column
-          rename_index
-          rename_table
-          text
-        ].freeze
-
         COLUMN_TYPE_METHOD_NAMES = ::Set.new(
           %i[
             bigint
@@ -55,6 +33,27 @@ module RuboCop
             time
           ]
         ).freeze
+
+        MSG = 'Avoid using MySQL reserved words as identifiers.'
+
+        # Obtained from https://dev.mysql.com/doc/refman/8.0/en/keywords.html.
+        PATH_TO_RESERVED_WORDS_FILE = File.expand_path(
+          '../../../../data/reserved_words_mysql.txt',
+          __dir__
+        ).freeze
+
+        RESTRICT_ON_SEND = [
+          :add_column,
+          :add_index,
+          :add_reference,
+          :create_join_table,
+          :create_table,
+          :rename,
+          :rename_column,
+          :rename_index,
+          :rename_table,
+          *COLUMN_TYPE_METHOD_NAMES
+        ].freeze
 
         class << self
           # @return [Array<String>]
