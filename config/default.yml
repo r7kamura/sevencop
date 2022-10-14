@@ -15,6 +15,9 @@ Sevencop/FactoryBotAssociationStyle:
   SupportedStyles:
     - explicit
     - implicit
+  inherit_mode:
+    merge:
+      - NonImplicitAssociationMethodNames
   NonImplicitAssociationMethodNames:
     - skip_create
   Include:
