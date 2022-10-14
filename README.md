@@ -26,7 +26,7 @@ Sevencop/MethodDefinitionOrdered:
 
 ## Cops
 
-Choose the cops you want to use and enable them on your .rubocop.yml.
+Choose the cops you want to use and enable them in your .rubocop.yml.
 
 - [Sevencop/AutoloadOrdered](lib/rubocop/cop/sevencop/autoload_ordered.rb)
 - [Sevencop/FactoryBotAssociationOption](lib/rubocop/cop/sevencop/factory_bot_association_option.rb)
