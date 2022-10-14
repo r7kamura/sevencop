@@ -5,6 +5,26 @@ Sevencop/AutoloadOrdered:
   Safe: false
   VersionAdded: '0.12'
 
+Sevencop/FactoryBotAssociationStyle:
+  Description: |
+    Use consistent style in FactoryBot associations.
+  Enabled: false
+  Safe: false
+  VersionAdded: '0.21'
+  EnforcedStyle: implicit
+  SupportedStyles:
+    - explicit
+    - implicit
+  NonImplicitAssociationMethodNames:
+    - skip_create
+  Include:
+    - factories.rb
+    - factories/*.rb
+    - spec/factories.rb
+    - spec/factories/*.rb
+    - test/factories.rb
+    - test/factories/*.rb
+
 Sevencop/HashElementOrdered:
   Description: |
     Sort Hash elements by key.
