@@ -29,7 +29,7 @@ Sevencop/MethodDefinitionOrdered:
 Choose the cops you want to use and enable them on your .rubocop.yml.
 
 - [Sevencop/AutoloadOrdered](lib/rubocop/cop/sevencop/autoload_ordered.rb)
-- [Sevencop/FactoryBotAssociationOptions](lib/rubocop/cop/sevencop/factory_bot_association_options.rb)
+- [Sevencop/FactoryBotAssociationOption](lib/rubocop/cop/sevencop/factory_bot_association_option.rb)
 - [Sevencop/FactoryBotAssociationStyle](lib/rubocop/cop/sevencop/factory_bot_association_style.rb)
 - [Sevencop/HashElementOrdered](lib/rubocop/cop/sevencop/hash_element_ordered.rb)
 - [Sevencop/MethodDefinitionArgumentsMultiline](lib/rubocop/cop/sevencop/method_definition_arguments_multiline.rb)
