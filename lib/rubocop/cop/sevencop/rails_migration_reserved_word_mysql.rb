@@ -129,7 +129,7 @@ module RuboCop
         #   @return [RuboCop::AST::Node, nil]
         def_node_matcher :index_name_option_from_column_type, <<~PATTERN
           (send
-            (lvar _)
+            lvar
             COLUMN_TYPE_METHOD_NAMES
             _
             (hash

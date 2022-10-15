@@ -58,7 +58,7 @@ module RuboCop
               <
                 $(pair
                   (sym :factory)
-                  (sym _)
+                  sym
                 )
                 ...
               >
