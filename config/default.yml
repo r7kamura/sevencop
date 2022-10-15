@@ -88,6 +88,8 @@ Sevencop/RailsMigrationAddForeignKey:
   Enabled: false
   Safe: false
   VersionAdded: '0.22'
+  Include:
+    - db/migrate/**/*.rb
 
 Sevencop/RailsMigrationJsonb:
   Description: |
@@ -95,6 +97,8 @@ Sevencop/RailsMigrationJsonb:
   Enabled: false
   Safe: false
   VersionAdded: '0.22'
+  Include:
+    - db/migrate/**/*.rb
 
 Sevencop/RailsMigrationChangeColumnNull:
   Description: |
@@ -102,6 +106,8 @@ Sevencop/RailsMigrationChangeColumnNull:
   Enabled: false
   Safe: false
   VersionAdded: '0.22'
+  Include:
+    - db/migrate/**/*.rb
 
 Sevencop/RailsMigrationUniqueIndexColumnsCount:
   Description: |
@@ -109,6 +115,8 @@ Sevencop/RailsMigrationUniqueIndexColumnsCount:
   Enabled: false
   VersionAdded: '0.22'
   MaxColumnsCount: 3
+  Include:
+    - db/migrate/**/*.rb
 
 Sevencop/RailsMigrationReservedWordMysql:
   Description: |
