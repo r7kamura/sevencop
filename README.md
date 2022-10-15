@@ -42,6 +42,7 @@ Choose the cops you want to use and enable them in your .rubocop.yml.
 - [Sevencop/RailsMigrationAddForeignKey](lib/rubocop/cop/sevencop/rails_migration_add_foreign_key.rb)
 - [Sevencop/RailsMigrationAddIndexConcurrency](lib/rubocop/cop/sevencop/rails_migration_add_index_concurrency.rb)
 - [Sevencop/RailsMigrationChangeColumnNull](lib/rubocop/cop/sevencop/rails_migration_change_column_null.rb)
+- [Sevencop/RailsMigrationCreateTableForce](lib/rubocop/cop/sevencop/rails_migration_create_table_force.rb)
 - [Sevencop/RailsMigrationJsonb](lib/rubocop/cop/sevencop/rails_migration_jsonb.rb)
 - [Sevencop/RailsMigrationReservedWordMysql](lib/rubocop/cop/sevencop/rails_migration_reserved_word_mysql.rb)
 - [Sevencop/RailsMigrationUniqueIndexColumnsCount](lib/rubocop/cop/sevencop/rails_migration_unique_index_columns_count.rb)
