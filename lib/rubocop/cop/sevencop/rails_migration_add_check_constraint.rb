@@ -43,7 +43,7 @@ module RuboCop
         # @param node [RuboCop::AST::SendNode]
         # @return [void]
         def on_send(node)
-          return unless wrong?(node)
+          return unless bad?(node)
 
           add_offense(node) do |corrector|
             autocorrect(corrector, node)
@@ -101,7 +101,7 @@ module RuboCop
 
         # @param node [RuboCop::AST::SendNode]
         # @return [Boolean]
-        def wrong?(node)
+        def bad?(node)
           add_check_constraint?(node) &&
             !add_check_constraint_with_validate_false?(node)
         end

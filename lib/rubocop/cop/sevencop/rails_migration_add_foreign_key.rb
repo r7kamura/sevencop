@@ -45,7 +45,7 @@ module RuboCop
         # @param node [RuboCop::AST::SendNode]
         # @return [void]
         def on_send(node)
-          return unless wrong?(node)
+          return unless bad?(node)
 
           add_offense(node) do |corrector|
             autocorrect(corrector, node)
@@ -155,7 +155,7 @@ module RuboCop
 
         # @param node [RuboCop::AST::SendNode]
         # @return [Boolean]
-        def wrong?(node)
+        def bad?(node)
           add_foreign_key_without_validate_option?(node) ||
             add_foreign_key_with_validate_option_true?(node) ||
             add_reference_with_validate_option_true?(node)

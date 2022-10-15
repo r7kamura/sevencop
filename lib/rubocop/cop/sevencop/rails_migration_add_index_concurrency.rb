@@ -39,7 +39,7 @@ module RuboCop
         # @param node [RuboCop::AST::SendNode]
         # @return [void]
         def on_send(node)
-          return unless wrong?(node)
+          return unless bad?(node)
 
           add_offense(node) do |corrector|
             autocorrect(corrector, node)
@@ -181,7 +181,7 @@ module RuboCop
 
         # @param node [RuboCop::AST::SendNode]
         # @return [Boolean]
-        def wrong?(node)
+        def bad?(node)
           case node.method_name
           when :add_index
             add_index?(node) && !add_index_concurrently?(node)

@@ -41,7 +41,7 @@ module RuboCop
         # @param node [RuboCop::AST::SendNode]
         # @return [void]
         def on_send(node)
-          wrong_associations_in(node).each do |association|
+          bad_associations_in(node).each do |association|
             add_offense(association) do |corrector|
               autocorrect(corrector, association)
             end
@@ -133,32 +133,32 @@ module RuboCop
 
         # @param node [RuboCop::AST::SendNode]
         # @return [Boolean]
-        def wrong?(node)
+        def bad?(node)
           case style
           when :explicit
-            wrong_to_explicit_style?(node)
+            bad_to_explicit_style?(node)
           when :implicit
-            wrong_to_implicit_style?(node)
+            bad_to_implicit_style?(node)
           end
         end
 
         # @param node [RuboCop::AST::SendNode]
         # @return [Array<RuboCop::AST::SendNode>]
-        def wrong_associations_in(node)
+        def bad_associations_in(node)
           children_of_factory_block(node).select do |child|
-            wrong?(child)
+            bad?(child)
           end
         end
 
         # @param node [RuboCop::AST::SendNode]
         # @return [Boolean]
-        def wrong_to_explicit_style?(node)
+        def bad_to_explicit_style?(node)
           implicit_association?(node)
         end
 
         # @param node [RuboCop::AST::SendNode]
         # @return [Boolean]
-        def wrong_to_implicit_style?(node)
+        def bad_to_implicit_style?(node)
           explicit_association?(node) && autocorrectable_to_implicit_style?(node)
         end
       end
