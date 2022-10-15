@@ -49,6 +49,9 @@ Sevencop/MethodDefinitionKeywordArgumentOrdered:
 Sevencop/MethodDefinitionOrdered:
   Enabled: true
 
+Sevencop/RequireOrdered:
+  Enabled: true
+
 Style/Documentation:
   Enabled: false
 
