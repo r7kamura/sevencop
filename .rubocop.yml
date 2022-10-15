@@ -13,6 +13,9 @@ AllCops:
 Gemspec/RequireMFA:
   Enabled: false
 
+Layout/LineLength:
+  Enabled: false
+
 Metrics:
   Enabled: false
 
