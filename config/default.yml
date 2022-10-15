@@ -82,6 +82,13 @@ Sevencop/RailsInferredSpecType:
   Safe: false
   VersionAdded: '0.9'
 
+Sevencop/RailsMigrationChangeColumnNull:
+  Description: |
+    Avoid simply setting `NOT NULL` constraint on an existing column in PostgreSQL.
+  Enabled: false
+  Safe: false
+  VersionAdded: '0.22'
+
 Sevencop/RailsMigrationUniqueIndexColumnsCount:
   Description: |
     Keep unique index columns count less than a specified number.
