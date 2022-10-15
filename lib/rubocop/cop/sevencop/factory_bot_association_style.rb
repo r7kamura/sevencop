@@ -51,7 +51,7 @@ module RuboCop
         private
 
         # @!method explicit_association?(node)
-        #   @param node [RuboCop::AST::Node]
+        #   @param node [RuboCop::AST::SendNode]
         #   @return [Boolean]
         def_node_matcher :explicit_association?, <<~PATTERN
           (send
@@ -62,7 +62,7 @@ module RuboCop
         PATTERN
 
         # @!method implicit_association?(node)
-        #   @param node [RuboCop::AST::Node]
+        #   @param node [RuboCop::AST::SendNode]
         #   @return [Boolean]
         def_node_matcher :implicit_association?, <<~PATTERN
           (send
@@ -150,7 +150,7 @@ module RuboCop
           end
         end
 
-        # @param node [RuboCop::AST::Node]
+        # @param node [RuboCop::AST::SendNode]
         # @return [Boolean]
         def wrong_to_explicit_style?(node)
           implicit_association?(node)
