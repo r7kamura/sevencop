@@ -82,6 +82,13 @@ Sevencop/RailsInferredSpecType:
   Safe: false
   VersionAdded: '0.9'
 
+Sevencop/RailsMigrationUniqueIndexColumnsCount:
+  Description: |
+    Keep unique index columns count less than a specified number.
+  Enabled: false
+  VersionAdded: '0.22'
+  MaxColumnsCount: 3
+
 Sevencop/RailsMigrationReservedWordMysql:
   Description: |
     Avoid using MySQL reserved words as identifiers.

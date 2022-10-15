@@ -39,6 +39,7 @@ Choose the cops you want to use and enable them in your .rubocop.yml.
 - [Sevencop/RailsBelongsToOptional](lib/rubocop/cop/sevencop/rails_belongs_to_optional.rb)
 - [Sevencop/RailsInferredSpecType](lib/rubocop/cop/sevencop/rails_inferred_spec_type.rb)
 - [Sevencop/RailsMigrationReservedWordMysql](lib/rubocop/cop/sevencop/rails_migration_reserved_word_mysql.rb)
+- [Sevencop/RailsMigrationUniqueIndexColumnsCount](lib/rubocop/cop/sevencop/rails_migration_unique_index_columns_count.rb)
 - [Sevencop/RailsOrderField](lib/rubocop/cop/sevencop/rails_order_field.rb)
 - [Sevencop/RailsUniquenessValidatorExplicitCaseSensitivity](lib/rubocop/cop/sevencop/rails_uniqueness_validator_explicit_case_sensitivity.rb)
 - [Sevencop/RailsWhereNot](lib/rubocop/cop/sevencop/rails_where_not.rb)
