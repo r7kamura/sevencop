@@ -19,7 +19,7 @@ module RuboCop
       #   end
       #
       #   # good
-      #   class AddIndexToUserNameConcurrently < ActiveRecord::Migration[7.0]
+      #   class AddIndexToUsersNameConcurrently < ActiveRecord::Migration[7.0]
       #     disable_ddl_transaction!
       #
       #     def change
