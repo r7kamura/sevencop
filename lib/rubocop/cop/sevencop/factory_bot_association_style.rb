@@ -112,26 +112,6 @@ module RuboCop
         end
 
         # @param node [RuboCop::AST::SendNode]
-        # @return [Array<RuboCop::AST::Node>]
-        def children_of_factory_block(node)
-          block = node.parent
-          return [] unless block
-          return [] unless block.block_type?
-
-          if block.body.begin_type?
-            block.body.children
-          else
-            [block.body]
-          end
-        end
-
-        # @param method_name [Symbol]
-        # @return [Boolean]
-        def non_implicit_association_method_name?(method_name)
-          cop_config['NonImplicitAssociationMethodNames'].include?(method_name.to_s)
-        end
-
-        # @param node [RuboCop::AST::SendNode]
         # @return [Boolean]
         def bad?(node)
           case style
@@ -160,6 +140,26 @@ module RuboCop
         # @return [Boolean]
         def bad_to_implicit_style?(node)
           explicit_association?(node) && autocorrectable_to_implicit_style?(node)
+        end
+
+        # @param node [RuboCop::AST::SendNode]
+        # @return [Array<RuboCop::AST::Node>]
+        def children_of_factory_block(node)
+          block = node.parent
+          return [] unless block
+          return [] unless block.block_type?
+
+          if block.body.begin_type?
+            block.body.children
+          else
+            [block.body]
+          end
+        end
+
+        # @param method_name [Symbol]
+        # @return [Boolean]
+        def non_implicit_association_method_name?(method_name)
+          cop_config['NonImplicitAssociationMethodNames'].include?(method_name.to_s)
         end
       end
     end

@@ -138,6 +138,17 @@ module RuboCop
 
         # @param node [RuboCop::AST::SendNode]
         # @return [Boolean]
+        def bad?(node)
+          case node.method_name
+          when :add_index
+            add_index?(node) && !add_index_concurrently?(node)
+          when :index
+            index?(node) && in_change_table?(node) && !index_concurrently?(node)
+          end
+        end
+
+        # @param node [RuboCop::AST::SendNode]
+        # @return [Boolean]
         def in_change_table?(node)
           node.each_ancestor(:block).first&.method?(:change_table)
         end
@@ -176,17 +187,6 @@ module RuboCop
           node.each_ancestor(:def).first&.left_siblings&.any? do |sibling|
             sibling.is_a?(RuboCop::AST::SendNode) &&
               disable_ddl_transaction?(sibling)
-          end
-        end
-
-        # @param node [RuboCop::AST::SendNode]
-        # @return [Boolean]
-        def bad?(node)
-          case node.method_name
-          when :add_index
-            add_index?(node) && !add_index_concurrently?(node)
-          when :index
-            index?(node) && in_change_table?(node) && !index_concurrently?(node)
           end
         end
       end
