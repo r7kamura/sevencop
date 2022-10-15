@@ -109,6 +109,14 @@ Sevencop/RailsMigrationAddIndexConcurrency:
   Include:
     - db/migrate/**/*.rb
 
+Sevencop/RailsMigrationCreateTableForce:
+  Description: |
+    Create tables without `force: true` option.
+  Enabled: false
+  VersionAdded: '0.22'
+  Include:
+    - db/migrate/**/*.rb
+
 Sevencop/RailsMigrationJsonb:
   Description: |
     Prefer `jsonb` to `json`.
