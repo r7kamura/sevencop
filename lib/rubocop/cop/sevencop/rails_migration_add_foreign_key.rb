@@ -5,7 +5,7 @@ module RuboCop
     module Sevencop
       # Activate foreign key validation in a separate migration in PostgreSQL.
       #
-      # To block writes on both tables.
+      # To avoid blocking writes on both tables.
       #
       # @safety
       #   Only meaningful in PostgreSQL.
