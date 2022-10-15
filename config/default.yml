@@ -82,6 +82,13 @@ Sevencop/RailsInferredSpecType:
   Safe: false
   VersionAdded: '0.9'
 
+Sevencop/RailsMigrationJsonb:
+  Description: |
+    Prefer `jsonb` to `json`.
+  Enabled: false
+  Safe: false
+  VersionAdded: '0.22'
+
 Sevencop/RailsMigrationChangeColumnNull:
   Description: |
     Avoid simply setting `NOT NULL` constraint on an existing column in PostgreSQL.
