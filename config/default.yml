@@ -126,6 +126,15 @@ Sevencop/RailsMigrationJsonb:
   Include:
     - db/migrate/**/*.rb
 
+Sevencop/RailsMigrationChangeColumn:
+  Description: |
+    Avoid changing column type that is in use.
+  Enabled: false
+  Safe: false
+  VersionAdded: '0.22'
+  Include:
+    - db/migrate/**/*.rb
+
 Sevencop/RailsMigrationChangeColumnNull:
   Description: |
     Avoid simply setting `NOT NULL` constraint on an existing column in PostgreSQL.
