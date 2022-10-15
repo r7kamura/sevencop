@@ -14,6 +14,7 @@ require_relative 'rubocop/cop/sevencop/method_definition_keyword_argument_ordere
 require_relative 'rubocop/cop/sevencop/method_definition_ordered'
 require_relative 'rubocop/cop/sevencop/rails_belongs_to_optional'
 require_relative 'rubocop/cop/sevencop/rails_inferred_spec_type'
+require_relative 'rubocop/cop/sevencop/rails_migration_change_column_null'
 require_relative 'rubocop/cop/sevencop/rails_migration_unique_index_columns_count'
 require_relative 'rubocop/cop/sevencop/rails_migration_reserved_word_mysql'
 require_relative 'rubocop/cop/sevencop/rails_order_field'
