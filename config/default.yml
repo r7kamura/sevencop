@@ -135,21 +135,21 @@ Sevencop/RailsMigrationChangeColumnNull:
   Include:
     - db/migrate/**/*.rb
 
-Sevencop/RailsMigrationUniqueIndexColumnsCount:
-  Description: |
-    Keep unique index columns count less than a specified number.
-  Enabled: false
-  VersionAdded: '0.22'
-  MaxColumnsCount: 3
-  Include:
-    - db/migrate/**/*.rb
-
 Sevencop/RailsMigrationReservedWordMysql:
   Description: |
     Avoid using MySQL reserved words as identifiers.
   Enabled: false
   Safe: false
   VersionAdded: '0.20'
+  Include:
+    - db/migrate/**/*.rb
+
+Sevencop/RailsMigrationUniqueIndexColumnsCount:
+  Description: |
+    Keep unique index columns count less than a specified number.
+  Enabled: false
+  VersionAdded: '0.22'
+  MaxColumnsCount: 3
   Include:
     - db/migrate/**/*.rb
 
