@@ -82,6 +82,13 @@ Sevencop/RailsInferredSpecType:
   Safe: false
   VersionAdded: '0.9'
 
+Sevencop/RailsMigrationAddForeignKey:
+  Description: |
+    Activate foreign key validation in a separate migration in PostgreSQL.
+  Enabled: false
+  Safe: false
+  VersionAdded: '0.22'
+
 Sevencop/RailsMigrationJsonb:
   Description: |
     Prefer `jsonb` to `json`.
