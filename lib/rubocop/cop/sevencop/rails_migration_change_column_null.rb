@@ -61,8 +61,8 @@ module RuboCop
           (send
             nil?
             _
-            (sym $_)
-            (sym $_)
+            ({str sym} $_)
+            ({str sym} $_)
             ...
           )
         PATTERN
