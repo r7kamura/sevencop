@@ -37,4 +37,27 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsMigrationBatchInTransaction, :config
       RUBY
     end
   end
+
+  context 'when `delete_all` is used without `disable_ddl_transaction!`' do
+    it 'registers an offense' do
+      expect_offense(<<~TEXT)
+        class BackfillUsersSomeColumn < ActiveRecord::Migration[7.0]
+          def change
+            User.delete_all
+            ^^^^^^^^^^^^^^^ Disable transaction in batch processing.
+          end
+        end
+      TEXT
+
+      expect_correction(<<~RUBY)
+        class BackfillUsersSomeColumn < ActiveRecord::Migration[7.0]
+          disable_ddl_transaction!
+
+          def change
+            User.delete_all
+          end
+        end
+      RUBY
+    end
+  end
 end

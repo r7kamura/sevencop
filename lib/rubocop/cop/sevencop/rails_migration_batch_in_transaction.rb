@@ -44,6 +44,7 @@ module RuboCop
         MSG = 'Disable transaction in batch processing.'
 
         RESTRICT_ON_SEND = %i[
+          delete_all
           update_all
         ].freeze
 
@@ -58,6 +59,17 @@ module RuboCop
         end
 
         private
+
+        # @!method delete_all?(node)
+        #   @param node [RuboCop::AST::SendNode]
+        #   @return [Boolean]
+        def_node_matcher :delete_all?, <<~PATTERN
+          (send
+            _
+            :delete_all
+            ...
+          )
+        PATTERN
 
         # @!method update_all?(node)
         #   @param node [RuboCop::AST::SendNode]
@@ -83,7 +95,8 @@ module RuboCop
         # @param node [RuboCop::AST::SendNode]
         # @return [Boolean]
         def wrong?(node)
-          update_all?(node) && !within_disable_ddl_transaction?(node)
+          (delete_all?(node) || update_all?(node)) &&
+            !within_disable_ddl_transaction?(node)
         end
       end
     end
