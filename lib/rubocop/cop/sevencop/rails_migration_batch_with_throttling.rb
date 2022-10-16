@@ -5,8 +5,6 @@ module RuboCop
     module Sevencop
       # Use throttling in batch processing.
       #
-      # To avoid locking the table.
-      #
       # @safety
       #   There are some cases where we should not do throttling,
       #   or the throttling is already done in a way that we cannot detect.
