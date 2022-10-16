@@ -7,7 +7,7 @@ module RuboCop
       #
       # @safety
       #   There are some cases where we should not do throttling,
-      #   or the throttling is already done in a way that we cannot detect.
+      #   or the throttling might be already done in a way that we cannot detect.
       #
       # @example
       #   # bad
@@ -38,6 +38,7 @@ module RuboCop
         MSG = 'Use throttling in batch processing.'
 
         RESTRICT_ON_SEND = %i[
+          delete_all
           update_all
         ].freeze
 
@@ -60,6 +61,17 @@ module RuboCop
           (send
             nil?
             :sleep
+            ...
+          )
+        PATTERN
+
+        # @!method delete_all?(node)
+        #   @param node [RuboCop::AST::Node]
+        #   @return [Boolean]
+        def_node_matcher :delete_all?, <<~PATTERN
+          (send
+            !nil?
+            :delete_all
             ...
           )
         PATTERN
@@ -106,7 +118,9 @@ module RuboCop
         # @param node [RuboCop::AST::SendNode]
         # @return [Boolean]
         def wrong?(node)
-          update_all?(node) && in_block?(node) && !with_throttling?(node)
+          (delete_all?(node) || update_all?(node)) &&
+            in_block?(node) &&
+            !with_throttling?(node)
         end
       end
     end
