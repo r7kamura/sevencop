@@ -5,23 +5,24 @@ require 'rubocop'
 module Sevencop
   # Merge default RuboCop config with plugin config.
   class ConfigLoader
-    PLUGIN_CONFIG_PATH = ::File.expand_path(
-      '../../config/default.yml',
-      __dir__
-    )
-
     class << self
+      # @param path [String]
       # @return [RuboCop::Config]
-      def call
-        new.call
+      def call(path:)
+        new(path: path).call
       end
+    end
+
+    # @param path [String]
+    def initialize(path:)
+      @path = path
     end
 
     # @return [RuboCop::Config]
     def call
       ::RuboCop::ConfigLoader.merge_with_default(
         plugin_config,
-        PLUGIN_CONFIG_PATH
+        @path
       )
     end
 
@@ -31,7 +32,7 @@ module Sevencop
     def plugin_config
       config = ::RuboCop::Config.new(
         plugin_config_hash,
-        PLUGIN_CONFIG_PATH
+        @path
       )
       config.make_excludes_absolute
       config
@@ -41,7 +42,7 @@ module Sevencop
     def plugin_config_hash
       ::RuboCop::ConfigLoader.send(
         :load_yaml_configuration,
-        PLUGIN_CONFIG_PATH
+        @path
       )
     end
   end
