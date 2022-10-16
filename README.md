@@ -24,9 +24,9 @@ Sevencop/MethodDefinitionOrdered:
   Enabled: true
 ```
 
-## Cops
+Note that all cops are `Enabled: false` by default.
 
-Choose the cops you want to use and enable them in your .rubocop.yml.
+## Cops
 
 - [Sevencop/AutoloadOrdered](lib/rubocop/cop/sevencop/autoload_ordered.rb)
 - [Sevencop/FactoryBotAssociationOption](lib/rubocop/cop/sevencop/factory_bot_association_option.rb)
@@ -56,5 +56,3 @@ Choose the cops you want to use and enable them in your .rubocop.yml.
 - [Sevencop/RequireOrdered](lib/rubocop/cop/sevencop/require_ordered.rb)
 - [Sevencop/RSpecDescribeHttpEndpoint](lib/rubocop/cop/sevencop/rspec_describe_http_endpoint.rb)
 - [Sevencop/RSpecExamplesInSameGroup](lib/rubocop/cop/sevencop/rspec_examples_in_same_group.rb)
-
-Note that all cops are `Enabled: false` by default.
