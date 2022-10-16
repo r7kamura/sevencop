@@ -26,7 +26,7 @@ module RuboCop
       #       add_index :users, :name, algorithm: :concurrently
       #     end
       #   end
-      class RailsMigrationAddIndexConcurrency < RuboCop::Cop::Base
+      class RailsMigrationAddIndexConcurrently < RuboCop::Cop::Base
         extend AutoCorrector
 
         MSG = 'Use `algorithm: :concurrently` on adding indexes to existing tables in PostgreSQL.'

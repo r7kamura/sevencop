@@ -109,7 +109,7 @@ Sevencop/RailsMigrationAddForeignKey:
   Include:
     - db/migrate/**/*.rb
 
-Sevencop/RailsMigrationAddIndexConcurrency:
+Sevencop/RailsMigrationAddIndexConcurrently:
   Description: |
     Use `algorithm: :concurrently` on adding indexes to existing tables in PostgreSQL.
   Enabled: false
