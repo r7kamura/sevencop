@@ -49,6 +49,7 @@ Note that all cops are `Enabled: false` by default.
 - [Sevencop/RailsMigrationChangeColumnNull](lib/rubocop/cop/sevencop/rails_migration_change_column_null.rb)
 - [Sevencop/RailsMigrationCreateTableForce](lib/rubocop/cop/sevencop/rails_migration_create_table_force.rb)
 - [Sevencop/RailsMigrationJsonb](lib/rubocop/cop/sevencop/rails_migration_jsonb.rb)
+- [Sevencop/RailsMigrationRemoveColumn](lib/rubocop/cop/sevencop/rails_migration_remove_column.rb)
 - [Sevencop/RailsMigrationRenameColumn](lib/rubocop/cop/sevencop/rails_migration_rename_column.rb)
 - [Sevencop/RailsMigrationRenameTable](lib/rubocop/cop/sevencop/rails_migration_rename_table.rb)
 - [Sevencop/RailsMigrationReservedWordMysql](lib/rubocop/cop/sevencop/rails_migration_reserved_word_mysql.rb)
