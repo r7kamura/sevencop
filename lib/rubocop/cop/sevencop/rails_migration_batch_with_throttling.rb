@@ -35,6 +35,8 @@ module RuboCop
       class RailsMigrationBatchWithThrottling < RuboCop::Cop::Base
         extend AutoCorrector
 
+        include ::Sevencop::CopConcerns::BatchProcessing
+
         MSG = 'Use throttling in batch processing.'
 
         RESTRICT_ON_SEND = %i[
@@ -61,28 +63,6 @@ module RuboCop
           (send
             nil?
             :sleep
-            ...
-          )
-        PATTERN
-
-        # @!method delete_all?(node)
-        #   @param node [RuboCop::AST::Node]
-        #   @return [Boolean]
-        def_node_matcher :delete_all?, <<~PATTERN
-          (send
-            !nil?
-            :delete_all
-            ...
-          )
-        PATTERN
-
-        # @!method update_all?(node)
-        #   @param node [RuboCop::AST::SendNode]
-        #   @return [Boolean]
-        def_node_matcher :update_all?, <<~PATTERN
-          (send
-            !nil?
-            :update_all
             ...
           )
         PATTERN
@@ -118,7 +98,7 @@ module RuboCop
         # @param node [RuboCop::AST::SendNode]
         # @return [Boolean]
         def wrong?(node)
-          (delete_all?(node) || update_all?(node)) &&
+          batch_processing?(node) &&
             in_block?(node) &&
             !with_throttling?(node)
         end

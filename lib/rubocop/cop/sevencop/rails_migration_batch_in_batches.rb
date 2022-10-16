@@ -34,6 +34,8 @@ module RuboCop
       class RailsMigrationBatchInBatches < RuboCop::Cop::Base
         extend AutoCorrector
 
+        include ::Sevencop::CopConcerns::BatchProcessing
+
         MSG = 'Use `in_batches` in batch processing.'
 
         RESTRICT_ON_SEND = %i[
@@ -52,39 +54,6 @@ module RuboCop
         end
 
         private
-
-        # @!method sleep?(node)
-        #   @param node [RuboCop::AST::Node]
-        #   @return [Boolean]
-        def_node_matcher :sleep?, <<~PATTERN
-          (send
-            nil?
-            :sleep
-            ...
-          )
-        PATTERN
-
-        # @!method delete_all?(node)
-        #   @param node [RuboCop::AST::Node]
-        #   @return [Boolean]
-        def_node_matcher :delete_all?, <<~PATTERN
-          (send
-            !nil?
-            :delete_all
-            ...
-          )
-        PATTERN
-
-        # @!method update_all?(node)
-        #   @param node [RuboCop::AST::SendNode]
-        #   @return [Boolean]
-        def_node_matcher :update_all?, <<~PATTERN
-          (send
-            !nil?
-            :update_all
-            ...
-          )
-        PATTERN
 
         # @param corrector [RuboCop::Cop::Corrector]
         # @param node [RuboCop::AST::SendNode]
@@ -117,7 +86,8 @@ module RuboCop
         # @param node [RuboCop::AST::SendNode]
         # @return [Boolean]
         def wrong?(node)
-          (delete_all?(node) || update_all?(node)) && !within_in_batches?(node)
+          batch_processing?(node) &&
+            !within_in_batches?(node)
         end
       end
     end

@@ -39,6 +39,7 @@ module RuboCop
       class RailsMigrationBatchInTransaction < RuboCop::Cop::Base
         extend AutoCorrector
 
+        include ::Sevencop::CopConcerns::BatchProcessing
         include ::Sevencop::CopConcerns::DisableDdlTransaction
 
         MSG = 'Disable transaction in batch processing.'
@@ -60,28 +61,6 @@ module RuboCop
 
         private
 
-        # @!method delete_all?(node)
-        #   @param node [RuboCop::AST::SendNode]
-        #   @return [Boolean]
-        def_node_matcher :delete_all?, <<~PATTERN
-          (send
-            _
-            :delete_all
-            ...
-          )
-        PATTERN
-
-        # @!method update_all?(node)
-        #   @param node [RuboCop::AST::SendNode]
-        #   @return [Boolean]
-        def_node_matcher :update_all?, <<~PATTERN
-          (send
-            !nil?
-            :update_all
-            ...
-          )
-        PATTERN
-
         # @param corrector [RuboCop::Cop::Corrector]
         # @param node [RuboCop::AST::SendNode]
         # @return [void]
@@ -95,7 +74,7 @@ module RuboCop
         # @param node [RuboCop::AST::SendNode]
         # @return [Boolean]
         def wrong?(node)
-          (delete_all?(node) || update_all?(node)) &&
+          batch_processing?(node) &&
             !within_disable_ddl_transaction?(node)
         end
       end
