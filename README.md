@@ -42,6 +42,7 @@ Note that all cops are `Enabled: false` by default.
 - [Sevencop/RailsMigrationAddColumnWithDefaultValue](lib/rubocop/cop/sevencop/rails_migration_add_column_with_default_value.rb)
 - [Sevencop/RailsMigrationAddForeignKey](lib/rubocop/cop/sevencop/rails_migration_add_foreign_key.rb)
 - [Sevencop/RailsMigrationAddIndexConcurrently](lib/rubocop/cop/sevencop/rails_migration_add_index_concurrently.rb)
+- [Sevencop/RailsMigrationBatchInBatches](lib/rubocop/cop/sevencop/rails_migration_batch_in_batches.rb)
 - [Sevencop/RailsMigrationBatchInTransaction](lib/rubocop/cop/sevencop/rails_migration_batch_in_transaction.rb)
 - [Sevencop/RailsMigrationBatchWithThrottling](lib/rubocop/cop/sevencop/rails_migration_batch_with_throttling.rb)
 - [Sevencop/RailsMigrationChangeColumn](lib/rubocop/cop/sevencop/rails_migration_change_column.rb)
