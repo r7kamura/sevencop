@@ -180,6 +180,15 @@ Sevencop/RailsMigrationChangeColumnNull:
   Include:
     - db/migrate/**/*.rb
 
+Sevencop/RailsMigrationRemoveColumn:
+  Description: |
+    Add to `ignored_columns` and then remove the column.
+  Enabled: false
+  Safe: false
+  VersionAdded: '0.22'
+  Include:
+    - db/migrate/**/*.rb
+
 Sevencop/RailsMigrationRenameColumn:
   Description: |
     Avoid renaming columns that are in use.
