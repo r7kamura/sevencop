@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Sevencop::RailsMigrationAddIndexConcurrency, :config do
+RSpec.describe RuboCop::Cop::Sevencop::RailsMigrationAddIndexConcurrently, :config do
   context 'when `add_index` is used with `algorithm: :concurrently' do
     it 'does not register an offense' do
       expect_no_offenses(<<~RUBY)
