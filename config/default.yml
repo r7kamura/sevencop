@@ -127,6 +127,15 @@ Sevencop/RailsMigrationBatchInTransaction:
   Include:
     - db/migrate/**/*.rb
 
+Sevencop/RailsMigrationBatchWithThrottling:
+  Description: |
+    Use throttling in batch processing.
+  Enabled: false
+  Safe: false
+  VersionAdded: '0.22'
+  Include:
+    - db/migrate/**/*.rb
+
 Sevencop/RailsMigrationCreateTableForce:
   Description: |
     Create tables without `force: true` option.

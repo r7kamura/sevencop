@@ -19,6 +19,7 @@ require_relative 'rubocop/cop/sevencop/rails_migration_add_column_with_default_v
 require_relative 'rubocop/cop/sevencop/rails_migration_add_foreign_key'
 require_relative 'rubocop/cop/sevencop/rails_migration_add_index_concurrently'
 require_relative 'rubocop/cop/sevencop/rails_migration_batch_in_transaction'
+require_relative 'rubocop/cop/sevencop/rails_migration_batch_with_throttling'
 require_relative 'rubocop/cop/sevencop/rails_migration_change_column'
 require_relative 'rubocop/cop/sevencop/rails_migration_change_column_null'
 require_relative 'rubocop/cop/sevencop/rails_migration_create_table_force'
