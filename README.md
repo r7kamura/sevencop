@@ -44,3 +44,7 @@ Note that all cops are `Enabled: false` by default.
 - [Sevencop/RequireOrdered](lib/rubocop/cop/sevencop/require_ordered.rb)
 - [Sevencop/RSpecDescribeHttpEndpoint](lib/rubocop/cop/sevencop/rspec_describe_http_endpoint.rb)
 - [Sevencop/RSpecExamplesInSameGroup](lib/rubocop/cop/sevencop/rspec_examples_in_same_group.rb)
+
+## Notes
+
+All migration related cops are moved to [r7kamura/rubocop-migration](https://github.com/r7kamura/rubocop-migration).
