@@ -3,7 +3,7 @@ require:
   - rubocop-performance
   - rubocop-rake
   - rubocop-rspec
-  - sevencop
+  - ./lib/sevencop
 
 AllCops:
   NewCops: enable
