@@ -33,30 +33,43 @@ module RuboCop
         # @param node [RuboCop::AST::SendNode]
         # @return [void]
         def on_send(node)
-          return unless top_level_describe?(node)
-          return unless node.first_argument
-          return if http_endpoint_identifier?(node.first_argument)
+          return unless bad?(node)
 
           add_offense(node.first_argument)
         end
 
         private
 
-        # @!method top_level_describe?(node)
+        # @!method describing_http_endpoint_identifier?(node)
         #   @param node [RuboCop::AST::SendNode]
         #   @return [Boolean]
-        def_node_matcher :top_level_describe?, <<~PATTERN
+        def_node_matcher :describing_http_endpoint_identifier?, <<~PATTERN
           (send
-            (const nil? :RSpec)
+            _
+            :describe
+            (str DESCRIPTION_PATTERN)
+            ...
+          )
+        PATTERN
+
+        # @!method describing_at_top_level?(node)
+        #   @param node [RuboCop::AST::SendNode]
+        #   @return [Boolean]
+        def_node_matcher :describing_at_top_level?, <<~PATTERN
+          (send
+            (const
+              {nil? cbase}
+              :RSpec
+            )
             :describe
             ...
           )
         PATTERN
 
-        # @param node [RuboCop::AST::Node, nil]
-        # @return [Boolean]
-        def http_endpoint_identifier?(node)
-          node&.str_type? && node.value.match?(DESCRIPTION_PATTERN)
+        # @param node [RuboCop::AST::SendNode]
+        def bad?(node)
+          describing_at_top_level?(node) &&
+            !describing_http_endpoint_identifier?(node)
         end
       end
     end
