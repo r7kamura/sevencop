@@ -38,11 +38,6 @@ module RuboCop
           node_visibility(node) == :public
         end
 
-        # @return [Array<String>]
-        def action_names
-          cop_config['ActionNames']
-        end
-
         # @param node [RuboCop::AST::DefNode]
         # @return [Boolean]
         def bad?(node)
@@ -53,7 +48,12 @@ module RuboCop
         # @param node [RuboCop::AST::DefNode]
         # @return [Boolean]
         def configured_action_name?(node)
-          action_names.include?(node.method_name.to_s)
+          configured_action_names.include?(node.method_name.to_s)
+        end
+
+        # @return [Array<String>]
+        def configured_action_names
+          cop_config['ActionNames']
         end
       end
     end
