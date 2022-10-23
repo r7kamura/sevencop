@@ -82,7 +82,7 @@ Sevencop/RailsActionName:
     - show
     - update
   Include:
-    - app/controllers/**/*_controller.rb
+    - app/controllers/**/*.rb
 
 Sevencop/RailsBelongsToOptional:
   Description: |
