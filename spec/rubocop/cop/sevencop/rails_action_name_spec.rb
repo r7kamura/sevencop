@@ -51,4 +51,16 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsActionName, :config do
       RUBY
     end
   end
+
+  context 'when non configured name is used as public method in a concern module' do
+    it 'registers an offense' do
+      expect_offense(<<~RUBY)
+        module UsersConcern
+          def articles
+              ^^^^^^^^ Use only specific action names.
+          end
+        end
+      RUBY
+    end
+  end
 end
