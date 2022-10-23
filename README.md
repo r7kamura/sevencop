@@ -36,6 +36,7 @@ Note that all cops are `Enabled: false` by default.
 - [Sevencop/MethodDefinitionInIncluded](lib/rubocop/cop/sevencop/method_definition_in_included.rb)
 - [Sevencop/MethodDefinitionKeywordArgumentOrdered](lib/rubocop/cop/sevencop/method_definition_keyword_argument_ordered.rb)
 - [Sevencop/MethodDefinitionOrdered](lib/rubocop/cop/sevencop/method_definition_ordered.rb)
+- [Sevencop/RailsActionName](lib/rubocop/cop/sevencop/rails_action_name.rb)
 - [Sevencop/RailsBelongsToOptional](lib/rubocop/cop/sevencop/rails_belongs_to_optional.rb)
 - [Sevencop/RailsInferredSpecType](lib/rubocop/cop/sevencop/rails_inferred_spec_type.rb)
 - [Sevencop/RailsOrderField](lib/rubocop/cop/sevencop/rails_order_field.rb)
