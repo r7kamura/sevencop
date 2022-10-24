@@ -5,7 +5,7 @@ Sevencop/AutoloadOrdered:
   Safe: false
   VersionAdded: '0.12'
 
-Sevencop/FactoryBotAssociationOptions:
+Sevencop/FactoryBotAssociationOption:
   Description: |
     Remove redundant options from FactoryBot associations.
   Enabled: false
