@@ -128,7 +128,7 @@ Sevencop/RequireOrdered:
 
 Sevencop/RSpecDescribeHttpEndpoint:
   Description: |
-    Pass HTTP endpoint identifier to top-level `describe` on request-specs.
+    Pass HTTP endpoint identifier (e.g. `GET /users`) to top-level `describe` on request-specs.
   Enabled: false
   VersionAdded: '0.18'
   Include:

@@ -14,7 +14,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecDescribeHttpEndpoint, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         RSpec.describe 'Users' do
-                       ^^^^^^^ Pass HTTP endpoint identifier to top-level `describe` on request-specs.
+                       ^^^^^^^ Pass HTTP endpoint identifier (e.g. `GET /users`) to top-level `describe` on request-specs.
         end
       RUBY
     end
@@ -24,7 +24,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecDescribeHttpEndpoint, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         ::RSpec.describe 'Users' do
-                         ^^^^^^^ Pass HTTP endpoint identifier to top-level `describe` on request-specs.
+                         ^^^^^^^ Pass HTTP endpoint identifier (e.g. `GET /users`) to top-level `describe` on request-specs.
         end
       RUBY
     end
@@ -34,7 +34,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecDescribeHttpEndpoint, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         RSpec.describe 'Users', type: :model do
-                       ^^^^^^^ Pass HTTP endpoint identifier to top-level `describe` on request-specs.
+                       ^^^^^^^ Pass HTTP endpoint identifier (e.g. `GET /users`) to top-level `describe` on request-specs.
         end
       RUBY
     end
