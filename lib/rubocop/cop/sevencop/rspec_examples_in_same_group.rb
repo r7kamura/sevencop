@@ -26,7 +26,7 @@ module RuboCop
       #     end
       #   end
       #
-      #   # bad - IncludesSharedExamples: true
+      #   # bad - IncludeSharedExamples: true
       #   context 'when user is logged in' do
       #     it 'returns 200' do
       #       subject
@@ -75,7 +75,7 @@ module RuboCop
         # @param node [RuboCop::AST::BlockNode, RuboCop::AST::SendNode]
         # @return [Boolean]
         def example?(node)
-          if includes_shared_examples?
+          if include_shared_examples?
             regular_example?(node) || shared_example?(node)
           else
             regular_example?(node)
@@ -83,8 +83,8 @@ module RuboCop
         end
 
         # @return [Boolean]
-        def includes_shared_examples?
-          cop_config['IncludesSharedExamples']
+        def include_shared_examples?
+          cop_config['IncludeSharedExamples']
         end
 
         # @param node [RuboCop::AST::BlockNode, RuboCop::AST::SendNode]

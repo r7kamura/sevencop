@@ -139,7 +139,7 @@ Sevencop/RSpecExamplesInSameGroup:
     Combine examples in the same groups in the time-consuming kinds of specs.
   Enabled: false
   VersionAdded: '0.17'
-  IncludesSharedExamples: false
+  IncludeSharedExamples: false
   Include:
     - spec/controllers/**/*
     - spec/requests/**/*
