@@ -68,7 +68,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecExamplesInSameGroup, :config do
 
   context 'with regular example and disallowed inclusion in same group' do
     let(:cop_config) do
-      { 'IncludesSharedExamples' => true }
+      { 'IncludeSharedExamples' => true }
     end
 
     it 'registers an offense' do
@@ -92,7 +92,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecExamplesInSameGroup, :config do
 
   context 'with regular example and disallowed inclusion with block in same group' do
     let(:cop_config) do
-      { 'IncludesSharedExamples' => true }
+      { 'IncludeSharedExamples' => true }
     end
 
     it 'registers an offense' do
@@ -117,7 +117,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecExamplesInSameGroup, :config do
 
   context 'with disallowed inclusion and regular example in same group' do
     let(:cop_config) do
-      { 'IncludesSharedExamples' => true }
+      { 'IncludeSharedExamples' => true }
     end
 
     it 'registers an offense' do
@@ -141,7 +141,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecExamplesInSameGroup, :config do
 
   context 'with disallowed inclusion and regular example with block in same group' do
     let(:cop_config) do
-      { 'IncludesSharedExamples' => true }
+      { 'IncludeSharedExamples' => true }
     end
 
     it 'registers an offense' do
