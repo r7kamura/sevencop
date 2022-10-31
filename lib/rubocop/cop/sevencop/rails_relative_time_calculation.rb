@@ -16,12 +16,12 @@ module RuboCop
       #   # good
       #   n.days.ago
       #
-      #  # bad
-      #  Time.current + n.days
-      #  Time.zone.now + n.days
+      #   # bad
+      #   Time.current + n.days
+      #   Time.zone.now + n.days
       #
-      #  # good
-      #  n.days.since
+      #   # good
+      #   n.days.since
       class RailsRelativeTimeCalculation < Base
         extend AutoCorrector
 
