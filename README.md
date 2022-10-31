@@ -40,6 +40,7 @@ Note that all cops are `Enabled: false` by default.
 - [Sevencop/RailsBelongsToOptional](lib/rubocop/cop/sevencop/rails_belongs_to_optional.rb)
 - [Sevencop/RailsInferredSpecType](lib/rubocop/cop/sevencop/rails_inferred_spec_type.rb)
 - [Sevencop/RailsOrderField](lib/rubocop/cop/sevencop/rails_order_field.rb)
+- [Sevencop/RailsRelativeTime](lib/rubocop/cop/sevencop/rails_relative_time_calculation.rb)
 - [Sevencop/RailsUniquenessValidatorExplicitCaseSensitivity](lib/rubocop/cop/sevencop/rails_uniqueness_validator_explicit_case_sensitivity.rb)
 - [Sevencop/RailsWhereNot](lib/rubocop/cop/sevencop/rails_where_not.rb)
 - [Sevencop/RequireOrdered](lib/rubocop/cop/sevencop/require_ordered.rb)
