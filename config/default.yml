@@ -107,7 +107,7 @@ Sevencop/RailsOrderField:
 
 Sevencop/RailsRelativeTime:
   Description: |
-    Prefer relative time helpers.
+    Prefer ActiveSupport time helper.
   Enabled: false
   Safe: false
   VersionAdded: '0.26'
