@@ -30,7 +30,7 @@ module RuboCop
             day
             days
             fortnight
-            fortnight
+            fortnights
             hour
             hours
             minute
