@@ -364,4 +364,17 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsDateAndTimeCalculation, :config do
       RUBY
     end
   end
+
+  context 'with `time + 1.hour > Time.current`' do
+    it 'registers an offense' do
+      expect_offense(<<~RUBY)
+        time + 1.hour > Time.current
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
+      RUBY
+
+      expect_correction(<<~RUBY)
+        (time + 1.hour).future?
+      RUBY
+    end
+  end
 end
