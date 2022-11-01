@@ -427,10 +427,9 @@ module RuboCop
         )
           corrector.replace(
             node,
-            format(
-              '%<time>s.%<helper_method_name>s',
-              helper_method_name: helper_method_name_for_comparison(node),
-              time: find_comparison_subject_to_time_current(node).source
+            format_to_method_call(
+              method: helper_method_name_for_comparison(node),
+              receiver: find_comparison_subject_to_time_current(node)
             )
           )
         end
@@ -446,10 +445,9 @@ module RuboCop
         )
           corrector.replace(
             node,
-            format(
-              '%<duration>s.%<helper_method_name>s',
-              duration: node.first_argument.source,
-              helper_method_name: helper_method_name
+            format_to_method_call(
+              method: helper_method_name,
+              receiver: node.first_argument
             )
           )
         end
@@ -467,10 +465,9 @@ module RuboCop
         )
           corrector.replace(
             node,
-            format(
-              '%<date>s.%<helper_method_name>s',
-              date: find_equality_subject_to_date_with(node, date_method_name).source,
-              helper_method_name: helper_method_name
+            format_to_method_call(
+              method: helper_method_name,
+              receiver: find_equality_subject_to_date_with(node, date_method_name)
             )
           )
         end
@@ -736,6 +733,18 @@ module RuboCop
           else
             node.receiver
           end
+        end
+
+        # @param receiver [RuboCop::AST::Node]
+        # @param method [String]
+        # @return [String]
+        def format_to_method_call(
+          method:,
+          receiver:
+        )
+          receiver_source = receiver.source
+          receiver_source = "(#{receiver_source})" if receiver.operator_method?
+          [receiver_source, method].join('.')
         end
 
         # @param node [RuboCop::AST::SendNode]
