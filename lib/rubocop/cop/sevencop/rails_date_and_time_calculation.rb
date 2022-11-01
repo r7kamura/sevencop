@@ -700,6 +700,14 @@ module RuboCop
           end
         end
 
+        # Determine whether this node should be enclosed in parentheses
+        # when it is used as a receiver of a method call in autocorrection.
+        # @param node [RuboCop::AST::Node]
+        # @return [Boolean]
+        def enclose_by_parentheses?(node)
+          node.send_type? && node.operator_method?
+        end
+
         # @param node [RuboCop::AST::SendNode]
         # @param method_name [Symbol]
         # @return [Boolean]
@@ -743,7 +751,7 @@ module RuboCop
           receiver:
         )
           receiver_source = receiver.source
-          receiver_source = "(#{receiver_source})" if receiver.operator_method?
+          receiver_source = "(#{receiver_source})" if enclose_by_parentheses?(receiver)
           [receiver_source, method].join('.')
         end
 
