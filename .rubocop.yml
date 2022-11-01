@@ -33,6 +33,7 @@ RSpec/FilePath:
   CustomTransform:
     RSpecDescribeHttpEndpoint: rspec_describe_http_endpoint
     RSpecExamplesInSameGroup: rspec_examples_in_same_group
+    RSpecMemoizedHelperBlockDelimiter: rspec_memoized_helper_block_delimiter
 
 RSpec/MultipleExpectations:
   Enabled: false
