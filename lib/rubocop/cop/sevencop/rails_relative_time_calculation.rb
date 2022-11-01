@@ -6,8 +6,8 @@ module RuboCop
       # Prefer ActiveSupport time helper.
       #
       # @safety
-      #   This cop is unsafe.
-      #   This cop considers `n.days` is a Duration, and `date` in `date == Date.current` is a Date, but there is no guarantee.
+      #   This cop is unsafe becuase it considers that `n.days` is a Duration,
+      #   and `date` in `date == Date.current` is a Date, but there is no guarantee.
       #
       # @example
       #   # bad
@@ -18,6 +18,12 @@ module RuboCop
       #
       #   # bad
       #   Time.zone.today
+      #
+      #   # good
+      #   Date.current
+      #
+      #   # bad
+      #   Time.current.to_date
       #
       #   # good
       #   Date.current
@@ -146,6 +152,7 @@ module RuboCop
           *COMPARISON_METHOD_NAMES,
           :==,
           :now,
+          :to_date,
           :today,
           :tomorrow,
           :yesterday
@@ -167,6 +174,8 @@ module RuboCop
             check_greater_than(node)
           when :now
             check_now(node)
+          when :to_date
+            check_to_date(node)
           when :today
             check_today(node)
           when :tomorrow
@@ -272,7 +281,7 @@ module RuboCop
           (send
             #date_current?
             :-
-            #one_day?
+            #one_day_on_date_calculation?
           )
         PATTERN
 
@@ -283,7 +292,7 @@ module RuboCop
           (send
             #date_current?
             :+
-            #one_day?
+            #one_day_on_date_calculation?
           )
         PATTERN
 
@@ -357,10 +366,10 @@ module RuboCop
           )
         PATTERN
 
-        # @!method one_day?(node)
+        # @!method one_day_on_date_calculation?(node)
         #   @param node [RuboCop::AST::Node]
         #   @return [Boolean]
-        def_node_matcher :one_day?, <<~PATTERN
+        def_node_matcher :one_day_on_date_calculation?, <<~PATTERN
           {
             (int 1) |
             (send (int 1) :day)
@@ -377,6 +386,16 @@ module RuboCop
               :Time
             )
             :current
+          )
+        PATTERN
+
+        # @!method time_current_to_date?(node)
+        #   @param node [RuboCop::AST::Node]
+        #   @return [Boolean]
+        def_node_matcher :time_current_to_date?, <<~PATTERN
+          (send
+            #time_current?
+            :to_date
           )
         PATTERN
 
@@ -601,6 +620,20 @@ module RuboCop
               corrector,
               node,
               helper_method_name: :ago
+            )
+          end
+        end
+
+        # @param node [RuboCop::AST::SendNode]
+        # @return [void]
+        def check_to_date(node)
+          return unless time_current_to_date?(node)
+
+          add_offense(node) do |corrector|
+            replace_keeping_cbase(
+              corrector: corrector,
+              node: node,
+              with: 'Date.current'
             )
           end
         end
