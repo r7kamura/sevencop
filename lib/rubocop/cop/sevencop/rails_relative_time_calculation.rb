@@ -69,6 +69,20 @@ module RuboCop
       #   n.days.since
       #
       #   # bad
+      #   Date.current - 1
+      #   Date.current - 1.day
+      #
+      #   # good
+      #   Date.yesterday
+      #
+      #   # bad
+      #   Date.current + 1
+      #   Date.current + 1.day
+      #
+      #   # good
+      #   Date.tomorrow
+      #
+      #   # bad
       #   time.after?(Time.current)
       #   time > Time.current
       #   Time.current < time
@@ -238,16 +252,49 @@ module RuboCop
           )
         PATTERN
 
-        # @!method time_current?(node)
+        # @!method date_current?(node)
         #   @param node [RuboCop::AST::Node]
-        #   @return [Boolean]
-        def_node_matcher :time_current?, <<~PATTERN
+        #   @return [Booelan]
+        def_node_matcher :date_current?, <<~PATTERN
           (send
             (const
               {nil? | cbase}
-              :Time
+              :Date
             )
             :current
+          )
+        PATTERN
+
+        # @!method date_current_minus_one_day?(node)
+        #   @param node [RuboCop::AST::Node]
+        #   @return [Boolean]
+        def_node_matcher :date_current_minus_one_day?, <<~PATTERN
+          (send
+            #date_current?
+            :-
+            #one_day?
+          )
+        PATTERN
+
+        # @!method date_current_plus_one_day?(node)
+        #   @param node [RuboCop::AST::Node]
+        #   @return [Boolean]
+        def_node_matcher :date_current_plus_one_day?, <<~PATTERN
+          (send
+            #date_current?
+            :+
+            #one_day?
+          )
+        PATTERN
+
+        # @!method date_current_with?(node, method_name)
+        #   @param node [RuboCop::AST::Node]
+        #   @param method_name [Symbol]
+        #   @return [Boolean]
+        def_node_matcher :date_current_with?, <<~PATTERN
+          (send
+            #date_current?
+            %1
           )
         PATTERN
 
@@ -260,23 +307,6 @@ module RuboCop
             (const
               {nil? | cbase}
               :Date
-            )
-            %1
-          )
-        PATTERN
-
-        # @!method date_current_with?(node, method_name)
-        #   @param node [RuboCop::AST::Node]
-        #   @param method_name [Symbol]
-        #   @return [Boolean]
-        def_node_matcher :date_current_with?, <<~PATTERN
-          (send
-            (send
-              (const
-                {nil? | cbase}
-                :Date
-              )
-              :current
             )
             %1
           )
@@ -324,6 +354,29 @@ module RuboCop
             _
             :==
             #date_with?(%1)
+          )
+        PATTERN
+
+        # @!method one_day?(node)
+        #   @param node [RuboCop::AST::Node]
+        #   @return [Boolean]
+        def_node_matcher :one_day?, <<~PATTERN
+          {
+            (int 1) |
+            (send (int 1) :day)
+          }
+        PATTERN
+
+        # @!method time_current?(node)
+        #   @param node [RuboCop::AST::Node]
+        #   @return [Boolean]
+        def_node_matcher :time_current?, <<~PATTERN
+          (send
+            (const
+              {nil? | cbase}
+              :Time
+            )
+            :current
           )
         PATTERN
 
@@ -404,6 +457,27 @@ module RuboCop
         # @param node [RuboCop::AST::SendNode]
         # @return [void]
         def check_addition(node)
+          check_addition_to_date_current(node)
+          check_addition_to_time_current(node)
+        end
+
+        # @param node [RuboCop::AST::SendNode]
+        # @return [void]
+        def check_addition_to_date_current(node)
+          return unless date_current_plus_one_day?(node)
+
+          add_offense(node) do |corrector|
+            replace_keeping_cbase(
+              corrector: corrector,
+              node: node,
+              with: 'Date.tomorrow'
+            )
+          end
+        end
+
+        # @param node [RuboCop::AST::SendNode]
+        # @return [void]
+        def check_addition_to_time_current(node)
           return unless duration_calculation_to_time_current?(node)
 
           add_offense(node) do |corrector|
@@ -499,6 +573,27 @@ module RuboCop
         # @param node [RuboCop::AST::SendNode]
         # @return [void]
         def check_subtraction(node)
+          check_subtraction_to_date_current(node)
+          check_subtraction_to_time_current(node)
+        end
+
+        # @param node [RuboCop::AST::SendNode]
+        # @return [void]
+        def check_subtraction_to_date_current(node)
+          return unless date_current_minus_one_day?(node)
+
+          add_offense(node) do |corrector|
+            replace_keeping_cbase(
+              corrector: corrector,
+              node: node,
+              with: 'Date.yesterday'
+            )
+          end
+        end
+
+        # @param node [RuboCop::AST::SendNode]
+        # @return [void]
+        def check_subtraction_to_time_current(node)
           return unless duration_calculation_to_time_current?(node)
 
           add_offense(node) do |corrector|
