@@ -22,6 +22,18 @@ module RuboCop
       #   Date.current
       #
       #   # bad
+      #   Date.current.tomorrow
+      #
+      #   # good
+      #   Date.tomorrow
+      #
+      #   # bad
+      #   Date.current.yesterday
+      #
+      #   # good
+      #   Date.yesterday
+      #
+      #   # bad
       #   Time.current - n.days
       #   Time.zone.now - n.days
       #
@@ -97,7 +109,9 @@ module RuboCop
           *CALCULATION_METHOD_NAMES,
           *COMPARISON_METHOD_NAMES,
           :now,
-          :today
+          :today,
+          :tomorrow,
+          :yesterday
         ].freeze
 
         # @param node [RuboCop::AST::SendNode]
@@ -116,6 +130,10 @@ module RuboCop
             check_now(node)
           when :today
             check_today(node)
+          when :tomorrow
+            check_tomorrow(node)
+          when :yesterday
+            check_yesterday(node)
           end
         end
 
@@ -208,6 +226,23 @@ module RuboCop
           )
         PATTERN
 
+        # @!method date_current_with?(node, method_name)
+        #   @param node [RuboCop::AST::Node]
+        #   @param method_name [Symbol]
+        #   @return [Boolean]
+        def_node_matcher :date_current_with?, <<~PATTERN
+          (send
+            (send
+              (const
+                {nil? | cbase}
+                :Date
+              )
+              :current
+            )
+            %1
+          )
+        PATTERN
+
         # @!method duration?(node)
         #   @param node [RuboCop::AST::Node]
         #   @return [Boolean]
@@ -229,10 +264,11 @@ module RuboCop
           )
         PATTERN
 
-        # @!method time_zone_now?(node)
+        # @!method time_zone_with?(node, method_name)
         #   @param node [RuboCop::AST::Node]
+        #   @param method_name [Symbol]
         #   @return [Boolean]
-        def_node_matcher :time_zone_now?, <<~PATTERN
+        def_node_matcher :time_zone_with?, <<~PATTERN
           (send
             (send
               (const
@@ -241,23 +277,7 @@ module RuboCop
               )
               :zone
             )
-            :now
-          )
-        PATTERN
-
-        # @!method time_zone_today?(node)
-        #   @param node [RuboCop::AST::Node]
-        #   @return [Boolean]
-        def_node_matcher :time_zone_today?, <<~PATTERN
-          (send
-            (send
-              (const
-                {nil? | cbase}
-                :Time
-              )
-              :zone
-            )
-            :today
+            %1
           )
         PATTERN
 
@@ -279,21 +299,6 @@ module RuboCop
         end
 
         # @param corrector [RuboCop::Cop::Corrector]
-        # @param node [RuboCop::AST::SendNode]
-        # @return [void]
-        def autocorrect_to_date_current(
-          corrector,
-          node
-        )
-          corrector.replace(
-            node.location.expression.with(
-              begin_pos: node.receiver.receiver.location.name.begin_pos # To keep `::`.
-            ),
-            'Date.current'
-          )
-        end
-
-        # @param corrector [RuboCop::Cop::Corrector]
         # @param helper_method_name [Symbol]
         # @param node [RuboCop::AST::SendNode]
         # @return [void]
@@ -309,21 +314,6 @@ module RuboCop
               duration: node.first_argument.source,
               helper_method_name: helper_method_name
             )
-          )
-        end
-
-        # @param corrector [RuboCop::Cop::Corrector]
-        # @param node [RuboCop::AST::SendNode]
-        # @return [void]
-        def autocorrect_to_time_current(
-          corrector,
-          node
-        )
-          corrector.replace(
-            node.location.expression.with(
-              begin_pos: node.receiver.receiver.location.name.begin_pos # To keep `::`.
-            ),
-            'Time.current'
           )
         end
 
@@ -358,12 +348,13 @@ module RuboCop
         # @param node [RuboCop::AST::SendNode]
         # @return [void]
         def check_now(node)
-          return unless time_zone_now?(node)
+          return unless time_zone_with?(node, :now)
 
           add_offense(node) do |corrector|
-            autocorrect_to_time_current(
-              corrector,
-              node
+            replace_keeping_cbase(
+              corrector: corrector,
+              node: node,
+              with: 'Time.current'
             )
           end
         end
@@ -385,12 +376,62 @@ module RuboCop
         # @param node [RuboCop::AST::SendNode]
         # @return [void]
         def check_today(node)
-          return unless time_zone_today?(node)
+          check_today_as_date_current_today(node)
+          check_today_as_time_zone_today(node)
+        end
+
+        # @param node [RuboCop::AST::SendNode]
+        # @return [void]
+        def check_today_as_date_current_today(node)
+          return unless date_current_with?(node, :today)
 
           add_offense(node) do |corrector|
-            autocorrect_to_date_current(
-              corrector,
-              node
+            replace_keeping_cbase(
+              corrector: corrector,
+              node: node,
+              with: 'Date.current'
+            )
+          end
+        end
+
+        # @param node [RuboCop::AST::SendNode]
+        # @return [void]
+        def check_today_as_time_zone_today(node)
+          return unless time_zone_with?(node, :today)
+
+          add_offense(node) do |corrector|
+            replace_keeping_cbase(
+              corrector: corrector,
+              node: node,
+              with: 'Date.current'
+            )
+          end
+        end
+
+        # @param node [RuboCop::AST::SendNode]
+        # @return [void]
+        def check_tomorrow(node)
+          return unless date_current_with?(node, :tomorrow)
+
+          add_offense(node) do |corrector|
+            replace_keeping_cbase(
+              corrector: corrector,
+              node: node,
+              with: 'Date.tomorrow'
+            )
+          end
+        end
+
+        # @param node [RuboCop::AST::SendNode]
+        # @return [void]
+        def check_yesterday(node)
+          return unless date_current_with?(node, :yesterday)
+
+          add_offense(node) do |corrector|
+            replace_keeping_cbase(
+              corrector: corrector,
+              node: node,
+              with: 'Date.yesterday'
             )
           end
         end
@@ -413,6 +454,23 @@ module RuboCop
           else
             :past?
           end
+        end
+
+        # @param corrector [RuboCop::Cop::Corrector]
+        # @param node [RuboCop::AST::SendNode]
+        # @param with [String]
+        # @return [void]
+        def replace_keeping_cbase(
+          corrector:,
+          node:,
+          with:
+        )
+          corrector.replace(
+            node.location.expression.with(
+              begin_pos: node.each_descendant(:const).first.location.name.begin_pos
+            ),
+            with
+          )
         end
       end
     end
