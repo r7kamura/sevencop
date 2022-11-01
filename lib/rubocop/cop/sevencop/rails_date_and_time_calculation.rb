@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Sevencop
-      # Prefer ActiveSupport time helper.
+      # Prefer ActiveSupport date and time helper.
       #
       # @safety
       #   This cop is unsafe becuase it considers that `n.days` is a Duration,
@@ -105,7 +105,7 @@ module RuboCop
       #
       #   # good
       #   time.past?
-      class RailsRelativeTimeCalculation < Base
+      class RailsDateAndTimeCalculation < Base
         extend AutoCorrector
 
         CALCULATION_METHOD_NAMES = ::Set.new(
@@ -145,7 +145,7 @@ module RuboCop
           ]
         ).freeze
 
-        MSG = 'Prefer ActiveSupport time helper.'
+        MSG = 'Prefer ActiveSupport date and time helper.'
 
         RESTRICT_ON_SEND = [
           *CALCULATION_METHOD_NAMES,

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
+RSpec.describe RuboCop::Cop::Sevencop::RailsDateAndTimeCalculation, :config do
   context 'with `Time.zone.now`' do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         Time.zone.now
-        ^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -18,7 +18,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         ::Time.zone.now
-        ^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -31,7 +31,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         Time.zone.today
-        ^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -44,7 +44,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         ::Time.zone.today
-        ^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -57,7 +57,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         Time.current.to_date
-        ^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -70,7 +70,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         Date.current.tomorrow
-        ^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -83,7 +83,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         Date.current.yesterday
-        ^^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -96,7 +96,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         date == Date.current
-        ^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -109,7 +109,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         Date.current == date
-        ^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -122,7 +122,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         date == Date.tomorrow
-        ^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -135,7 +135,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         Date.tomorrow == date
-        ^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -148,7 +148,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         date == Date.yesterday
-        ^^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -161,7 +161,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         Date.yesterday == date
-        ^^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -174,7 +174,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         Time.current - n.days
-        ^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -187,7 +187,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         Time.current + n.days
-        ^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -200,7 +200,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         ::Time.current - n.days
-        ^^^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -213,7 +213,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         Date.current - 1
-        ^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -226,7 +226,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         Date.current - 1.day
-        ^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -239,7 +239,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         Date.current + 1
-        ^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -252,7 +252,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         Date.current + 1.day
-        ^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -265,7 +265,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         time > Time.current
-        ^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -278,7 +278,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         time.after?(Time.current)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -291,7 +291,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         Time.current < time
-        ^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -304,7 +304,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         Time.current.before?(time)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -317,7 +317,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         time < Time.current
-        ^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -330,7 +330,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         time.before?(Time.current)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -343,7 +343,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         Time.current > time
-        ^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -356,7 +356,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         Time.current.after?(time)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport date and time helper.
       RUBY
 
       expect_correction(<<~RUBY)

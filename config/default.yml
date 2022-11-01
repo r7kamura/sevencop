@@ -91,6 +91,13 @@ Sevencop/RailsBelongsToOptional:
   Safe: false
   VersionAdded: '0.5'
 
+Sevencop/RailsDateAndTimeCalculation:
+  Description: |
+    Prefer ActiveSupport date and time helper.
+  Enabled: false
+  Safe: false
+  VersionAdded: '0.26'
+
 Sevencop/RailsInferredSpecType:
   Description: |
     Identifies redundant spec type.
@@ -104,13 +111,6 @@ Sevencop/RailsOrderField:
   Enabled: false
   Safe: false
   VersionAdded: '0.4'
-
-Sevencop/RailsRelativeTime:
-  Description: |
-    Prefer ActiveSupport time helper.
-  Enabled: false
-  Safe: false
-  VersionAdded: '0.26'
 
 Sevencop/RailsUniquenessValidatorExplicitCaseSensitivity:
   Description: |
