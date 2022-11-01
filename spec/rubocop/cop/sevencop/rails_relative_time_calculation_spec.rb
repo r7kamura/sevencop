@@ -79,6 +79,84 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsRelativeTimeCalculation, :config do
     end
   end
 
+  context 'with `date == Date.current`' do
+    it 'registers an offense' do
+      expect_offense(<<~RUBY)
+        date == Date.current
+        ^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+      RUBY
+
+      expect_correction(<<~RUBY)
+        date.today?
+      RUBY
+    end
+  end
+
+  context 'with `Date.current == date`' do
+    it 'registers an offense' do
+      expect_offense(<<~RUBY)
+        Date.current == date
+        ^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+      RUBY
+
+      expect_correction(<<~RUBY)
+        date.today?
+      RUBY
+    end
+  end
+
+  context 'with `date == Date.tomorrow`' do
+    it 'registers an offense' do
+      expect_offense(<<~RUBY)
+        date == Date.tomorrow
+        ^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+      RUBY
+
+      expect_correction(<<~RUBY)
+        date.tomorrow?
+      RUBY
+    end
+  end
+
+  context 'with `Date.tomorrow == date`' do
+    it 'registers an offense' do
+      expect_offense(<<~RUBY)
+        Date.tomorrow == date
+        ^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+      RUBY
+
+      expect_correction(<<~RUBY)
+        date.tomorrow?
+      RUBY
+    end
+  end
+
+  context 'with `date == Date.yesterday`' do
+    it 'registers an offense' do
+      expect_offense(<<~RUBY)
+        date == Date.yesterday
+        ^^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+      RUBY
+
+      expect_correction(<<~RUBY)
+        date.yesterday?
+      RUBY
+    end
+  end
+
+  context 'with `Date.yesterday == date`' do
+    it 'registers an offense' do
+      expect_offense(<<~RUBY)
+        Date.yesterday == date
+        ^^^^^^^^^^^^^^^^^^^^^^ Prefer ActiveSupport time helper.
+      RUBY
+
+      expect_correction(<<~RUBY)
+        date.yesterday?
+      RUBY
+    end
+  end
+
   context 'with `Time.current - n.days`' do
     it 'registers an offense' do
       expect_offense(<<~RUBY)

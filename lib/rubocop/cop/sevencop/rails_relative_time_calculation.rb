@@ -6,7 +6,8 @@ module RuboCop
       # Prefer ActiveSupport time helper.
       #
       # @safety
-      #   This cop is unsafe because method calls such as `n.days` cannot be precisely identified as derived from ActiveSupport.
+      #   This cop is unsafe.
+      #   This cop considers `n.days` is a Duration, and `date` in `date == Date.current` is a Date, but there is no guarantee.
       #
       # @example
       #   # bad
@@ -32,6 +33,27 @@ module RuboCop
       #
       #   # good
       #   Date.yesterday
+      #
+      #   # bad
+      #   date == Date.current
+      #   Date.current == date
+      #
+      #   # good
+      #   date.today?
+      #
+      #   # bad
+      #   date == Date.tomorrow
+      #   Date.tomorrow == date
+      #
+      #   # good
+      #   date.tomorrow?
+      #
+      #   # bad
+      #   date == Date.yesterday
+      #   Date.yesterday == date
+      #
+      #   # good
+      #   date.yesterday?
       #
       #   # bad
       #   Time.current - n.days
@@ -108,6 +130,7 @@ module RuboCop
         RESTRICT_ON_SEND = [
           *CALCULATION_METHOD_NAMES,
           *COMPARISON_METHOD_NAMES,
+          :==,
           :now,
           :today,
           :tomorrow,
@@ -122,6 +145,8 @@ module RuboCop
             check_subtraction(node)
           when :+
             check_addition(node)
+          when :==
+            check_equality(node)
           when :<, :before?
             check_less_than(node)
           when :>, :after?
@@ -139,10 +164,10 @@ module RuboCop
 
         private
 
-        # @!method comparison_to_current?(node)
+        # @!method comparison_to_time_current?(node)
         #   @param node [RuboCop::AST::Node]
         #   @return [Boolean]
-        def_node_matcher :comparison_to_current?, <<~PATTERN
+        def_node_matcher :comparison_to_time_current?, <<~PATTERN
           {
             #comparison_for_future? |
               #comparison_for_past?
@@ -154,30 +179,30 @@ module RuboCop
         #   @return [Boolean]
         def_node_matcher :comparison_for_future?, <<~PATTERN
           {
-            #comparison_for_future_with_current_left? |
-              #comparison_for_future_with_current_right?
+            #comparison_for_future_with_time_current_left? |
+              #comparison_for_future_with_time_current_right?
           }
         PATTERN
 
-        # @!method comparison_for_future_with_current_left?(node)
+        # @!method comparison_for_future_with_time_current_left?(node)
         #   @param node [RuboCop::AST::Node]
         #   @return [Boolean]
-        def_node_matcher :comparison_for_future_with_current_left?, <<~PATTERN
+        def_node_matcher :comparison_for_future_with_time_current_left?, <<~PATTERN
           (send
-            #current?
+            #time_current?
             {:< | :before?}
             _
           )
         PATTERN
 
-        # @!method comparison_for_future_with_current_right?(node)
+        # @!method comparison_for_future_with_time_current_right?(node)
         #   @param node [RuboCop::AST::Node]
         #   @return [Boolean]
-        def_node_matcher :comparison_for_future_with_current_right?, <<~PATTERN
+        def_node_matcher :comparison_for_future_with_time_current_right?, <<~PATTERN
           (send
             _
             {:> | :after?}
-            #current?
+            #time_current?
           )
         PATTERN
 
@@ -186,43 +211,57 @@ module RuboCop
         #   @return [Boolean]
         def_node_matcher :comparison_for_past?, <<~PATTERN
           {
-            #comparison_for_past_with_current_left? |
-              #comparison_for_past_with_current_right?
+            #comparison_for_past_with_time_current_left? |
+              #comparison_for_past_with_time_current_right?
           }
         PATTERN
 
-        # @!method comparison_for_past_with_current_left?(node)
+        # @!method comparison_for_past_with_time_current_left?(node)
         #   @param node [RuboCop::AST::Node]
         #   @return [Boolean]
-        def_node_matcher :comparison_for_past_with_current_left?, <<~PATTERN
+        def_node_matcher :comparison_for_past_with_time_current_left?, <<~PATTERN
           (send
-            #current?
+            #time_current?
             {:> | :after?}
             _
           )
         PATTERN
 
-        # @!method comparison_for_past_with_current_right?(node)
+        # @!method comparison_for_past_with_time_current_right?(node)
         #   @param node [RuboCop::AST::Node]
         #   @return [Boolean]
-        def_node_matcher :comparison_for_past_with_current_right?, <<~PATTERN
+        def_node_matcher :comparison_for_past_with_time_current_right?, <<~PATTERN
           (send
             _
             {:< | :before?}
-            #current?
+            #time_current?
           )
         PATTERN
 
-        # @!method current?(node)
+        # @!method time_current?(node)
         #   @param node [RuboCop::AST::Node]
         #   @return [Boolean]
-        def_node_matcher :current?, <<~PATTERN
+        def_node_matcher :time_current?, <<~PATTERN
           (send
             (const
               {nil? | cbase}
               :Time
             )
             :current
+          )
+        PATTERN
+
+        # @!method date_with?(node, method_name)
+        #   @param node [RuboCop::AST::Node]
+        #   @param method_name [Symbol]
+        #   @return [Boolean]
+        def_node_matcher :date_with?, <<~PATTERN
+          (send
+            (const
+              {nil? | cbase}
+              :Date
+            )
+            %1
           )
         PATTERN
 
@@ -253,14 +292,38 @@ module RuboCop
           )
         PATTERN
 
-        # @!method duration_calculation_to_current?(node)
+        # @!method duration_calculation_to_time_current?(node)
         #   @param node [RuboCop::AST::Node]
         #   @return [Boolean]
-        def_node_matcher :duration_calculation_to_current?, <<~PATTERN
+        def_node_matcher :duration_calculation_to_time_current?, <<~PATTERN
           (send
-            #current?
+            #time_current?
             _
             #duration?
+          )
+        PATTERN
+
+        # @!method equals_to_date_with_left?(node, method_name)
+        #   @param node [RuboCop::AST::Node]
+        #   @param method_name [Symbol]
+        #   @return [Boolean]
+        def_node_matcher :equals_to_date_with_left?, <<~PATTERN
+          (send
+            #date_with?(%1)
+            :==
+            _
+          )
+        PATTERN
+
+        # @!method equals_to_date_with_right?(node, method_name)
+        #   @param node [RuboCop::AST::Node]
+        #   @param method_name [Symbol]
+        #   @return [Boolean]
+        def_node_matcher :equals_to_date_with_right?, <<~PATTERN
+          (send
+            _
+            :==
+            #date_with?(%1)
           )
         PATTERN
 
@@ -284,7 +347,7 @@ module RuboCop
         # @param corrector [RuboCop::Cop::Corrector]
         # @param node [RuboCop::AST::SendNode]
         # @return [void]
-        def autocorrect_to_comparison_helper(
+        def autocorrect_to_comparison_helper_for_time_current(
           corrector,
           node
         )
@@ -293,7 +356,7 @@ module RuboCop
             format(
               '%<time>s.%<helper_method_name>s',
               helper_method_name: helper_method_name_for_comparison(node),
-              time: find_comparison_subject(node).source
+              time: find_comparison_subject_to_time_current(node).source
             )
           )
         end
@@ -317,10 +380,31 @@ module RuboCop
           )
         end
 
+        # @param corrector [RuboCop::Cop::Corrector]
+        # @param date_method_name [Symbol]
+        # @param helper_method_name [Symbol]
+        # @param node [RuboCop::AST::SendNode]
+        # @return [void]
+        def autocorrect_to_equality_helper_for_date(
+          corrector,
+          node,
+          date_method_name:,
+          helper_method_name:
+        )
+          corrector.replace(
+            node,
+            format(
+              '%<date>s.%<helper_method_name>s',
+              date: find_equality_subject_to_date_with(node, date_method_name).source,
+              helper_method_name: helper_method_name
+            )
+          )
+        end
+
         # @param node [RuboCop::AST::SendNode]
         # @return [void]
         def check_addition(node)
-          return unless duration_calculation_to_current?(node)
+          return unless duration_calculation_to_time_current?(node)
 
           add_offense(node) do |corrector|
             autocorrect_to_duration_helper(
@@ -333,11 +417,64 @@ module RuboCop
 
         # @param node [RuboCop::AST::SendNode]
         # @return [void]
-        def check_greater_than(node)
-          return unless comparison_to_current?(node)
+        def check_equality(node)
+          check_equality_to_date_current(node)
+          check_equality_to_date_tomorrow(node)
+          check_equality_to_date_yesterday(node)
+        end
+
+        # @param node [RuboCop::AST::SendNode]
+        # @return [void]
+        def check_equality_to_date_current(node)
+          return unless equals_to_date_with?(node, :current)
 
           add_offense(node) do |corrector|
-            autocorrect_to_comparison_helper(
+            autocorrect_to_equality_helper_for_date(
+              corrector,
+              node,
+              date_method_name: :current,
+              helper_method_name: :today?
+            )
+          end
+        end
+
+        # @param node [RuboCop::AST::SendNode]
+        # @return [void]
+        def check_equality_to_date_tomorrow(node)
+          return unless equals_to_date_with?(node, :tomorrow)
+
+          add_offense(node) do |corrector|
+            autocorrect_to_equality_helper_for_date(
+              corrector,
+              node,
+              date_method_name: :tomorrow,
+              helper_method_name: :tomorrow?
+            )
+          end
+        end
+
+        # @param node [RuboCop::AST::SendNode]
+        # @return [void]
+        def check_equality_to_date_yesterday(node)
+          return unless equals_to_date_with?(node, :yesterday)
+
+          add_offense(node) do |corrector|
+            autocorrect_to_equality_helper_for_date(
+              corrector,
+              node,
+              date_method_name: :yesterday,
+              helper_method_name: :yesterday?
+            )
+          end
+        end
+
+        # @param node [RuboCop::AST::SendNode]
+        # @return [void]
+        def check_greater_than(node)
+          return unless comparison_to_time_current?(node)
+
+          add_offense(node) do |corrector|
+            autocorrect_to_comparison_helper_for_time_current(
               corrector,
               node
             )
@@ -362,7 +499,7 @@ module RuboCop
         # @param node [RuboCop::AST::SendNode]
         # @return [void]
         def check_subtraction(node)
-          return unless duration_calculation_to_current?(node)
+          return unless duration_calculation_to_time_current?(node)
 
           add_offense(node) do |corrector|
             autocorrect_to_duration_helper(
@@ -376,13 +513,13 @@ module RuboCop
         # @param node [RuboCop::AST::SendNode]
         # @return [void]
         def check_today(node)
-          check_today_as_date_current_today(node)
-          check_today_as_time_zone_today(node)
+          check_today_to_date_current(node)
+          check_today_to_time_zone(node)
         end
 
         # @param node [RuboCop::AST::SendNode]
         # @return [void]
-        def check_today_as_date_current_today(node)
+        def check_today_to_date_current(node)
           return unless date_current_with?(node, :today)
 
           add_offense(node) do |corrector|
@@ -396,7 +533,7 @@ module RuboCop
 
         # @param node [RuboCop::AST::SendNode]
         # @return [void]
-        def check_today_as_time_zone_today(node)
+        def check_today_to_time_zone(node)
           return unless time_zone_with?(node, :today)
 
           add_offense(node) do |corrector|
@@ -437,9 +574,34 @@ module RuboCop
         end
 
         # @param node [RuboCop::AST::SendNode]
+        # @param method_name [Symbol]
+        # @return [Boolean]
+        def equals_to_date_with?(
+          node,
+          method_name
+        )
+          equals_to_date_with_left?(node, method_name) ||
+            equals_to_date_with_right?(node, method_name)
+        end
+
+        # @param node [RuboCop::AST::SendNode]
         # @return [RuboCop::AST::Node]
-        def find_comparison_subject(node)
-          if current?(node.receiver)
+        def find_comparison_subject_to_time_current(node)
+          if time_current?(node.receiver)
+            node.first_argument
+          else
+            node.receiver
+          end
+        end
+
+        # @param node [RuboCop::AST::SendNode]
+        # @param method_name [Symbol]
+        # @return [RuboCop::AST::Node]
+        def find_equality_subject_to_date_with(
+          node,
+          method_name
+        )
+          if date_with?(node.receiver, method_name)
             node.first_argument
           else
             node.receiver
