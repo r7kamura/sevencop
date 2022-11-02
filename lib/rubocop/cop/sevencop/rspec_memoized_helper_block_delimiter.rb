@@ -7,7 +7,7 @@ module RuboCop
     module Sevencop
       # Use do-end block delimiter on RSpec memoized helper.
       #
-      # Since these helpers are in effect method definitions, they should be written in the same style as `def`.
+      # Since these helpers define methods, they should be written in the same style as `def`.
       #
       # @example
       #   # bad
