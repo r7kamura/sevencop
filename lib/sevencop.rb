@@ -21,5 +21,6 @@ require_relative 'rubocop/cop/sevencop/rails_uniqueness_validator_explicit_case_
 require_relative 'rubocop/cop/sevencop/rails_where_not'
 require_relative 'rubocop/cop/sevencop/require_ordered'
 require_relative 'rubocop/cop/sevencop/rspec_describe_http_endpoint'
+require_relative 'rubocop/cop/sevencop/rspec_empty_line_after_let'
 require_relative 'rubocop/cop/sevencop/rspec_examples_in_same_group'
 require_relative 'rubocop/cop/sevencop/rspec_memoized_helper_block_delimiter'

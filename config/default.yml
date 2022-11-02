@@ -141,6 +141,14 @@ Sevencop/RSpecDescribeHttpEndpoint:
   Include:
     - spec/requests/**/*.rb
 
+Sevencop/RSpecEmptyLineAfterLet:
+  Description: |
+    Insert empty line after `let`.
+  Enabled: false
+  VersionAdded: '0.27'
+  Include:
+    - spec/**/*
+
 Sevencop/RSpecExamplesInSameGroup:
   Description: |
     Combine examples in the same groups in the time-consuming kinds of specs.
