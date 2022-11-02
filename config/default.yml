@@ -150,3 +150,11 @@ Sevencop/RSpecExamplesInSameGroup:
   Include:
     - spec/controllers/**/*
     - spec/requests/**/*
+
+Sevencop/RSpecMemoizedHelperBlockDelimiter:
+  Description: |
+    Use do-end block delimiter on RSpec memoized helper.
+  Enabled: false
+  VersionAdded: '0.27'
+  Include:
+    - spec/**/*

@@ -46,6 +46,7 @@ Note that all cops are `Enabled: false` by default.
 - [Sevencop/RequireOrdered](lib/rubocop/cop/sevencop/require_ordered.rb)
 - [Sevencop/RSpecDescribeHttpEndpoint](lib/rubocop/cop/sevencop/rspec_describe_http_endpoint.rb)
 - [Sevencop/RSpecExamplesInSameGroup](lib/rubocop/cop/sevencop/rspec_examples_in_same_group.rb)
+- [Sevencop/RSpecMemoizedHelperBlockDelimiter](lib/rubocop/cop/sevencop/rspec_memoized_helper_block_delimiter.rb)
 
 ## Notes
 
