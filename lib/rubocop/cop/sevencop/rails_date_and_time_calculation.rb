@@ -8,7 +8,7 @@ module RuboCop
       # Prefer ActiveSupport date and time helper.
       #
       # @safety
-      #   This cop is unsafe becuase it considers that `n.days` is a Duration,
+      #   This cop is unsafe because it considers that `n.days` is a Duration,
       #   and `date` in `date == Date.current` is a Date, but there is no guarantee.
       #
       # @example
