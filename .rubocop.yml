@@ -32,6 +32,7 @@ RSpec/ExampleLength:
 RSpec/FilePath:
   CustomTransform:
     RSpecDescribeHttpEndpoint: rspec_describe_http_endpoint
+    RSpecEmptyLineAfterLet: rspec_empty_line_after_let
     RSpecExamplesInSameGroup: rspec_examples_in_same_group
     RSpecMemoizedHelperBlockDelimiter: rspec_memoized_helper_block_delimiter
 
