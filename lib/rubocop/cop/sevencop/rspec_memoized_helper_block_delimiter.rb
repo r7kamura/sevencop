@@ -56,7 +56,11 @@ module RuboCop
           (block
             (send
               nil?
-              {:let :subject}
+              {
+                :let
+                :let!
+                :subject
+              }
               ...
             )
             ...
