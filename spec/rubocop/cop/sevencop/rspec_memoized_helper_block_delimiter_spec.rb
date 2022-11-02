@@ -36,6 +36,23 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecMemoizedHelperBlockDelimiter, :confi
     end
   end
 
+  context 'when braces is used on `let!`' do
+    it 'registers an offense' do
+      expect_offense(<<~RUBY)
+        let!(:foo) {
+                   ^ Use do-end block delimiter on RSpec memoized helper.
+          'bar'
+        }
+      RUBY
+
+      expect_correction(<<~RUBY)
+        let!(:foo) do
+          'bar'
+        end
+      RUBY
+    end
+  end
+
   context 'when braces is used on `subject` without name' do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
