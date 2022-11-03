@@ -71,7 +71,7 @@ module RuboCop
             _
             _
             _*
-            ({ hash | kwargs }
+            (hash
               (pair ...)*
               $(pair (sym :type) sym)
               (pair ...)*

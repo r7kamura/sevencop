@@ -22,7 +22,7 @@ module RuboCop
         def_node_matcher :rails_where_not_with_multiple_elements_hash?, <<~PATTERN
           (send
             (send _ :where) :not
-            ({ hash | kwargs }
+            (hash
               (pair _ _)
               (pair _ _)+))
         PATTERN
