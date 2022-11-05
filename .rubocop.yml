@@ -39,6 +39,7 @@ RSpec/FilePath:
     RSpecEmptyLineAfterLet: rspec_empty_line_after_let
     RSpecExamplesInSameGroup: rspec_examples_in_same_group
     RSpecMemoizedHelperBlockDelimiter: rspec_memoized_helper_block_delimiter
+    RSpecRailsResponseParsedBody: rspec_rails_response_parsed_body
 
 RSpec/MultipleExpectations:
   Enabled: false
