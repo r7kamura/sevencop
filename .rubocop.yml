@@ -16,6 +16,10 @@ Gemspec/RequireMFA:
 Layout/LineLength:
   Enabled: false
 
+Lint/UselessAccessModifier:
+  MethodCreatingMethods:
+    - def_node_matcher
+
 Metrics:
   Enabled: false
 
