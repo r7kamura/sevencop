@@ -45,7 +45,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsSpecificActionName, :config do
       expect_offense(<<~RUBY)
         class UsersController < ApplicationController
           def articles
-              ^^^^^^^^ Use only specific action names.
+              ^^^^^^^^ Use only specific action names (create, destroy, edit, index, new, show, update).
           end
         end
       RUBY
@@ -57,7 +57,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsSpecificActionName, :config do
       expect_offense(<<~RUBY)
         module UsersConcern
           def articles
-              ^^^^^^^^ Use only specific action names.
+              ^^^^^^^^ Use only specific action names (create, destroy, edit, index, new, show, update).
           end
         end
       RUBY
