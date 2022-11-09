@@ -2,7 +2,7 @@
 
 RSpec.describe RuboCop::Cop::Sevencop::RailsSpecificActionName, :config do
   context 'when non configured name is used for private method' do
-    it 'does not register an offense' do
+    it 'registers no offense' do
       expect_no_offenses(<<~RUBY)
         class UsersController < ApplicationController
           private
@@ -15,7 +15,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsSpecificActionName, :config do
   end
 
   context 'when configured name is used for public method' do
-    it 'does not register an offense' do
+    it 'registers no offense' do
       expect_no_offenses(<<~RUBY)
         class UsersController < ApplicationController
           def index
@@ -30,7 +30,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsSpecificActionName, :config do
       { 'ActionNames' => %w[articles] }
     end
 
-    it 'does not register an offense' do
+    it 'registers no offense' do
       expect_no_offenses(<<~RUBY)
         class UsersController < ApplicationController
           def articles
@@ -41,7 +41,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsSpecificActionName, :config do
   end
 
   context 'when non configured name is used for public method' do
-    it 'registers an offense' do
+    it 'registers offense' do
       expect_offense(<<~RUBY)
         class UsersController < ApplicationController
           def articles
@@ -53,7 +53,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsSpecificActionName, :config do
   end
 
   context 'when non configured name is used for public method in a concern module' do
-    it 'registers an offense' do
+    it 'registers offense' do
       expect_offense(<<~RUBY)
         module UsersConcern
           def articles

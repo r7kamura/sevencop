@@ -18,7 +18,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderField, :config do
   end
 
   context 'with receiver' do
-    it 'autocorrects offense' do
+    it 'registers offense' do
       expect_offense(<<~TEXT)
         articles.order('field(id, ?)', a)
                        ^^^^^^^^^^^^^^ Wrap safe SQL String by `Arel.sql`.
@@ -31,7 +31,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderField, :config do
   end
 
   context 'without receiver' do
-    it 'autocorrects offense' do
+    it 'registers offense' do
       expect_offense(<<~TEXT)
         order('field(id, ?)', a)
               ^^^^^^^^^^^^^^ Wrap safe SQL String by `Arel.sql`.
@@ -44,7 +44,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderField, :config do
   end
 
   context 'with FIELD' do
-    it 'autocorrects offense' do
+    it 'registers offense' do
       expect_offense(<<~TEXT)
         order('FIELD(id, ?)', a)
               ^^^^^^^^^^^^^^ Wrap safe SQL String by `Arel.sql`.
@@ -57,7 +57,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderField, :config do
   end
 
   context 'with reorder' do
-    it 'autocorrects offense' do
+    it 'registers offense' do
       expect_offense(<<~TEXT)
         reorder('field(id, ?)', a)
                 ^^^^^^^^^^^^^^ Wrap safe SQL String by `Arel.sql`.
@@ -70,7 +70,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderField, :config do
   end
 
   context 'with dstr' do
-    it 'autocorrects offense' do
+    it 'registers offense' do
       expect_offense(<<~'TEXT')
         articles.order("field(id, #{ids.join(', ')})")
                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Wrap safe SQL String by `Arel.sql`.

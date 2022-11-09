@@ -3,7 +3,7 @@
 RSpec.describe RuboCop::Cop::Sevencop::FactoryBotAssociationStyle, :config do
   context 'when EnforcedStyle is implicit' do
     context 'when implicit style is used' do
-      it 'does not register an offense' do
+      it 'registers no offense' do
         expect_no_offenses(<<~RUBY)
           factory :article do
             user
@@ -13,7 +13,7 @@ RSpec.describe RuboCop::Cop::Sevencop::FactoryBotAssociationStyle, :config do
     end
 
     context 'when `association` has more than 1 argument' do
-      it 'does not register an offense' do
+      it 'registers no offense' do
         expect_no_offenses(<<~TEXT)
           factory :article do
             association :author, factory: :user
@@ -23,7 +23,7 @@ RSpec.describe RuboCop::Cop::Sevencop::FactoryBotAssociationStyle, :config do
     end
 
     context 'when `association` is called in attribute block' do
-      it 'does not register an offense' do
+      it 'registers no offense' do
         expect_no_offenses(<<~TEXT)
           factory :article do
             author do
@@ -35,7 +35,7 @@ RSpec.describe RuboCop::Cop::Sevencop::FactoryBotAssociationStyle, :config do
     end
 
     context 'when `association` has only 1 argument' do
-      it 'registers and corrects an offense' do
+      it 'registers offense' do
         expect_offense(<<~TEXT)
           factory :article do
             association :user
@@ -58,7 +58,7 @@ RSpec.describe RuboCop::Cop::Sevencop::FactoryBotAssociationStyle, :config do
     end
 
     context 'when explicit style is used' do
-      it 'does not register an offense' do
+      it 'registers no offense' do
         expect_no_offenses(<<~RUBY)
           factory :article do
             association :user
@@ -68,7 +68,7 @@ RSpec.describe RuboCop::Cop::Sevencop::FactoryBotAssociationStyle, :config do
     end
 
     context 'when implicit association is used' do
-      it 'registers and corrects an offense' do
+      it 'registers offense' do
         expect_offense(<<~TEXT)
           factory :article do
             user
@@ -85,7 +85,7 @@ RSpec.describe RuboCop::Cop::Sevencop::FactoryBotAssociationStyle, :config do
     end
 
     context 'when one of NonImplicitAssociationMethodNames is used' do
-      it 'does not register an offense' do
+      it 'registers no offense' do
         expect_no_offenses(<<~RUBY)
           factory :article do
             skip_create

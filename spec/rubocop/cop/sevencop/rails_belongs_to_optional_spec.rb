@@ -34,7 +34,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsBelongsToOptional, :config do
   end
 
   context 'without no options' do
-    it 'autocorrects offense' do
+    it 'registers offense' do
       expect_offense(<<~TEXT)
         belongs_to :group
         ^^^^^^^^^^^^^^^^^ Specify :optional option.
@@ -47,7 +47,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsBelongsToOptional, :config do
   end
 
   context 'with Hash options but no :optional element' do
-    it 'autocorrects offense' do
+    it 'registers offense' do
       expect_offense(<<~TEXT)
         belongs_to :group, class_name: 'Team'
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Specify :optional option.
@@ -60,7 +60,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsBelongsToOptional, :config do
   end
 
   context 'with scope' do
-    it 'autocorrects offense' do
+    it 'registers offense' do
       expect_offense(<<~TEXT)
         belongs_to :group, -> { a }
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^ Specify :optional option.

@@ -2,7 +2,7 @@
 
 RSpec.describe RuboCop::Cop::Sevencop::RailsWhereNot, :config do
   context 'with where.not with single element Hash' do
-    it 'does not register an offense' do
+    it 'registers no offense' do
       expect_no_offenses(<<~RUBY)
         where.not(key1: value1)
       RUBY
@@ -10,7 +10,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsWhereNot, :config do
   end
 
   context 'with where.not with multiple elements Hash' do
-    it 'registers an offense' do
+    it 'registers offense' do
       expect_offense(<<~RUBY)
         where.not(key1: value1, key2: value2)
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Use `where.not(key1: value1).where.not(key2: value2)` style.
@@ -23,7 +23,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsWhereNot, :config do
   end
 
   context 'with where.not with more multiple elements Hash' do
-    it 'registers an offense' do
+    it 'registers offense' do
       expect_offense(<<~RUBY)
         where.not(key1: value1, key2: value2, key3: value3)
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Use `where.not(key1: value1).where.not(key2: value2)` style.
