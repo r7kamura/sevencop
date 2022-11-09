@@ -2,7 +2,7 @@
 
 RSpec.describe RuboCop::Cop::Sevencop::RSpecEmptyLineAfterLet, :config do
   context 'with `let` as last child without following empty line' do
-    it 'does not register an offense' do
+    it 'registers no offense' do
       expect_no_offenses(<<~RUBY)
         context 'with something' do
           let(:foo) do
@@ -14,7 +14,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecEmptyLineAfterLet, :config do
   end
 
   context 'with `let` without following empty line' do
-    it 'registers an offense' do
+    it 'registers offense' do
       expect_offense(<<~RUBY)
         context 'with something' do
           let(:foo) do
@@ -42,7 +42,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecEmptyLineAfterLet, :config do
   end
 
   context 'with `let!` without following empty line' do
-    it 'registers an offense' do
+    it 'registers offense' do
       expect_offense(<<~RUBY)
         context 'with something' do
           let!(:foo) do

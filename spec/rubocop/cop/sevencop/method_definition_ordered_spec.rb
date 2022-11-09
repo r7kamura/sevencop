@@ -2,7 +2,7 @@
 
 RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionOrdered, :config do
   context 'when there is only 1 method in class' do
-    it 'does not register an offense' do
+    it 'registers no offense' do
       expect_no_offenses(<<~RUBY)
         class Foo
           def a
@@ -13,7 +13,7 @@ RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionOrdered, :config do
   end
 
   context 'when `def` is sorted' do
-    it 'does not register an offense' do
+    it 'registers no offense' do
       expect_no_offenses(<<~RUBY)
         def a
         end
@@ -25,7 +25,7 @@ RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionOrdered, :config do
   end
 
   context 'when `def` is not sorted' do
-    it 'registers an offense' do
+    it 'registers offense' do
       expect_offense(<<~RUBY)
         def b
         end
@@ -47,7 +47,7 @@ RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionOrdered, :config do
   end
 
   context 'when `def` is sorted in their section' do
-    it 'does not register an offense' do
+    it 'registers no offense' do
       expect_no_offenses(<<~RUBY)
         class Foo
           def c
@@ -69,7 +69,7 @@ RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionOrdered, :config do
   end
 
   context 'when `#initialize` is put before other instance methods' do
-    it 'does not register an offense' do
+    it 'registers no offense' do
       expect_no_offenses(<<~RUBY)
         class Foo
           def initialize
@@ -83,7 +83,7 @@ RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionOrdered, :config do
   end
 
   context 'when `#initialize` is put after other instance methods' do
-    it 'registers an offense' do
+    it 'registers offense' do
       expect_offense(<<~RUBY)
         class Foo
           def a
@@ -108,7 +108,7 @@ RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionOrdered, :config do
     end
 
     context 'when `defs` is not sorted' do
-      it 'registers an offense' do
+      it 'registers offense' do
         expect_offense(<<~RUBY)
           class Foo
             def self.b
@@ -134,7 +134,7 @@ RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionOrdered, :config do
     end
 
     context 'when unrelated visibility method call is put between unsorted `defs`' do
-      it 'registers an offense' do
+      it 'registers offense' do
         expect_offense(<<~RUBY)
           class Foo
             def self.b
@@ -164,7 +164,7 @@ RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionOrdered, :config do
     end
 
     context 'when there are sorted `defs` and `def`' do
-      it 'does not register an offense' do
+      it 'registers no offense' do
         expect_no_offenses(<<~RUBY)
           class Foo
             def self.a
@@ -184,7 +184,7 @@ RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionOrdered, :config do
     end
 
     context 'with some comments before def' do
-      it 'registers an offense' do
+      it 'registers offense' do
         expect_offense(<<~RUBY)
           class Foo
             # comment b
@@ -214,7 +214,7 @@ RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionOrdered, :config do
     end
 
     context 'with some comments in def' do
-      it 'registers an offense' do
+      it 'registers offense' do
         expect_offense(<<~RUBY)
           class Foo
             def b

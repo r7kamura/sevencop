@@ -2,7 +2,7 @@
 
 RSpec.describe RuboCop::Cop::Sevencop::RequireOrdered, :config do
   context 'when `require` is sorted' do
-    it 'does not register an offense' do
+    it 'registers no offense' do
       expect_no_offenses(<<~RUBY)
         require 'a'
         require 'b'
@@ -11,7 +11,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RequireOrdered, :config do
   end
 
   context 'when `require` is not sorted in different sections' do
-    it 'does not register an offense' do
+    it 'registers no offense' do
       expect_no_offenses(<<~RUBY)
         require 'b'
         require 'd'
@@ -23,7 +23,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RequireOrdered, :config do
   end
 
   context 'when `require` is not sorted' do
-    it 'registers an offense' do
+    it 'registers offense' do
       expect_offense(<<~TEXT)
         require 'b'
         require 'a'
@@ -38,7 +38,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RequireOrdered, :config do
   end
 
   context 'when unsorted `require` has some inline comments' do
-    it 'registers an offense' do
+    it 'registers offense' do
       expect_offense(<<~TEXT)
         require 'b' # comment
         require 'a'
@@ -53,7 +53,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RequireOrdered, :config do
   end
 
   context 'when unsorted `require` has some full-line comments' do
-    it 'registers an offense' do
+    it 'registers offense' do
       expect_offense(<<~TEXT)
         require 'b'
         # comment
@@ -70,7 +70,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RequireOrdered, :config do
   end
 
   context 'when `require_relative` is not sorted' do
-    it 'registers an offense' do
+    it 'registers offense' do
       expect_offense(<<~TEXT)
         require_relative 'b'
         require_relative 'a'
@@ -85,7 +85,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RequireOrdered, :config do
   end
 
   context 'when both `require` and `require_relative` are in same section' do
-    it 'does not register an offense' do
+    it 'registers no offense' do
       expect_no_offenses(<<~RUBY)
         require 'b'
         require_relative 'a'
@@ -94,7 +94,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RequireOrdered, :config do
   end
 
   context 'when `require_relative` is put between unsorted `require`' do
-    it 'does not register an offense' do
+    it 'registers no offense' do
       expect_no_offenses(<<~RUBY)
         require 'c'
         require_relative 'b'

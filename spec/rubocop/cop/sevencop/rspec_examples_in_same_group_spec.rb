@@ -2,7 +2,7 @@
 
 RSpec.describe RuboCop::Cop::Sevencop::RSpecExamplesInSameGroup, :config do
   context 'with single regular example in same group' do
-    it 'does not register an offense' do
+    it 'registers no offense' do
       expect_no_offenses(<<~RUBY)
         context 'when user is logged in' do
           before do
@@ -26,7 +26,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecExamplesInSameGroup, :config do
   end
 
   context 'with regular example and allowed inclusion in same group' do
-    it 'does not register an offense' do
+    it 'registers no offense' do
       expect_no_offenses(<<~RUBY)
         context 'when user is logged in' do
           before do
@@ -45,7 +45,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecExamplesInSameGroup, :config do
   end
 
   context 'with multiple regular examples in same group' do
-    it 'registers an offense' do
+    it 'registers offense' do
       expect_offense(<<~TEXT)
         context 'when user is logged in' do
           before do
@@ -71,7 +71,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecExamplesInSameGroup, :config do
       { 'IncludeSharedExamples' => true }
     end
 
-    it 'registers an offense' do
+    it 'registers offense' do
       expect_offense(<<~TEXT)
         context 'when user is logged in' do
           before do
@@ -95,7 +95,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecExamplesInSameGroup, :config do
       { 'IncludeSharedExamples' => true }
     end
 
-    it 'registers an offense' do
+    it 'registers offense' do
       expect_offense(<<~TEXT)
         context 'when user is logged in' do
           before do
@@ -120,7 +120,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecExamplesInSameGroup, :config do
       { 'IncludeSharedExamples' => true }
     end
 
-    it 'registers an offense' do
+    it 'registers offense' do
       expect_offense(<<~TEXT)
         context 'when user is logged in' do
           before do
@@ -144,7 +144,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecExamplesInSameGroup, :config do
       { 'IncludeSharedExamples' => true }
     end
 
-    it 'registers an offense' do
+    it 'registers offense' do
       expect_offense(<<~TEXT)
         context 'when user is logged in' do
           before do

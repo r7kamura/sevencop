@@ -2,7 +2,7 @@
 
 RSpec.describe RuboCop::Cop::Sevencop::AutoloadOrdered, :config do
   context 'when there is only one `autoload`' do
-    it 'does not register an offense' do
+    it 'registers no offense' do
       expect_no_offenses(<<~RUBY)
         class Foo
           autoload :A, 'a'
@@ -12,7 +12,7 @@ RSpec.describe RuboCop::Cop::Sevencop::AutoloadOrdered, :config do
   end
 
   context 'when `autoload` is sorted' do
-    it 'does not register an offense' do
+    it 'registers no offense' do
       expect_no_offenses(<<~RUBY)
         autoload :A, 'a'
         autoload :B, 'b'
@@ -21,7 +21,7 @@ RSpec.describe RuboCop::Cop::Sevencop::AutoloadOrdered, :config do
   end
 
   context 'when `autoload` is not sorted in different sections' do
-    it 'does not register an offense' do
+    it 'registers no offense' do
       expect_no_offenses(<<~RUBY)
         autoload :B, 'b'
         autoload :D, 'd'
@@ -33,7 +33,7 @@ RSpec.describe RuboCop::Cop::Sevencop::AutoloadOrdered, :config do
   end
 
   context 'when `autoload` is not sorted' do
-    it 'registers an offense' do
+    it 'registers offense' do
       expect_offense(<<~TEXT)
         autoload :B, 'b'
         autoload :A, 'a'
