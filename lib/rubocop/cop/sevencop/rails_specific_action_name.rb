@@ -17,7 +17,7 @@ module RuboCop
       #     def index
       #     end
       #   end
-      class RailsActionName < Base
+      class RailsSpecificActionName < Base
         include VisibilityHelp
 
         MSG = 'Use only specific action names.'
