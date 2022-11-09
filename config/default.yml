@@ -68,22 +68,6 @@ Sevencop/MethodDefinitionKeywordArgumentOrdered:
   Safe: false
   VersionAdded: '0.13'
 
-Sevencop/RailsActionName:
-  Description: |
-    Use only specific action names.
-  Enabled: false
-  VersionAdded: '0.24'
-  ActionNames:
-    - create
-    - destroy
-    - edit
-    - index
-    - new
-    - show
-    - update
-  Include:
-    - app/controllers/**/*.rb
-
 Sevencop/RailsBelongsToOptional:
   Description: |
     Force `belongs_to` with `optional: true` option.
@@ -111,6 +95,23 @@ Sevencop/RailsOrderField:
   Enabled: false
   Safe: false
   VersionAdded: '0.4'
+
+Sevencop/RailsSpecificActionName:
+  Description: |
+    Use only specific action names.
+  Enabled: false
+  VersionAdded: '0.24'
+  VersionChanged: '0.29'
+  ActionNames:
+    - create
+    - destroy
+    - edit
+    - index
+    - new
+    - show
+    - update
+  Include:
+    - app/controllers/**/*.rb
 
 Sevencop/RailsUniquenessValidatorExplicitCaseSensitivity:
   Description: |
