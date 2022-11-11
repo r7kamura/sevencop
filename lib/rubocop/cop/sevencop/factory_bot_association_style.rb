@@ -148,6 +148,7 @@ module RuboCop
           block = node.parent
           return [] unless block
           return [] unless block.block_type?
+          return [] unless block.body
 
           if block.body.begin_type?
             block.body.children
