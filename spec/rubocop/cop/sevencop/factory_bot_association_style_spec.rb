@@ -12,6 +12,15 @@ RSpec.describe RuboCop::Cop::Sevencop::FactoryBotAssociationStyle, :config do
       end
     end
 
+    context 'when empty block' do
+      it 'registers no offense' do
+        expect_no_offenses(<<~RUBY)
+          factory :article do
+          end
+        RUBY
+      end
+    end
+
     context 'when `association` has more than 1 argument' do
       it 'registers no offense' do
         expect_no_offenses(<<~TEXT)
