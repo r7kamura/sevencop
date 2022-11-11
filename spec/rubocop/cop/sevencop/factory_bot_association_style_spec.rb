@@ -23,34 +23,34 @@ RSpec.describe RuboCop::Cop::Sevencop::FactoryBotAssociationStyle, :config do
 
     context 'when `association` has more than 1 argument' do
       it 'registers no offense' do
-        expect_no_offenses(<<~TEXT)
+        expect_no_offenses(<<~RUBY)
           factory :article do
             association :author, factory: :user
           end
-        TEXT
+        RUBY
       end
     end
 
     context 'when `association` is called in attribute block' do
       it 'registers no offense' do
-        expect_no_offenses(<<~TEXT)
+        expect_no_offenses(<<~RUBY)
           factory :article do
             author do
               association :user
             end
           end
-        TEXT
+        RUBY
       end
     end
 
     context 'when `association` has only 1 argument' do
       it 'registers offense' do
-        expect_offense(<<~TEXT)
+        expect_offense(<<~RUBY)
           factory :article do
             association :user
             ^^^^^^^^^^^^^^^^^ Use consistent style in FactoryBot associations.
           end
-        TEXT
+        RUBY
 
         expect_correction(<<~RUBY)
           factory :article do
@@ -78,12 +78,12 @@ RSpec.describe RuboCop::Cop::Sevencop::FactoryBotAssociationStyle, :config do
 
     context 'when implicit association is used' do
       it 'registers offense' do
-        expect_offense(<<~TEXT)
+        expect_offense(<<~RUBY)
           factory :article do
             user
             ^^^^ Use consistent style in FactoryBot associations.
           end
-        TEXT
+        RUBY
 
         expect_correction(<<~RUBY)
           factory :article do

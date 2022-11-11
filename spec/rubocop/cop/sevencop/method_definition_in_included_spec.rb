@@ -3,27 +3,27 @@
 RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionInIncluded, :config do
   context 'when method is defined not in included' do
     it 'registers no offense' do
-      expect_no_offenses(<<~TEXT)
+      expect_no_offenses(<<~RUBY)
         module A
           def foo
           end
         end
-      TEXT
+      RUBY
     end
   end
 
   context 'when method is defined at top-level' do
     it 'registers no offense' do
-      expect_no_offenses(<<~TEXT)
+      expect_no_offenses(<<~RUBY)
         def foo
         end
-      TEXT
+      RUBY
     end
   end
 
   context 'when method is defined in included' do
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         module A
           extend ::ActiveSupport::Concern
 
@@ -34,7 +34,7 @@ RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionInIncluded, :config do
             end
           end
         end
-      TEXT
+      RUBY
 
       expect_correction(<<~RUBY)
         module A
@@ -53,7 +53,7 @@ RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionInIncluded, :config do
 
   context 'when definition in included is private' do
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         module A
           extend ::ActiveSupport::Concern
 
@@ -66,7 +66,7 @@ RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionInIncluded, :config do
             end
           end
         end
-      TEXT
+      RUBY
 
       expect_correction(<<~RUBY)
         module A

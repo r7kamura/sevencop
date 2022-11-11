@@ -3,42 +3,42 @@
 RSpec.describe RuboCop::Cop::Sevencop::RailsBelongsToOptional, :config do
   context 'with optional: true' do
     it 'registers no offense' do
-      expect_no_offenses(<<~TEXT)
+      expect_no_offenses(<<~RUBY)
         belongs_to :group, optional: true
-      TEXT
+      RUBY
     end
   end
 
   context 'with optional: false' do
     it 'registers no offense' do
-      expect_no_offenses(<<~TEXT)
+      expect_no_offenses(<<~RUBY)
         belongs_to :group, optional: false
-      TEXT
+      RUBY
     end
   end
 
   context 'with { optional: true }' do
     it 'registers no offense' do
-      expect_no_offenses(<<~TEXT)
+      expect_no_offenses(<<~RUBY)
         belongs_to :group, { optional: true }
-      TEXT
+      RUBY
     end
   end
 
   context 'with options' do
     it 'registers no offense' do
-      expect_no_offenses(<<~TEXT)
+      expect_no_offenses(<<~RUBY)
         belongs_to :group, options
-      TEXT
+      RUBY
     end
   end
 
   context 'without no options' do
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         belongs_to :group
         ^^^^^^^^^^^^^^^^^ Specify :optional option.
-      TEXT
+      RUBY
 
       expect_correction(<<~RUBY)
         belongs_to :group, optional: true
@@ -48,10 +48,10 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsBelongsToOptional, :config do
 
   context 'with Hash options but no :optional element' do
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         belongs_to :group, class_name: 'Team'
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Specify :optional option.
-      TEXT
+      RUBY
 
       expect_correction(<<~RUBY)
         belongs_to :group, class_name: 'Team', optional: true
@@ -61,10 +61,10 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsBelongsToOptional, :config do
 
   context 'with scope' do
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         belongs_to :group, -> { a }
         ^^^^^^^^^^^^^^^^^^^^^^^^^^^ Specify :optional option.
-      TEXT
+      RUBY
 
       expect_correction(<<~RUBY)
         belongs_to :group, -> { a }, optional: true

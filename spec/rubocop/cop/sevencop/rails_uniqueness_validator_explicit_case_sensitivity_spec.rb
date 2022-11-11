@@ -3,10 +3,10 @@
 RSpec.describe RuboCop::Cop::Sevencop::RailsUniquenessValidatorExplicitCaseSensitivity, :config do
   context 'with simple boolean uniqueness' do
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         validates :name, uniqueness: true
                                      ^^^^ Specify :case_sensitivity option on use of UniquenessValidator.
-      TEXT
+      RUBY
 
       expect_correction(<<~RUBY)
         validates :name, uniqueness: { case_sensitive: true }
@@ -16,10 +16,10 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsUniquenessValidatorExplicitCaseSensi
 
   context 'with complex uniqueness without case_sensitivity' do
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         validates :name, uniqueness: { allow_nil: true, scope: :user_id }
                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Specify :case_sensitivity option on use of UniquenessValidator.
-      TEXT
+      RUBY
 
       expect_correction(<<~RUBY)
         validates :name, uniqueness: { allow_nil: true, scope: :user_id, case_sensitive: true }
@@ -29,9 +29,9 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsUniquenessValidatorExplicitCaseSensi
 
   context 'with complex uniqueness with case_sensitivity' do
     it 'registers no offense' do
-      expect_no_offenses(<<~TEXT)
+      expect_no_offenses(<<~RUBY)
         validates :name, uniqueness: { allow_nil: true, case_sensitive: true, scope: :user_id }
-      TEXT
+      RUBY
     end
   end
 end

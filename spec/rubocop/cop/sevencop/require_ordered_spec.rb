@@ -24,11 +24,11 @@ RSpec.describe RuboCop::Cop::Sevencop::RequireOrdered, :config do
 
   context 'when `require` is not sorted' do
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         require 'b'
         require 'a'
         ^^^^^^^^^^^ Sort `require` in alphabetical order.
-      TEXT
+      RUBY
 
       expect_correction(<<~RUBY)
         require 'a'
@@ -39,11 +39,11 @@ RSpec.describe RuboCop::Cop::Sevencop::RequireOrdered, :config do
 
   context 'when unsorted `require` has some inline comments' do
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         require 'b' # comment
         require 'a'
         ^^^^^^^^^^^ Sort `require` in alphabetical order.
-      TEXT
+      RUBY
 
       expect_correction(<<~RUBY)
         require 'a'
@@ -54,12 +54,12 @@ RSpec.describe RuboCop::Cop::Sevencop::RequireOrdered, :config do
 
   context 'when unsorted `require` has some full-line comments' do
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         require 'b'
         # comment
         require 'a'
         ^^^^^^^^^^^ Sort `require` in alphabetical order.
-      TEXT
+      RUBY
 
       expect_correction(<<~RUBY)
         # comment
@@ -71,11 +71,11 @@ RSpec.describe RuboCop::Cop::Sevencop::RequireOrdered, :config do
 
   context 'when `require_relative` is not sorted' do
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         require_relative 'b'
         require_relative 'a'
         ^^^^^^^^^^^^^^^^^^^^ Sort `require_relative` in alphabetical order.
-      TEXT
+      RUBY
 
       expect_correction(<<~RUBY)
         require_relative 'a'

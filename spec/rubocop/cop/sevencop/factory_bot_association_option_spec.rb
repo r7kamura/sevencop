@@ -3,42 +3,42 @@
 RSpec.describe RuboCop::Cop::Sevencop::FactoryBotAssociationOption, :config do
   context 'when `association` has no factory option' do
     it 'registers no offense' do
-      expect_no_offenses(<<~TEXT)
+      expect_no_offenses(<<~RUBY)
         association :user
-      TEXT
+      RUBY
     end
   end
 
   context 'when `association` has no factory option but other option' do
     it 'registers no offense' do
-      expect_no_offenses(<<~TEXT)
+      expect_no_offenses(<<~RUBY)
         association :user, strtaegy: :build
-      TEXT
+      RUBY
     end
   end
 
   context 'when `association` has non-redundant factory option' do
     it 'registers no offense' do
-      expect_no_offenses(<<~TEXT)
+      expect_no_offenses(<<~RUBY)
         association :author, factory: :user
-      TEXT
+      RUBY
     end
   end
 
   context 'when `association` has redundant but array factory option' do
     it 'registers no offense' do
-      expect_no_offenses(<<~TEXT)
+      expect_no_offenses(<<~RUBY)
         association :user, factory: %i[user]
-      TEXT
+      RUBY
     end
   end
 
   context 'when `association` has redundant factory option' do
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         association :user, factory: :user
                            ^^^^^^^^^^^^^^ Remove redundant options from FactoryBot associations.
-      TEXT
+      RUBY
 
       expect_correction(<<~RUBY)
         association :user
