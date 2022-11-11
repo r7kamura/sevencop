@@ -33,11 +33,11 @@ RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionArgumentsMultiline, :conf
 
   context 'when there are non-multilined multiple arguments' do
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         def foo(a, b)
                ^^^^^^ Insert new lines between method definition arguments.
         end
-      TEXT
+      RUBY
 
       expect_correction(<<~RUBY)
         def foo(
@@ -51,11 +51,11 @@ RSpec.describe RuboCop::Cop::Sevencop::MethodDefinitionArgumentsMultiline, :conf
 
   context 'when there are non-multilined parentheses-less multiple arguments' do
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         def foo a, b
                 ^^^^ Insert new lines between method definition arguments.
         end
-      TEXT
+      RUBY
 
       expect_correction(<<~RUBY)
         def foo(

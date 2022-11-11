@@ -3,26 +3,26 @@
 RSpec.describe RuboCop::Cop::Sevencop::RailsOrderField, :config do
   context 'without field' do
     it 'registers no offense' do
-      expect_no_offenses(<<~TEXT)
+      expect_no_offenses(<<~RUBY)
         articles.order('id DESC')
-      TEXT
+      RUBY
     end
   end
 
   context 'with Hash' do
     it 'registers no offense' do
-      expect_no_offenses(<<~TEXT)
+      expect_no_offenses(<<~RUBY)
         articles.order(id: :desc)
-      TEXT
+      RUBY
     end
   end
 
   context 'with receiver' do
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         articles.order('field(id, ?)', a)
                        ^^^^^^^^^^^^^^ Wrap safe SQL String by `Arel.sql`.
-      TEXT
+      RUBY
 
       expect_correction(<<~RUBY)
         articles.order(Arel.sql('field(id, ?)'), a)
@@ -32,10 +32,10 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderField, :config do
 
   context 'without receiver' do
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         order('field(id, ?)', a)
               ^^^^^^^^^^^^^^ Wrap safe SQL String by `Arel.sql`.
-      TEXT
+      RUBY
 
       expect_correction(<<~RUBY)
         order(Arel.sql('field(id, ?)'), a)
@@ -45,10 +45,10 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderField, :config do
 
   context 'with FIELD' do
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         order('FIELD(id, ?)', a)
               ^^^^^^^^^^^^^^ Wrap safe SQL String by `Arel.sql`.
-      TEXT
+      RUBY
 
       expect_correction(<<~RUBY)
         order(Arel.sql('FIELD(id, ?)'), a)
@@ -58,10 +58,10 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderField, :config do
 
   context 'with reorder' do
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         reorder('field(id, ?)', a)
                 ^^^^^^^^^^^^^^ Wrap safe SQL String by `Arel.sql`.
-      TEXT
+      RUBY
 
       expect_correction(<<~RUBY)
         reorder(Arel.sql('field(id, ?)'), a)
@@ -71,10 +71,10 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderField, :config do
 
   context 'with dstr' do
     it 'registers offense' do
-      expect_offense(<<~'TEXT')
+      expect_offense(<<~'RUBY')
         articles.order("field(id, #{ids.join(', ')})")
                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Wrap safe SQL String by `Arel.sql`.
-      TEXT
+      RUBY
 
       expect_correction(<<~'RUBY')
         articles.order(Arel.sql("field(id, #{ids.join(', ')})"))

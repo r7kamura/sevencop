@@ -46,7 +46,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecExamplesInSameGroup, :config do
 
   context 'with multiple regular examples in same group' do
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         context 'when user is logged in' do
           before do
             log_in(user)
@@ -62,7 +62,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecExamplesInSameGroup, :config do
             expect { subject }.to change(Foo, :count).by(1)
           end
         end
-      TEXT
+      RUBY
     end
   end
 
@@ -72,7 +72,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecExamplesInSameGroup, :config do
     end
 
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         context 'when user is logged in' do
           before do
             log_in(user)
@@ -86,7 +86,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecExamplesInSameGroup, :config do
           include_examples 'creates Foo'
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Combine examples in the same group in the time-consuming kinds of specs.
         end
-      TEXT
+      RUBY
     end
   end
 
@@ -96,7 +96,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecExamplesInSameGroup, :config do
     end
 
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         context 'when user is logged in' do
           before do
             log_in(user)
@@ -111,7 +111,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecExamplesInSameGroup, :config do
           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Combine examples in the same group in the time-consuming kinds of specs.
           end
         end
-      TEXT
+      RUBY
     end
   end
 
@@ -121,7 +121,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecExamplesInSameGroup, :config do
     end
 
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         context 'when user is logged in' do
           before do
             log_in(user)
@@ -135,7 +135,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecExamplesInSameGroup, :config do
             expect(response).to have_http_status(200)
           end
         end
-      TEXT
+      RUBY
     end
   end
 
@@ -145,7 +145,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecExamplesInSameGroup, :config do
     end
 
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         context 'when user is logged in' do
           before do
             log_in(user)
@@ -160,7 +160,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecExamplesInSameGroup, :config do
             expect(response).to have_http_status(200)
           end
         end
-      TEXT
+      RUBY
     end
   end
 end

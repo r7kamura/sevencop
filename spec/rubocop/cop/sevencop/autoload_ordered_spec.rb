@@ -34,11 +34,11 @@ RSpec.describe RuboCop::Cop::Sevencop::AutoloadOrdered, :config do
 
   context 'when `autoload` is not sorted' do
     it 'registers offense' do
-      expect_offense(<<~TEXT)
+      expect_offense(<<~RUBY)
         autoload :B, 'b'
         autoload :A, 'a'
         ^^^^^^^^^^^^^^^^ Sort `autoload` in alphabetical order.
-      TEXT
+      RUBY
 
       expect_correction(<<~RUBY)
         autoload :A, 'a'
