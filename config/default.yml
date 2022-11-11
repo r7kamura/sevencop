@@ -82,13 +82,6 @@ Sevencop/RailsDateAndTimeCalculation:
   Safe: false
   VersionAdded: '0.26'
 
-Sevencop/RailsInferredSpecType:
-  Description: |
-    Identifies redundant spec type.
-  Enabled: false
-  Safe: false
-  VersionAdded: '0.9'
-
 Sevencop/RailsOrderField:
   Description: |
     Wrap safe SQL String by `Arel.sql`.
