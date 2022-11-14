@@ -5,6 +5,12 @@ Sevencop/AutoloadOrdered:
   Safe: false
   VersionAdded: '0.12'
 
+Sevencop/ConstantBase:
+  Description: |
+    Remove unnecessary `::` prefix from constant.
+  Enabled: false
+  VersionAdded: '0.31'
+
 Sevencop/FactoryBotAssociationOption:
   Description: |
     Remove redundant options from FactoryBot associations.
