@@ -5,6 +5,7 @@ require_relative 'sevencop/rubocop_extension'
 require_relative 'sevencop/version'
 
 require_relative 'rubocop/cop/sevencop/autoload_ordered'
+require_relative 'rubocop/cop/sevencop/constant_base'
 require_relative 'rubocop/cop/sevencop/factory_bot_association_option'
 require_relative 'rubocop/cop/sevencop/factory_bot_association_style'
 require_relative 'rubocop/cop/sevencop/hash_element_ordered'
