@@ -39,7 +39,7 @@ module RuboCop
         def_node_matcher :json_parse_response_body?, <<~PATTERN
           (send
             (const
-              _
+              {nil? cbase}
               :JSON
             )
             :parse
