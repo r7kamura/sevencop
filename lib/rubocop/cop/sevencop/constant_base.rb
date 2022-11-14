@@ -48,13 +48,6 @@ module RuboCop
 
         private
 
-        # @!method named_class_or_module?(node)
-        #   @param node [RuboCop::AST::Node]
-        #   @return [Boolean]
-        def_node_matcher :named_class_or_module?, <<~PATTERN
-          ({class module} const ...)
-        PATTERN
-
         # @param node [RuboCop::AST::CbaseNode]
         # @return [Boolean]
         def bad?(node)
