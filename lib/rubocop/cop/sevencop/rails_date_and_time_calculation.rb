@@ -269,7 +269,7 @@ module RuboCop
         def_node_matcher :date_current?, <<~PATTERN
           (send
             (const
-              _
+              {nil? | cbase}
               :Date
             )
             :current
@@ -316,7 +316,7 @@ module RuboCop
         def_node_matcher :date_with?, <<~PATTERN
           (send
             (const
-              _
+              {nil? | cbase}
               :Date
             )
             %1
@@ -384,7 +384,7 @@ module RuboCop
         def_node_matcher :time_current?, <<~PATTERN
           (send
             (const
-              _
+              {nil? | cbase}
               :Time
             )
             :current
@@ -409,7 +409,7 @@ module RuboCop
           (send
             (send
               (const
-                _
+                {nil? | cbase}
                 :Time
               )
               :zone
