@@ -62,7 +62,7 @@ module RuboCop
         def_node_matcher :describing_at_top_level?, <<~PATTERN
           (send
             (const
-              {nil? cbase}
+              _
               :RSpec
             )
             :describe
