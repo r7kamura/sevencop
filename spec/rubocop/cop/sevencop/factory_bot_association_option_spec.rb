@@ -37,7 +37,7 @@ RSpec.describe RuboCop::Cop::Sevencop::FactoryBotAssociationOption, :config do
     it 'registers offense' do
       expect_offense(<<~RUBY)
         association :user, factory: :user
-                           ^^^^^^^^^^^^^^ Remove redundant options from FactoryBot associations.
+                           ^^^^^^^^^^^^^^ Avoid redundant options on FactoryBot associations.
       RUBY
 
       expect_correction(<<~RUBY)

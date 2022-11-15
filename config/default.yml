@@ -13,7 +13,7 @@ Sevencop/ConstantBase:
 
 Sevencop/FactoryBotAssociationOption:
   Description: |
-    Remove redundant options from FactoryBot associations.
+    Avoid redundant options on FactoryBot associations.
   Enabled: false
   VersionAdded: '0.21'
 
