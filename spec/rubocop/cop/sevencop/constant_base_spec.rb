@@ -25,7 +25,7 @@ RSpec.describe RuboCop::Cop::Sevencop::ConstantBase, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         ::Bar
-        ^^ Remove unnecessary `::` prefix from constant.
+        ^^ Avoid unnecessary `::` prefix on constant.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -38,7 +38,7 @@ RSpec.describe RuboCop::Cop::Sevencop::ConstantBase, :config do
     it 'registers an offense' do
       expect_offense(<<~RUBY)
         ::Bar::Baz
-        ^^ Remove unnecessary `::` prefix from constant.
+        ^^ Avoid unnecessary `::` prefix on constant.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -52,7 +52,7 @@ RSpec.describe RuboCop::Cop::Sevencop::ConstantBase, :config do
       expect_offense(<<~RUBY)
         class << self
           ::Bar
-          ^^ Remove unnecessary `::` prefix from constant.
+          ^^ Avoid unnecessary `::` prefix on constant.
         end
       RUBY
 
@@ -68,7 +68,7 @@ RSpec.describe RuboCop::Cop::Sevencop::ConstantBase, :config do
     it 'registers offense' do
       expect_offense(<<~RUBY)
         class Foo < ::Bar
-                    ^^ Remove unnecessary `::` prefix from constant.
+                    ^^ Avoid unnecessary `::` prefix on constant.
         end
       RUBY
 

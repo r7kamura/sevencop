@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Sevencop
-      # Remove unnecessary `::` prefix from constant.
+      # Avoid unnecessary `::` prefix on constant.
       #
       # @example
       #   # bad
@@ -34,7 +34,7 @@ module RuboCop
       class ConstantBase < Base
         extend AutoCorrector
 
-        MSG = 'Remove unnecessary `::` prefix from constant.'
+        MSG = 'Avoid unnecessary `::` prefix on constant.'
 
         # @param node [RuboCop::AST::CbaseNode]
         # @return [void]

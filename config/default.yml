@@ -7,7 +7,7 @@ Sevencop/AutoloadOrdered:
 
 Sevencop/ConstantBase:
   Description: |
-    Remove unnecessary `::` prefix from constant.
+    Avoid unnecessary `::` prefix on constant.
   Enabled: false
   VersionAdded: '0.31'
 
