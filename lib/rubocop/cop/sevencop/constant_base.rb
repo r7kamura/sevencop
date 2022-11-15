@@ -23,12 +23,12 @@ module RuboCop
       #   end
       #
       #   # good
-      #   class Klass
+      #   class A
       #     ::Const
       #   end
       #
       #   # good
-      #   class module
+      #   class A
       #     ::Const
       #   end
       class ConstantBase < Base
