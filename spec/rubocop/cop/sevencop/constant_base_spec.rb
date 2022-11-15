@@ -63,4 +63,19 @@ RSpec.describe RuboCop::Cop::Sevencop::ConstantBase, :config do
       RUBY
     end
   end
+
+  context 'with prefixed constant as super class' do
+    it 'registers offense' do
+      expect_offense(<<~RUBY)
+        class Foo < ::Bar
+                    ^^ Remove unnecessary `::` prefix from constant.
+        end
+      RUBY
+
+      expect_correction(<<~RUBY)
+        class Foo < Bar
+        end
+      RUBY
+    end
+  end
 end
