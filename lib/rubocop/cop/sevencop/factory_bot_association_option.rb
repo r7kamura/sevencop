@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Sevencop
-      # Remove redundant options from FactoryBot associations.
+      # Avoid redundant options on FactoryBot associations.
       #
       # @example
       #   # bad
@@ -16,7 +16,7 @@ module RuboCop
 
         include RangeHelp
 
-        MSG = 'Remove redundant options from FactoryBot associations.'
+        MSG = 'Avoid redundant options on FactoryBot associations.'
 
         RESTRICT_ON_SEND = %i[association].freeze
 
