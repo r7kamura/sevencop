@@ -166,7 +166,7 @@ module RuboCop
         # @param node [RuboCop::AST::SendNode]
         # @return [String, nil]
         def extract_column_name(node)
-          if node.each_descendant(:dstr).any?
+          if search_from_arguments(node, type: :dstr).any?
             extract_column_name_from_dstr(node)
           else
             extract_column_name_from_str(node)
@@ -176,25 +176,25 @@ module RuboCop
         # @param node [RuboCop::AST::SendNode]
         # @return [String]
         def extract_column_name_from_dstr(node)
-          node.each_descendant(:str).first.value[REGEXP_FIELD_DSTR_HEAD, :column_name]
+          search_from_arguments(node, type: :str).first.value[REGEXP_FIELD_DSTR_HEAD, :column_name]
         end
 
         # @param node [RuboCop::AST::SendNode]
         # @return [String]
         def extract_column_name_from_str(node)
-          node.each_descendant(:str).first.value[REGEXP_FIELD_STR, :column_name]
+          search_from_arguments(node, type: :str).first.value[REGEXP_FIELD_STR, :column_name]
         end
 
         # @param node [RuboCop::AST::SendNode]
         # @return [String, nil]
         def extract_order_from_dstr(node)
-          node.each_descendant(:str).to_a.last.value[REGEXP_FIELD_DSTR_TAIL, :order]
+          search_from_arguments(node, type: :str).to_a.last.value[REGEXP_FIELD_DSTR_TAIL, :order]
         end
 
         # @param node [RuboCop::AST::SendNode]
         # @return [String, nil]
         def extract_order_from_str(node)
-          node.each_descendant(:str).first.value[REGEXP_FIELD_STR, :order]
+          search_from_arguments(node, type: :str).first.value[REGEXP_FIELD_STR, :order]
         end
 
         # @param node [RuboCop::AST::SendNode]
@@ -224,7 +224,7 @@ module RuboCop
         # @param node [RuboCop::AST::SendNode]
         # @return [String]
         def extract_values_from_dstr(node)
-          node.each_descendant.find do |descendant|
+          search_from_arguments(node).find do |descendant|
             match_field_dstr_body?(descendant)
           end.children.first.receiver.source
         end
@@ -234,14 +234,14 @@ module RuboCop
         def extract_values_from_str(node)
           format(
             '[%<values>s]',
-            values: node.each_descendant(:str).first.value[REGEXP_FIELD_STR, :values].split(',').map(&:strip).join(', ')
+            values: search_from_arguments(node, type: :str).first.value[REGEXP_FIELD_STR, :values].split(',').map(&:strip).join(', ')
           )
         end
 
         # @param node [RuboCop::AST::SendNode]
         # @return [String]
         def format_in_order_of(node)
-          if node.each_descendant(:dstr).any?
+          if search_from_arguments(node, type: :dstr).any?
             format_in_order_of_on_dstr(node)
           else
             format_in_order_of_on_str(node)
@@ -317,6 +317,17 @@ module RuboCop
         def match_field_str?(node)
           node.str_type? &&
             node.value.match?(REGEXP_FIELD_STR)
+        end
+
+        # @param node [RuboCop::AST::SendNode]
+        # @param type [Symbol]
+        def search_from_arguments(
+          node,
+          type: nil
+        )
+          node.arguments.flat_map do |argument|
+            argument.each_node(*Array(type)).to_a
+          end
         end
       end
     end
