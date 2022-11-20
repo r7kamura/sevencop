@@ -31,7 +31,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
     it 'registers offense' do
       expect_offense(<<~RUBY)
         relation.order('FIELD(id, 1, 2, 3)')
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function.
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function.
       RUBY
 
       expect_correction(<<~RUBY)
