@@ -84,7 +84,9 @@ module RuboCop
         def on_send(node)
           return unless bad?(node)
 
-          add_offense(node) do |corrector|
+          add_offense(
+            convert_to_autocorrected_range(node)
+          ) do |corrector|
             autocorrect(corrector, node)
           end
         end
@@ -148,10 +150,16 @@ module RuboCop
           node
         )
           corrector.replace(
-            node.location.expression.with(
-              begin_pos: node.location.selector.begin_pos
-            ),
+            convert_to_autocorrected_range(node),
             format_in_order_of(node)
+          )
+        end
+
+        # @param node [RuboCop::AST::SendNode]
+        # @return [Parser::Source::Range]
+        def convert_to_autocorrected_range(node)
+          node.location.expression.with(
+            begin_pos: node.location.selector.begin_pos
           )
         end
 
