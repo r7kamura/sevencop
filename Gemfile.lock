@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    sevencop (0.31.1)
+    sevencop (0.32.0)
       activesupport
       rubocop
 
