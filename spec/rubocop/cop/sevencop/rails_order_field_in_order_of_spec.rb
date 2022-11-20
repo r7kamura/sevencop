@@ -9,7 +9,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
       RUBY
 
       expect_correction(<<~RUBY)
-        in_order_of('id', [1, 2, 3])
+        in_order_of(:'id', [1, 2, 3])
       RUBY
     end
   end
@@ -22,7 +22,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
       RUBY
 
       expect_correction(<<~RUBY)
-        in_order_of('id', [1, 2, 3])
+        in_order_of(:'id', [1, 2, 3])
       RUBY
     end
   end
@@ -35,7 +35,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
       RUBY
 
       expect_correction(<<~RUBY)
-        relation.in_order_of('id', [1, 2, 3])
+        relation.in_order_of(:'id', [1, 2, 3])
       RUBY
     end
   end
@@ -48,7 +48,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
       RUBY
 
       expect_correction(<<~RUBY)
-        in_order_of('posts.id', [1, 2, 3])
+        in_order_of(:'posts.id', [1, 2, 3])
       RUBY
     end
   end
@@ -61,7 +61,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
       RUBY
 
       expect_correction(<<~RUBY)
-        in_order_of('id', [1, 2, 3])
+        in_order_of(:'id', [1, 2, 3])
       RUBY
     end
   end
@@ -74,7 +74,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
       RUBY
 
       expect_correction(<<~RUBY)
-        in_order_of('id', [1, 2, 3])
+        in_order_of(:'id', [1, 2, 3])
       RUBY
     end
   end
@@ -87,7 +87,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
       RUBY
 
       expect_correction(<<~RUBY)
-        in_order_of('id', [1, 2, 3]).reverse_order
+        in_order_of(:'id', [1, 2, 3]).reverse_order
       RUBY
     end
   end
@@ -100,7 +100,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
       RUBY
 
       expect_correction(<<~RUBY)
-        in_order_of('id', [1, 2, 3]).reverse_order
+        in_order_of(:'id', [1, 2, 3]).reverse_order
       RUBY
     end
   end
@@ -113,7 +113,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
       RUBY
 
       expect_correction(<<~RUBY)
-        in_order_of('id', [1, 2, 3])
+        in_order_of(:'id', [1, 2, 3])
       RUBY
     end
   end
@@ -126,7 +126,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
       RUBY
 
       expect_correction(<<~RUBY)
-        in_order_of('id', ids)
+        in_order_of(:'id', ids)
       RUBY
     end
   end
@@ -139,7 +139,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
       RUBY
 
       expect_correction(<<~RUBY)
-        in_order_of('id', [1, 2, 3]).order(position: :asc)
+        in_order_of(:'id', [1, 2, 3]).order(position: :asc)
       RUBY
     end
   end
@@ -152,7 +152,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
       RUBY
 
       expect_correction(<<~RUBY)
-        in_order_of('id', ids).order(position: :asc)
+        in_order_of(:'id', ids).order(position: :asc)
       RUBY
     end
   end

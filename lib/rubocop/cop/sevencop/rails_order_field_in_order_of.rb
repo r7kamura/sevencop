@@ -244,7 +244,7 @@ module RuboCop
         # @return [String]
         def format_in_order_of_on_dstr(node)
           format(
-            "in_order_of('%<column_name>s', %<values>s)%<reverse_order>s%<rest_order>s",
+            "in_order_of(:'%<column_name>s', %<values>s)%<reverse_order>s%<rest_order>s",
             column_name: extract_column_name_from_dstr(node),
             rest_order: extract_rest_order(node),
             reverse_order: extract_reverse_order_from_dstr(node),
@@ -256,7 +256,7 @@ module RuboCop
         # @return [String]
         def format_in_order_of_on_str(node)
           format(
-            "in_order_of('%<column_name>s', %<values>s)%<reverse_order>s%<rest_order>s",
+            "in_order_of(:'%<column_name>s', %<values>s)%<reverse_order>s%<rest_order>s",
             column_name: extract_column_name_from_str(node),
             rest_order: extract_rest_order(node),
             reverse_order: extract_reverse_order_from_str(node),
