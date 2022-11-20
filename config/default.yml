@@ -95,6 +95,12 @@ Sevencop/RailsOrderField:
   Safe: false
   VersionAdded: '0.4'
 
+Sevencop/RailsOrderFieldInOrderOf:
+  Description: |
+    Prefer `in_order_of` to MySQL `FIELD` function.
+  Enabled: false
+  VersionAdded: '0.32'
+
 Sevencop/RailsSpecificActionName:
   Description: |
     Use only specific action names.
