@@ -5,6 +5,23 @@ module RuboCop
     module Sevencop
       # Prefer `in_order_of` to MySQL `FIELD` function.
       #
+      # @safety
+      #   This cop's autocorrection is unsafe because in the original code the array value is interpolated as
+      #   literals on SQL query, but after its autocorrection, the value will be now passed directly to in_order_of,
+      #   which may produce different results.
+      #
+      #   For example, the following code is valid where the id column is a integer column:
+      #
+      #     ids = %w[1 2 3]
+      #     order("FIELD(id, #{ids.join(', ')})") # "FIELD(id, 1, 2, 3)"
+      #
+      #   But after its autocorrection, it will be like this:
+      #
+      #     ids = %w[1 2 3]
+      #     in_order_of(:id, ids) # We need to change this code as `ids.map(&:to_i)`.
+      #
+      #   And this code will raise an error because `ids` is not an array of Integer but an array of String.
+      #
       # @example
       #   # bad
       #   order('FIELD(id, 1, 2, 3)')
