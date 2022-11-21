@@ -156,4 +156,17 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
       RUBY
     end
   end
+
+  context 'with `FIELD` and other query method' do
+    it 'registers offense' do
+      expect_offense(<<~'RUBY')
+        where('articles_count > 5').order("field(id, #{product_ids.join(',')})")
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function.
+      RUBY
+
+      expect_correction(<<~RUBY)
+        where('articles_count > 5').in_order_of(:'id', product_ids)
+      RUBY
+    end
+  end
 end
