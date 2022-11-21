@@ -176,13 +176,13 @@ module RuboCop
         # @param node [RuboCop::AST::SendNode]
         # @return [String]
         def extract_column_name_from_dstr(node)
-          search_from_arguments(node, type: :str).first.value[REGEXP_FIELD_DSTR_HEAD, :column_name]
+          search_from_arguments(node, type: :str).first.value[REGEXP_FIELD_DSTR_HEAD, :column_name].delete('`')
         end
 
         # @param node [RuboCop::AST::SendNode]
         # @return [String]
         def extract_column_name_from_str(node)
-          search_from_arguments(node, type: :str).first.value[REGEXP_FIELD_STR, :column_name]
+          search_from_arguments(node, type: :str).first.value[REGEXP_FIELD_STR, :column_name].delete('`')
         end
 
         # @param node [RuboCop::AST::SendNode]

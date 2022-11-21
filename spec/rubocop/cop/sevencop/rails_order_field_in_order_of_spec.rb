@@ -27,6 +27,19 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
     end
   end
 
+  context 'with `FIELD` and quoted column name' do
+    it 'registers offense' do
+      expect_offense(<<~RUBY)
+        order('FIELD(`id`, 1, 2, 3)')
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function.
+      RUBY
+
+      expect_correction(<<~RUBY)
+        in_order_of(:'id', [1, 2, 3])
+      RUBY
+    end
+  end
+
   context 'with `FIELD` and receiver' do
     it 'registers offense' do
       expect_offense(<<~RUBY)
