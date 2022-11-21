@@ -99,6 +99,7 @@ Sevencop/RailsOrderFieldInOrderOf:
   Description: |
     Prefer `in_order_of` to MySQL `FIELD` function.
   Enabled: false
+  SafeAutoCorrect: false
   VersionAdded: '0.32'
 
 Sevencop/RailsSpecificActionName:
