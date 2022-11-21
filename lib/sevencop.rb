@@ -15,7 +15,7 @@ require_relative 'rubocop/cop/sevencop/method_definition_keyword_argument_ordere
 require_relative 'rubocop/cop/sevencop/method_definition_ordered'
 require_relative 'rubocop/cop/sevencop/rails_belongs_to_optional'
 require_relative 'rubocop/cop/sevencop/rails_date_and_time_calculation'
-require_relative 'rubocop/cop/sevencop/rails_order_field'
+require_relative 'rubocop/cop/sevencop/rails_order_field_arel_sql'
 require_relative 'rubocop/cop/sevencop/rails_order_field_in_order_of'
 require_relative 'rubocop/cop/sevencop/rails_specific_action_name'
 require_relative 'rubocop/cop/sevencop/rails_uniqueness_validator_explicit_case_sensitivity'
