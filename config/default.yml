@@ -93,7 +93,6 @@ Sevencop/RailsSpecificActionName:
   Description: |
     Use only specific action names.
   Enabled: false
-  VersionChanged: '0.29'
   ActionNames:
     - create
     - destroy
