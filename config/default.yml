@@ -85,9 +85,9 @@ Sevencop/RailsOrderFieldArelSql:
 
 Sevencop/RailsOrderFieldInOrderOf:
   Description: |
-    Prefer `in_order_of` to MySQL `FIELD` function.
+    Prefer `in_order_of` to MySQL `FIELD` function if possible.
   Enabled: false
-  SafeAutoCorrect: false
+  Safe: false
 
 Sevencop/RailsSpecificActionName:
   Description: |

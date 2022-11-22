@@ -5,7 +5,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
     it 'registers offense' do
       expect_offense(<<~RUBY)
         order('FIELD(id, 1, 2, 3)')
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function if possible.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -18,7 +18,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
     it 'registers offense' do
       expect_offense(<<~RUBY)
         order('field(id, 1, 2, 3)')
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function if possible.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -31,7 +31,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
     it 'registers offense' do
       expect_offense(<<~RUBY)
         order('FIELD(`id`, 1, 2, 3)')
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function if possible.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -44,7 +44,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
     it 'registers offense' do
       expect_offense(<<~RUBY)
         relation.order('FIELD(id, 1, 2, 3)')
-                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function.
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function if possible.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -57,7 +57,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
     it 'registers offense' do
       expect_offense(<<~RUBY)
         order('FIELD(posts.id, 1, 2, 3)')
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function if possible.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -70,7 +70,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
     it 'registers offense' do
       expect_offense(<<~RUBY)
         order(Arel.sql('FIELD(id, 1, 2, 3)'))
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function if possible.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -83,7 +83,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
     it 'registers offense' do
       expect_offense(<<~RUBY)
         order(::Arel.sql('FIELD(id, 1, 2, 3)'))
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function if possible.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -96,7 +96,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
     it 'registers offense' do
       expect_offense(<<~RUBY)
         order('FIELD(id, 1, 2, 3) DESC')
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function if possible.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -109,7 +109,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
     it 'registers offense' do
       expect_offense(<<~RUBY)
         order('FIELD(id, 1, 2, 3) desc')
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function if possible.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -122,7 +122,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
     it 'registers offense' do
       expect_offense(<<~RUBY)
         order('FIELD(id, 1, 2, 3) ASC')
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function if possible.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -135,7 +135,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
     it 'registers offense' do
       expect_offense(<<~'RUBY')
         order("FIELD(id, #{ids.join(', ')})")
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function if possible.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -148,7 +148,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
     it 'registers offense' do
       expect_offense(<<~RUBY)
         order('FIELD(id, 1, 2, 3)', position: :asc)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function if possible.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -161,7 +161,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
     it 'registers offense' do
       expect_offense(<<~'RUBY')
         order("FIELD(id, #{ids.join(', ')})", position: :asc)
-        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function.
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function if possible.
       RUBY
 
       expect_correction(<<~RUBY)
@@ -174,7 +174,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsOrderFieldInOrderOf, :config do
     it 'registers offense' do
       expect_offense(<<~'RUBY')
         where('articles_count > 5').order("field(id, #{product_ids.join(',')})")
-                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function.
+                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ Prefer `in_order_of` to MySQL `FIELD` function if possible.
       RUBY
 
       expect_correction(<<~RUBY)
