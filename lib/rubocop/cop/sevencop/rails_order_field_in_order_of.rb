@@ -3,9 +3,11 @@
 module RuboCop
   module Cop
     module Sevencop
-      # Prefer `in_order_of` to MySQL `FIELD` function.
+      # Prefer `in_order_of` to MySQL `FIELD` function if possible.
       #
       # @safety
+      #   This cop is unsafe because `in_order_of` also adds `WHERE` clause.
+      #
       #   This cop's autocorrection is unsafe because in the original code the array value is interpolated as
       #   literals on SQL query, but after its autocorrection, the value will be now passed directly to in_order_of,
       #   which may produce different results.
@@ -89,7 +91,7 @@ module RuboCop
           \z
         /ix.freeze
 
-        MSG = 'Prefer `in_order_of` to MySQL `FIELD` function.'
+        MSG = 'Prefer `in_order_of` to MySQL `FIELD` function if possible.'
 
         RESTRICT_ON_SEND = %i[
           order
