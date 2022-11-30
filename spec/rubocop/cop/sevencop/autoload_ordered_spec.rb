@@ -46,4 +46,23 @@ RSpec.describe RuboCop::Cop::Sevencop::AutoloadOrdered, :config do
       RUBY
     end
   end
+
+  context 'when commented `autoload` is not sorted' do
+    it 'registers offense' do
+      expect_offense(<<~RUBY)
+        # b
+        autoload :B, 'b'
+        # a
+        autoload :A, 'a'
+        ^^^^^^^^^^^^^^^^ Sort `autoload` in alphabetical order.
+      RUBY
+
+      expect_correction(<<~RUBY)
+        # a
+        autoload :A, 'a'
+        # b
+        autoload :B, 'b'
+      RUBY
+    end
+  end
 end
