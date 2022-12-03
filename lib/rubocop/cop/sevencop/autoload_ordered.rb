@@ -41,14 +41,8 @@ module RuboCop
 
           add_offense(node) do |corrector|
             swap(
-              range_by_whole_lines(
-                previous_older_sibling.location.expression,
-                include_final_newline: true
-              ),
-              range_by_whole_lines(
-                node.location.expression,
-                include_final_newline: true
-              ),
+              range_with_comments_and_lines(previous_older_sibling),
+              range_with_comments_and_lines(node),
               corrector: corrector
             )
           end
