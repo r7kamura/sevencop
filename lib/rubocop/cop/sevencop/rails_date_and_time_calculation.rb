@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require 'set'
-
 module RuboCop
   module Cop
     module Sevencop
@@ -110,42 +108,36 @@ module RuboCop
       class RailsDateAndTimeCalculation < Base
         extend AutoCorrector
 
-        CALCULATION_METHOD_NAMES = ::Set.new(
-          %i[
-            -
-            +
-          ]
-        ).freeze
+        CALCULATION_METHOD_NAMES = %i[
+          -
+          +
+        ].to_set.freeze
 
-        COMPARISON_METHOD_NAMES = ::Set.new(
-          %i[
-            <
-            >
-            after?
-            before?
-          ]
-        ).freeze
+        COMPARISON_METHOD_NAMES = %i[
+          <
+          >
+          after?
+          before?
+        ].to_set.freeze
 
-        DURATION_METHOD_NAMES = ::Set.new(
-          %i[
-            day
-            days
-            fortnight
-            fortnights
-            hour
-            hours
-            minute
-            minutes
-            month
-            months
-            second
-            seconds
-            week
-            weeks
-            year
-            years
-          ]
-        ).freeze
+        DURATION_METHOD_NAMES = %i[
+          day
+          days
+          fortnight
+          fortnights
+          hour
+          hours
+          minute
+          minutes
+          month
+          months
+          second
+          seconds
+          week
+          weeks
+          year
+          years
+        ].to_set.freeze
 
         MSG = 'Prefer ActiveSupport date and time helper.'
 

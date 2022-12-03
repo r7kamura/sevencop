@@ -36,19 +36,19 @@ module RuboCop
       #     includes_examples 'creates Foo'
       #   end
       class RSpecExamplesInSameGroup < Base
-        METHOD_NAMES_FOR_REGULAR_EXAMPLE = ::Set[
-          :example,
-          :it,
-          :its,
-          :scenario,
-          :specify
-        ].freeze
+        METHOD_NAMES_FOR_REGULAR_EXAMPLE = %i[
+          example
+          it
+          its
+          scenario
+          specify
+        ].to_set.freeze
 
-        METHOD_NAMES_FOR_SHARED_EXAMPLES = ::Set[
-          :include_examples,
-          :it_behaves_like,
-          :it_should_behave_like
-        ]
+        METHOD_NAMES_FOR_SHARED_EXAMPLES = %i[
+          include_examples
+          it_behaves_like
+          it_should_behave_like
+        ].to_set.freeze
 
         MSG = 'Combine examples in the same group in the time-consuming kinds of specs.'
 
