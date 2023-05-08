@@ -177,7 +177,7 @@ module RuboCop
         # @param node [RuboCop::AST::SendNode]
         # @return [Parser::Source::Range]
         def convert_to_autocorrected_range(node)
-          node.location.expression.with(
+          node.source_range.with(
             begin_pos: node.location.selector.begin_pos
           )
         end

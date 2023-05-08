@@ -44,10 +44,10 @@ module RuboCop
           corrector,
           node
         )
-          indent = ' ' * node.parent.location.expression.column
+          indent = ' ' * node.parent.source_range.column
 
           corrector.replace(
-            node.location.expression.with(
+            node.source_range.with(
               begin_pos: node.parent.location.name.end_pos
             ),
             [
@@ -67,7 +67,7 @@ module RuboCop
         # @return [Boolean]
         def multilined?(node)
           node.children.map do |child|
-            child.location.expression.line
+            child.source_range.line
           end.uniq.length == node.children.length
         end
       end

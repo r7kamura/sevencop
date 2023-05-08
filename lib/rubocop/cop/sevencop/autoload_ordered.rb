@@ -69,8 +69,8 @@ module RuboCop
           node1,
           node2
         )
-          !node1.location.expression.with(
-            end_pos: node2.location.expression.end_pos
+          !node1.source_range.with(
+            end_pos: node2.source_range.end_pos
           ).source.include?("\n\n")
         end
 
