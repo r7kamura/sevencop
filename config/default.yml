@@ -4,11 +4,6 @@ Sevencop/AutoloadOrdered:
   Enabled: false
   Safe: false
 
-Sevencop/ConstantBase:
-  Description: |
-    Avoid unnecessary `::` prefix on constant.
-  Enabled: false
-
 Sevencop/FactoryBotAssociationOption:
   Description: |
     Avoid redundant options on FactoryBot associations.
