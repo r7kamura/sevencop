@@ -111,12 +111,6 @@ Sevencop/RailsWhereNot:
   Enabled: false
   Safe: false
 
-Sevencop/RequireOrdered:
-  Description: |
-    Sort `require` and `require_relative` in alphabetical order.
-  Enabled: false
-  Safe: false
-
 Sevencop/RSpecDescribeHttpEndpoint:
   Description: |
     Pass HTTP endpoint identifier (e.g. `GET /users`) to top-level `describe` on request-specs.
