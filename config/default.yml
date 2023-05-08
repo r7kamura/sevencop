@@ -151,12 +151,3 @@ Sevencop/RSpecMemoizedHelperBlockDelimiter:
   Enabled: false
   Include:
     - spec/**/*
-
-Sevencop/RSpecRailsResponseParsedBody:
-  Description: |
-    Prefer `response.parsed_body` to `JSON.parse(response.body)`.
-  Enabled: false
-  Safe: false
-  Include:
-    - spec/controllers/**/*
-    - spec/requests/**/*
