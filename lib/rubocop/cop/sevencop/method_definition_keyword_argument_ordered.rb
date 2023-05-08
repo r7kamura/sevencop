@@ -33,8 +33,8 @@ module RuboCop
               "#{node.source}, "
             )
             corrector.remove(
-              node.location.expression.with(
-                begin_pos: node.left_sibling.location.expression.end_pos
+              node.source_range.with(
+                begin_pos: node.left_sibling.source_range.end_pos
               )
             )
           end

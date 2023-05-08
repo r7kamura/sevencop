@@ -95,7 +95,7 @@ module RuboCop
         def whitespace_between(node)
           if node.pairs.length >= 2
             processed_source.raw_source[
-              node.pairs[0].location.expression.end_pos + 1...node.pairs[1].location.expression.begin_pos
+              node.pairs[0].source_range.end_pos + 1...node.pairs[1].source_range.begin_pos
             ]
           else
             ' '
@@ -108,7 +108,7 @@ module RuboCop
         #    ^^^^
         def whitespace_leading(node)
           processed_source.raw_source[
-            node.location.expression.begin.end_pos + offset_for(node)...node.pairs[0].location.expression.begin_pos
+            node.source_range.begin.end_pos + offset_for(node)...node.pairs[0].source_range.begin_pos
           ]
         end
 
@@ -118,7 +118,7 @@ module RuboCop
         #                    ^^
         def whitespace_trailing(node)
           processed_source.raw_source[
-            node.pairs[-1].location.expression.end_pos...node.location.expression.end.begin_pos - offset_for(node)
+            node.pairs[-1].source_range.end_pos...node.source_range.end.begin_pos - offset_for(node)
           ]
         end
       end

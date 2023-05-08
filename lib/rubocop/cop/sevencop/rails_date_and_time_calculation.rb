@@ -767,7 +767,7 @@ module RuboCop
           with:
         )
           corrector.replace(
-            node.location.expression.with(
+            node.source_range.with(
               begin_pos: node.each_descendant(:const).first.location.name.begin_pos
             ),
             with

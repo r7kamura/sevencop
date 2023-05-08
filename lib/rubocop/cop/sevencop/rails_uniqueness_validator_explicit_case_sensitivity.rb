@@ -78,12 +78,12 @@ module RuboCop
           add_offense(uniqueness_value) do |corrector|
             if uniqueness_value.true_type?
               corrector.replace(
-                uniqueness_value.source_range,
+                uniqueness_value,
                 '{ case_sensitive: true }'
               )
             else
               corrector.insert_after(
-                uniqueness_value.pairs.last.source_range,
+                uniqueness_value.pairs.last,
                 ', case_sensitive: true'
               )
             end

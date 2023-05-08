@@ -32,11 +32,11 @@ module RuboCop
 
           add_offense(node) do |corrector|
             pairs = node.children[2].children
-            last_end_pos = pairs[0].location.expression.end_pos
+            last_end_pos = pairs[0].source_range.end_pos
             pairs[1..].each do |pair|
-              corrector.remove(pair.location.expression.with(begin_pos: last_end_pos))
-              last_end_pos = pair.location.expression.end_pos
-              corrector.insert_after(node.location.expression, ".where.not(#{pair.source})")
+              corrector.remove(pair.source_range.with(begin_pos: last_end_pos))
+              last_end_pos = pair.source_range.end_pos
+              corrector.insert_after(node, ".where.not(#{pair.source})")
             end
           end
         end
