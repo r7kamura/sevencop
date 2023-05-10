@@ -66,6 +66,17 @@ Sevencop/RailsBelongsToOptional:
   Enabled: false
   Safe: false
 
+Sevencop/RailsConfigurationOrdered:
+  Description: |
+    Sort Rails configuration items in alphabetical order.
+  Enabled: false
+  SafeAutoCorrect: false
+  Include:
+    - config/application.rb
+    - config/environments/*.rb
+  IgnoredPatterns:
+    - config.load_defaults
+
 Sevencop/RailsDateAndTimeCalculation:
   Description: |
     Prefer ActiveSupport date and time helper.
