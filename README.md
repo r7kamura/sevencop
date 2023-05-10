@@ -37,6 +37,7 @@ Note that all cops are `Enabled: false` by default.
 - [Sevencop/MethodDefinitionKeywordArgumentOrdered](lib/rubocop/cop/sevencop/method_definition_keyword_argument_ordered.rb)
 - [Sevencop/MethodDefinitionOrdered](lib/rubocop/cop/sevencop/method_definition_ordered.rb)
 - [Sevencop/RailsBelongsToOptional](lib/rubocop/cop/sevencop/rails_belongs_to_optional.rb)
+- [Sevencop/RailsConfigurationOrdered](lib/rubocop/cop/sevencop/rails_configuration_ordered.rb)
 - [Sevencop/RailsDateAndTimeCalculation](lib/rubocop/cop/sevencop/rails_date_and_time_calculation.rb)
 - [Sevencop/RailsOrderFieldArelSql](lib/rubocop/cop/sevencop/rails_order_field_arel_sql.rb)
 - [Sevencop/RailsOrderFieldInOrderOf](lib/rubocop/cop/sevencop/rails_order_field_in_order_of.rb)
