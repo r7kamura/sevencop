@@ -66,6 +66,14 @@ Sevencop/RailsBelongsToOptional:
   Enabled: false
   Safe: false
 
+Sevencop/RailsConfigurationEmptyLine:
+  Description: |
+    Put an empty line between Rails configuration items.
+  Enabled: false
+  Include:
+    - config/application.rb
+    - config/environments/*.rb
+
 Sevencop/RailsConfigurationOrdered:
   Description: |
     Sort Rails configuration items in alphabetical order.
