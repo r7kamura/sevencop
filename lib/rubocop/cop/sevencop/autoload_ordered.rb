@@ -73,18 +73,6 @@ module RuboCop
             end_pos: node2.source_range.end_pos
           ).source.include?("\n\n")
         end
-
-        # @param range1 [Paresr::Source::Range]
-        # @param range2 [Paresr::Source::Range]
-        # @param corrector [RuboCop::AST::Corrector]
-        def swap(
-          range1,
-          range2,
-          corrector:
-        )
-          corrector.insert_before(range1, range2.source)
-          corrector.remove(range2)
-        end
       end
     end
   end
