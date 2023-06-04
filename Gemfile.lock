@@ -1,14 +1,14 @@
 PATH
   remote: .
   specs:
-    sevencop (0.35.0)
+    sevencop (0.35.1)
       activesupport
       rubocop
 
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (7.0.4.3)
+    activesupport (7.0.5)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 1.6, < 2)
       minitest (>= 5.1)
@@ -16,7 +16,7 @@ GEM
     ast (2.4.2)
     concurrent-ruby (1.2.2)
     diff-lcs (1.5.0)
-    i18n (1.13.0)
+    i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     json (2.6.3)
     minitest (5.18.0)
