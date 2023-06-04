@@ -65,8 +65,8 @@ module RuboCop
                   (sym :uniqueness)
                   {true | (hash ...)}
                 )
+                ...
               >
-              ...
             )
           )
         PATTERN
