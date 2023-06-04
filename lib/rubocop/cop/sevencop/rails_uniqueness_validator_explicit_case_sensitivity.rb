@@ -33,6 +33,28 @@ module RuboCop
 
         RESTRICT_ON_SEND = %i[validates].freeze
 
+        # @param [RuboCop::AST::SendNode] node
+        def on_send(node)
+          return unless validates_uniqueness?(node) && !validates_uniqueness_with_case_sensitivity?(node)
+
+          uniqueness_value = find_uniqueness_value(node)
+          add_offense(uniqueness_value) do |corrector|
+            if uniqueness_value.true_type?
+              corrector.replace(
+                uniqueness_value,
+                '{ case_sensitive: true }'
+              )
+            else
+              corrector.insert_after(
+                uniqueness_value.pairs.last,
+                ', case_sensitive: true'
+              )
+            end
+          end
+        end
+
+        private
+
         # @!method validates_uniqueness?(node)
         def_node_matcher :validates_uniqueness?, <<~PATTERN
           (send nil? :validates
@@ -68,26 +90,6 @@ module RuboCop
         # @param [RuboCop::AST::SendNode] node
         def find_uniqueness_value(node)
           node.arguments[1].pairs.find { |pair| pair.key.value == :uniqueness }.value
-        end
-
-        # @param [RuboCop::AST::SendNode] node
-        def on_send(node)
-          return unless validates_uniqueness?(node) && !validates_uniqueness_with_case_sensitivity?(node)
-
-          uniqueness_value = find_uniqueness_value(node)
-          add_offense(uniqueness_value) do |corrector|
-            if uniqueness_value.true_type?
-              corrector.replace(
-                uniqueness_value,
-                '{ case_sensitive: true }'
-              )
-            else
-              corrector.insert_after(
-                uniqueness_value.pairs.last,
-                ', case_sensitive: true'
-              )
-            end
-          end
         end
       end
     end
