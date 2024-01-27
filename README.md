@@ -32,6 +32,7 @@ Note that all cops are `Enabled: false` by default.
 - [Sevencop/FactoryBotAssociationOption](lib/rubocop/cop/sevencop/factory_bot_association_option.rb)
 - [Sevencop/FactoryBotAssociationStyle](lib/rubocop/cop/sevencop/factory_bot_association_style.rb)
 - [Sevencop/HashElementOrdered](lib/rubocop/cop/sevencop/hash_element_ordered.rb)
+- [Sevencop/MapMethodChain](lib/rubocop/cop/sevencop/map_method_chain.rb)
 - [Sevencop/MethodDefinitionArgumentsMultiline](lib/rubocop/cop/sevencop/method_definition_arguments_multiline.rb)
 - [Sevencop/MethodDefinitionInIncluded](lib/rubocop/cop/sevencop/method_definition_in_included.rb)
 - [Sevencop/MethodDefinitionKeywordArgumentOrdered](lib/rubocop/cop/sevencop/method_definition_keyword_argument_ordered.rb)

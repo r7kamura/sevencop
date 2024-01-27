@@ -37,6 +37,12 @@ Sevencop/HashElementOrdered:
   Enabled: false
   Safe: false
 
+Sevencop/MapMethodChain:
+  Description: |
+    Checks if the map method is used in a chain.
+  Enabled: false
+  Safe: false
+
 Sevencop/MethodDefinitionArgumentsMultiline:
   Description: |
     Inserts new lines between method definition arguments.
