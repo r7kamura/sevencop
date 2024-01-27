@@ -48,10 +48,10 @@ module RuboCop
         def on_send(node)
           return unless order_with_field?(node)
 
-          first_argument_node = node.arguments.first
+          first_argument_node = node.first_argument
           add_offense(first_argument_node) do |corrector|
             corrector.replace(
-              node.arguments.first,
+              node.first_argument,
               "Arel.sql(#{first_argument_node.source})"
             )
           end

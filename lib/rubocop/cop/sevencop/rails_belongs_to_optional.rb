@@ -48,7 +48,7 @@ module RuboCop
           return unless without_options?(node) || (with_hash_options?(node) && !with_optional?(node))
 
           add_offense(node) do |corrector|
-            corrector.insert_after(node.arguments[-1], ', optional: true')
+            corrector.insert_after(node.last_argument, ', optional: true')
           end
         end
       end
