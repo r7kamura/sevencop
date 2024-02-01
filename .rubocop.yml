@@ -19,6 +19,7 @@ Layout/LineLength:
 Lint/UselessAccessModifier:
   MethodCreatingMethods:
     - def_node_matcher
+    - def_node_search
 
 Metrics:
   Enabled: false
@@ -39,6 +40,7 @@ RSpec/FilePath:
     RSpecEmptyLineAfterLet: rspec_empty_line_after_let
     RSpecExamplesInSameGroup: rspec_examples_in_same_group
     RSpecMemoizedHelperBlockDelimiter: rspec_memoized_helper_block_delimiter
+    RSpecRailsHaveHttpStatus: rspec_rails_have_http_status
 
 RSpec/MultipleExpectations:
   Enabled: false
@@ -49,6 +51,7 @@ RSpec/SpecFilePathFormat:
     RSpecEmptyLineAfterLet: rspec_empty_line_after_let
     RSpecExamplesInSameGroup: rspec_examples_in_same_group
     RSpecMemoizedHelperBlockDelimiter: rspec_memoized_helper_block_delimiter
+    RSpecRailsHaveHttpStatus: rspec_rails_have_http_status
 
 Sevencop/AutoloadOrdered:
   Enabled: true

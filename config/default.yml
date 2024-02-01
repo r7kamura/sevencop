@@ -146,3 +146,11 @@ Sevencop/RSpecMemoizedHelperBlockDelimiter:
   Enabled: false
   Include:
     - spec/**/*
+
+Sevencop/RSpecRailsHaveHttpStatus:
+  Description: |
+    Always check status code with `have_http_status`.
+  Enabled: false
+  Include:
+    - spec/controllers/**/*
+    - spec/requests/**/*
