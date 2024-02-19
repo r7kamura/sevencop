@@ -24,12 +24,9 @@ Sevencop/FactoryBotAssociationStyle:
   NonImplicitAssociationMethodNames:
     - skip_create
   Include:
-    - factories.rb
-    - factories/*.rb
-    - spec/factories.rb
-    - spec/factories/*.rb
-    - test/factories.rb
-    - test/factories/*.rb
+    - "**/factories.rb"
+    - "**/spec/factories/*.rb"
+    - "**/test/factories/*.rb"
 
 Sevencop/HashElementOrdered:
   Description: |
@@ -103,7 +100,7 @@ Sevencop/RailsSpecificActionName:
     - show
     - update
   Include:
-    - app/controllers/**/*.rb
+    - "**/app/controllers/**/*.rb"
 
 Sevencop/RailsUniquenessValidatorExplicitCaseSensitivity:
   Description: |
@@ -122,14 +119,14 @@ Sevencop/RSpecDescribeHttpEndpoint:
     Pass HTTP endpoint identifier (e.g. `GET /users`) to top-level `describe` on request-specs.
   Enabled: false
   Include:
-    - spec/requests/**/*.rb
+    - "**/spec/requests/**/*.rb"
 
 Sevencop/RSpecEmptyLineAfterLet:
   Description: |
     Insert empty line after `let`.
   Enabled: false
   Include:
-    - spec/**/*
+    - "**/spec/**/*.rb"
 
 Sevencop/RSpecExamplesInSameGroup:
   Description: |
@@ -137,20 +134,20 @@ Sevencop/RSpecExamplesInSameGroup:
   Enabled: false
   IncludeSharedExamples: false
   Include:
-    - spec/controllers/**/*
-    - spec/requests/**/*
+    - "**/spec/controllers/**/*.rb"
+    - "**/spec/requests/**/*.rb"
 
 Sevencop/RSpecMemoizedHelperBlockDelimiter:
   Description: |
     Use do-end block delimiter on RSpec memoized helper.
   Enabled: false
   Include:
-    - spec/**/*
+    - "**/spec/**/*.rb"
 
 Sevencop/RSpecRailsHaveHttpStatus:
   Description: |
     Always check status code with `have_http_status`.
   Enabled: false
   Include:
-    - spec/controllers/**/*
-    - spec/requests/**/*
+    - "**/spec/controllers/**/*.rb"
+    - "**/spec/requests/**/*.rb"
