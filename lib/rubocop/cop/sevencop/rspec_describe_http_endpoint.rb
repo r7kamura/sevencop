@@ -27,6 +27,7 @@ module RuboCop
         SUPPORTED_HTTP_METHODS = %w[
           DELETE
           GET
+          HEAD
           PATCH
           POST
           PUT
