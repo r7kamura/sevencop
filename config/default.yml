@@ -67,12 +67,16 @@ Sevencop/RailsRouteAs:
   Description: |
     Always use `as` option on routing methods.
   Enabled: false
+  Include:
+    - config/routes.rb
 
 Sevencop/RailsRouteOrdered:
   Description: |
     Sort routes by path and HTTP method.
   Enabled: false
   Safe: false
+  Include:
+    - config/routes.rb
 
 Sevencop/RailsSpecificActionName:
   Description: |
