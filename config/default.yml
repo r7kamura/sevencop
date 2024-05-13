@@ -63,6 +63,12 @@ Sevencop/RailsOrderFieldInOrderOf:
   Enabled: false
   Safe: false
 
+Sevencop/RailsRouteOrdered:
+  Description: |
+    Sort routes by path and HTTP method.
+  Enabled: false
+  Safe: false
+
 Sevencop/RailsSpecificActionName:
   Description: |
     Use only specific action names.
