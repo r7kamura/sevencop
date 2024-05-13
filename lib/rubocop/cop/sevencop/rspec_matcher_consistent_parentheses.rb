@@ -43,7 +43,7 @@ module RuboCop
         # @param [RuboCop::AST::Node, nil] node
         # @return [Boolean]
         def inconsistent?(node)
-          node.send_type? && missing_parentheses?(node)
+          node&.send_type? && missing_parentheses?(node)
         end
 
         # @param [RuboCop::AST::SendNode] node
