@@ -63,6 +63,11 @@ Sevencop/RailsOrderFieldInOrderOf:
   Enabled: false
   Safe: false
 
+Sevencop/RailsRouteAs:
+  Description: |
+    Always use `as` option on routing methods.
+  Enabled: false
+
 Sevencop/RailsRouteOrdered:
   Description: |
     Sort routes by path and HTTP method.
