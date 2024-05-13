@@ -25,6 +25,14 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecMatcherConsistentParentheses, :confi
     end
   end
 
+  context 'with no to argument' do
+    it 'registers no offense' do
+      expect_no_offenses(<<~RUBY)
+        is_expected.to
+      RUBY
+    end
+  end
+
   context 'with inconsistent parentheses' do
     it 'registers offense' do
       expect_offense(<<~RUBY)
