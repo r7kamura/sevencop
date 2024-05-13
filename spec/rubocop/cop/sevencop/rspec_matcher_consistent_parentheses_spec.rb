@@ -29,7 +29,7 @@ RSpec.describe RuboCop::Cop::Sevencop::RSpecMatcherConsistentParentheses, :confi
     it 'registers offense' do
       expect_offense(<<~RUBY)
         is_expected.to eq 1
-                       ^^^^ Keep matcher parentheses style consistent.
+                       ^^^^ Keep consistent parentheses style in RSpec matchers.
       RUBY
 
       expect_correction(<<~RUBY)

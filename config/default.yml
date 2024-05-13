@@ -139,7 +139,7 @@ Sevencop/RSpecExamplesInSameGroup:
 
 Sevencop/RSpecMatcherConsistentParentheses:
   Description: |
-    Keep RSpec matcher parentheses style consistent.
+    Keep consistent parentheses style in RSpec matchers.
   Enabled: false
   Include:
     - "**/spec/**/*.rb"

@@ -3,7 +3,7 @@
 module RuboCop
   module Cop
     module Sevencop
-      # Keep RSpec matcher parentheses style consistent.
+      # Keep consistent parentheses style in RSpec matchers.
       #
       # @example
       #   # bad
@@ -14,7 +14,7 @@ module RuboCop
       class RSpecMatcherConsistentParentheses < Base
         extend AutoCorrector
 
-        MSG = 'Keep matcher parentheses style consistent.'
+        MSG = 'Keep consistent parentheses style in RSpec matchers.'
 
         RESTRICT_ON_SEND = %i[to].freeze
 
