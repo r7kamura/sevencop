@@ -137,6 +137,13 @@ Sevencop/RSpecExamplesInSameGroup:
     - "**/spec/controllers/**/*.rb"
     - "**/spec/requests/**/*.rb"
 
+Sevencop/RSpecMatcherConsistentParentheses:
+  Description: |
+    Keep RSpec matcher parentheses style consistent.
+  Enabled: false
+  Include:
+    - "**/spec/**/*.rb"
+
 Sevencop/RSpecMemoizedHelperBlockDelimiter:
   Description: |
     Use do-end block delimiter on RSpec memoized helper.
