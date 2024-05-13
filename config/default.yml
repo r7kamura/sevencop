@@ -4,11 +4,6 @@ Sevencop/AutoloadOrdered:
   Enabled: false
   Safe: false
 
-Sevencop/FactoryBotAssociationOption:
-  Description: |
-    Avoid redundant options on FactoryBot associations.
-  Enabled: false
-
 Sevencop/FactoryBotAssociationStyle:
   Description: |
     Use consistent style in FactoryBot associations.
