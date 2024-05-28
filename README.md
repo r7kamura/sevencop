@@ -50,6 +50,7 @@ Note that all cops are `Enabled: false` by default.
 - [Sevencop/RSpecMatcherConsistentParentheses](lib/rubocop/cop/sevencop/rspec_matcher_consistent_parentheses.rb)
 - [Sevencop/RSpecMemoizedHelperBlockDelimiter](lib/rubocop/cop/sevencop/rspec_memoized_helper_block_delimiter.rb)
 - [Sevencop/RSpecRailsHaveHttpStatus](lib/rubocop/cop/sevencop/rspec_rails_have_http_status.rb)
+- [Sevencop/RSpecRailsStatusCodeCheckBySubject](lib/rubocop/cop/sevencop/rspec_rails_status_code_check_by_subject.rb)
 
 ## Notes
 
