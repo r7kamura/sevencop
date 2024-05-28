@@ -145,3 +145,11 @@ Sevencop/RSpecRailsHaveHttpStatus:
   Include:
     - "**/spec/controllers/**/*.rb"
     - "**/spec/requests/**/*.rb"
+
+Sevencop/RSpecRailsStatusCodeCheckBySubject:
+  Description: |
+    Use `expect(response).to have_http_status(code)` instead of `is_expected.to eq(code)`.
+  Enabled: false
+  Include:
+    - "**/spec/controllers/**/*.rb"
+    - "**/spec/requests/**/*.rb"
