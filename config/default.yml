@@ -157,3 +157,4 @@ Sevencop/RSpecRailsStatusCodeCheckBySubject:
   Include:
     - "**/spec/controllers/**/*.rb"
     - "**/spec/requests/**/*.rb"
+  Safe: false
