@@ -49,6 +49,7 @@ Note that all cops are `Enabled: false` by default.
 - [Sevencop/RSpecExamplesInSameGroup](lib/rubocop/cop/sevencop/rspec_examples_in_same_group.rb)
 - [Sevencop/RSpecMatcherConsistentParentheses](lib/rubocop/cop/sevencop/rspec_matcher_consistent_parentheses.rb)
 - [Sevencop/RSpecMemoizedHelperBlockDelimiter](lib/rubocop/cop/sevencop/rspec_memoized_helper_block_delimiter.rb)
+- [Sevencop/RSpecPendingOnlyExampleGroup](lib/rubocop/cop/sevencop/rspec_pending_only_example_group.rb)
 - [Sevencop/RSpecRailsHaveHttpStatus](lib/rubocop/cop/sevencop/rspec_rails_have_http_status.rb)
 - [Sevencop/RSpecRailsStatusCodeCheckBySubject](lib/rubocop/cop/sevencop/rspec_rails_status_code_check_by_subject.rb)
 
