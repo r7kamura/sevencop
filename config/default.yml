@@ -142,7 +142,7 @@ Sevencop/RSpecMemoizedHelperBlockDelimiter:
   Include:
     - "**/spec/**/*.rb"
 
-Sevencop/PendingOnlyExampleGroup:
+Sevencop/RSpecPendingOnlyExampleGroup:
   Description: Remove pending-only test files.
   Enabled: false
   Include:
