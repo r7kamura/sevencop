@@ -43,6 +43,7 @@ RSpec/SpecFilePathFormat:
     RSpecExamplesInSameGroup: rspec_examples_in_same_group
     RSpecMatcherConsistentParentheses: rspec_matcher_consistent_parentheses
     RSpecMemoizedHelperBlockDelimiter: rspec_memoized_helper_block_delimiter
+    RSpecPendingOnlyExampleGroup: rspec_pending_only_example_group
     RSpecRailsHaveHttpStatus: rspec_rails_have_http_status
     RSpecRailsStatusCodeCheckBySubject: rspec_rails_status_code_check_by_subject
 

@@ -142,6 +142,12 @@ Sevencop/RSpecMemoizedHelperBlockDelimiter:
   Include:
     - "**/spec/**/*.rb"
 
+Sevencop/PendingOnlyExampleGroup:
+  Description: Remove pending-only test files.
+  Enabled: false
+  Include:
+    - "**/spec/**/*.rb"
+
 Sevencop/RSpecRailsHaveHttpStatus:
   Description: |
     Always check status code with `have_http_status`.
