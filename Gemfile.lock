@@ -90,7 +90,6 @@ PLATFORMS
 DEPENDENCIES
   rake
   rspec
-  rubocop
   rubocop-performance
   rubocop-rake
   rubocop-rspec
