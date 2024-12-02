@@ -29,6 +29,7 @@ Note that all cops are `Enabled: false` by default.
 ## Cops
 
 - [Sevencop/AutoloadOrdered](lib/rubocop/cop/sevencop/autoload_ordered.rb)
+- [Sevencop/BundlerGemGroupOrdered](lib/rubocop/cop/sevencop/bundler_gem_group_ordered.rb)
 - [Sevencop/HashElementOrdered](lib/rubocop/cop/sevencop/hash_element_ordered.rb)
 - [Sevencop/MapMethodChain](lib/rubocop/cop/sevencop/map_method_chain.rb)
 - [Sevencop/MethodDefinitionArgumentsMultiline](lib/rubocop/cop/sevencop/method_definition_arguments_multiline.rb)
