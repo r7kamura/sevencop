@@ -17,8 +17,6 @@ jobs:
         with:
           path: ~/.cache/rubocop_cache
           key: rubocop-v1-${{ hashFiles('.rubocop.yml', '.rubocop_todo.yml', 'Gemfile.lock') }}
-          restore-keys: |
-            rubocop-v1-${{ hashFiles('.rubocop.yml', '.rubocop_todo.yml', 'Gemfile.lock') }}
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
