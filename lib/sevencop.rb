@@ -5,6 +5,7 @@ require_relative 'sevencop/rubocop_extension'
 require_relative 'sevencop/version'
 
 require_relative 'rubocop/cop/sevencop/autoload_ordered'
+require_relative 'rubocop/cop/sevencop/bundler_gem_group_name_ordered'
 require_relative 'rubocop/cop/sevencop/bundler_gem_group_ordered'
 require_relative 'rubocop/cop/sevencop/hash_element_ordered'
 require_relative 'rubocop/cop/sevencop/map_method_chain'

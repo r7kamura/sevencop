@@ -4,6 +4,16 @@ Sevencop/AutoloadOrdered:
   Enabled: false
   Safe: false
 
+Sevencop/BundlerGemGroupNameOrdered:
+  Description: |
+    Sort `group` names in alphabetical order.
+  Enabled: false
+  Safe: false
+  Include:
+    - '**/*.gemfile'
+    - '**/Gemfile'
+    - '**/gems.rb'
+
 Sevencop/BundlerGemGroupOrdered:
   Description: |
     Sort `group` in alphabetical order.
@@ -13,6 +23,7 @@ Sevencop/BundlerGemGroupOrdered:
     - '**/*.gemfile'
     - '**/Gemfile'
     - '**/gems.rb'
+
 
 Sevencop/HashElementOrdered:
   Description: |
