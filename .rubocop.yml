@@ -50,6 +50,9 @@ RSpec/SpecFilePathFormat:
 Sevencop/AutoloadOrdered:
   Enabled: true
 
+Sevencop/BundlerGemGroupNameOrdered:
+  Enabled: true
+
 Sevencop/BundlerGemGroupOrdered:
   Enabled: true
 
