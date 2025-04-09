@@ -1,8 +1,10 @@
-require:
-  - rubocop/cop/internal_affairs
+plugins:
+  - rubocop-internal_affairs
+  - rubocop-rspec
   - rubocop-performance
   - rubocop-rake
-  - rubocop-rspec
+
+require:
   - ./lib/sevencop
 
 AllCops:
