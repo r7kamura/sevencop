@@ -13,11 +13,11 @@ Install `sevencop` gem:
 gem 'sevencop', require: false
 ```
 
-then require `sevencop` and enable the cops you want to use on .rubocop.yml:
+then add `sevencop` and enable the cops you want to use on .rubocop.yml:
 
 ```yaml
 # .rubocop.yml
-require:
+plugins:
   - sevencop
 
 Sevencop/MethodDefinitionOrdered:
