@@ -71,7 +71,7 @@ module RuboCop
           if node.parent&.block_type?
             node.parent if node.parent.method?(:included)
           elsif node.parent&.begin_type?
-            node.parent.parent if node.parent.parent&.block_type? && node.parent.parent&.method?(:included)
+            node.parent.parent if node.parent.parent&.block_type? && node.parent.parent.method?(:included)
           end
         end
 
