@@ -3,9 +3,7 @@ plugins:
   - rubocop-rspec
   - rubocop-performance
   - rubocop-rake
-
-require:
-  - ./lib/sevencop
+  - sevencop
 
 AllCops:
   NewCops: enable
