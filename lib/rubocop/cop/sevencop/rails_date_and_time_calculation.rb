@@ -178,6 +178,7 @@ module RuboCop
             check_yesterday(node)
           end
         end
+        alias on_csend on_send
 
         private
 

@@ -37,6 +37,7 @@ module RuboCop
             corrector.replace(node.first_argument.location.selector, 'have_http_status')
           end
         end
+        alias on_csend on_send
 
         private
 
