@@ -51,6 +51,7 @@ module RuboCop
             corrector.insert_after(node.last_argument, ', optional: true')
           end
         end
+        alias on_csend on_send
       end
     end
   end

@@ -23,6 +23,7 @@ module RuboCop
 
           add_offense(block_node)
         end
+        alias on_csend on_send
 
         private
 

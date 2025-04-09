@@ -30,6 +30,7 @@ module RuboCop
             add_parentheses(first_argument, corrector)
           end
         end
+        alias on_csend on_send
 
         private
 

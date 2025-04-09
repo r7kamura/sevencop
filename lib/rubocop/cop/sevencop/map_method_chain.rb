@@ -49,6 +49,7 @@ module RuboCop
 
           ignore_node(node)
         end
+        alias on_csend on_send
 
         private
 

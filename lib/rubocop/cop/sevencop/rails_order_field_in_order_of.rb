@@ -109,6 +109,7 @@ module RuboCop
             autocorrect(corrector, node)
           end
         end
+        alias on_csend on_send
 
         private
 
