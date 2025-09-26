@@ -94,7 +94,7 @@ module RuboCop
           return unless node.parent&.begin_type?
 
           node.left_siblings.find do |sibling|
-            sibling.is_a?(::RuboCop::AST::Node) && example?(sibling)
+            sendable_node?(sibling) && example?(sibling)
           end
         end
 
@@ -102,6 +102,15 @@ module RuboCop
         # @return [Boolean]
         def regular_example?(node)
           METHOD_NAMES_FOR_REGULAR_EXAMPLE.include?(node.method_name)
+        end
+
+        # @param object [Object]
+        # @return [Boolean]
+        def sendable_node?(object)
+          [
+            ::RuboCop::AST::BlockNode,
+            ::RuboCop::AST::SendNode
+          ].any? { |klass| object.is_a?(klass) }
         end
 
         # @param node [RuboCop::AST::BlockNode, RuboCop::AST::SendNode]
