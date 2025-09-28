@@ -10,7 +10,7 @@ Install `sevencop` gem:
 
 ```ruby
 # Gemfile
-gem 'sevencop', require: false
+gem 'sevencop'
 ```
 
 then add `sevencop` and enable the cops you want to use on .rubocop.yml:
