@@ -1,7 +1,5 @@
 # sevencop
 
-[![CI](https://github.com/r7kamura/sevencop/actions/workflows/ci.yml/badge.svg)](https://github.com/r7kamura/sevencop/actions/workflows/ci.yml)
-
 Opinionated custom cops for [RuboCop](https://github.com/rubocop/rubocop).
 
 ## Usage
