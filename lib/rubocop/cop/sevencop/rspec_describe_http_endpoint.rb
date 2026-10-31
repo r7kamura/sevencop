@@ -33,7 +33,7 @@ module RuboCop
           PUT
         ].freeze
 
-        DESCRIPTION_PATTERN = %r{\A#{::Regexp.union(SUPPORTED_HTTP_METHODS)} /}.freeze
+        DESCRIPTION_PATTERN = %r{\A#{::Regexp.union(SUPPORTED_HTTP_METHODS)} /}
 
         # @param node [RuboCop::AST::SendNode]
         # @return [void]
