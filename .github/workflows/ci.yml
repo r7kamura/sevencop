@@ -25,9 +25,12 @@ jobs:
   rspec:
     name: rspec ruby ${{ matrix.ruby }}
     strategy:
+      fail-fast: false
       matrix:
         ruby:
           - '3.3'
+          - '3.4'
+          - '4.0'
     runs-on: ubuntu-latest
     env:
       BUNDLE_ONLY: default:test
