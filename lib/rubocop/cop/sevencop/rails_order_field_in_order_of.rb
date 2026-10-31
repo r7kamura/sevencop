@@ -59,7 +59,7 @@ module RuboCop
             (?<column_name>[^,]+)
             ,\s*
           \z
-        /ix.freeze
+        /ix
 
         REGEXP_FIELD_DSTR_TAIL = /
           \A
@@ -71,7 +71,7 @@ module RuboCop
             (?<order>asc|desc)
           )?
           \z
-        /ix.freeze
+        /ix
 
         REGEXP_FIELD_STR = /
           \A
@@ -89,7 +89,7 @@ module RuboCop
           )?
           \s*
           \z
-        /ix.freeze
+        /ix
 
         MSG = 'Prefer `in_order_of` to MySQL `FIELD` function if possible.'
 
