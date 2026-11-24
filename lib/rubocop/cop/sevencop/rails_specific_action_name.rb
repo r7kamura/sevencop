@@ -20,6 +20,22 @@ module RuboCop
       #     def index
       #     end
       #   end
+      #
+      #   # good
+      #   module UsersConcern
+      #     class_methods do
+      #       def articles
+      #       end
+      #     end
+      #   end
+      #
+      #   # good
+      #   class UsersController < ApplicationController
+      #     class << self
+      #       def articles
+      #       end
+      #     end
+      #   end
       class RailsSpecificActionName < Base
         include VisibilityHelp
 
@@ -44,7 +60,7 @@ module RuboCop
         # @param node [RuboCop::AST::DefNode]
         # @return [Boolean]
         def action?(node)
-          node_visibility(node) == :public
+          node_visibility(node) == :public && !class_method?(node)
         end
 
         # @param node [RuboCop::AST::DefNode]
@@ -52,6 +68,23 @@ module RuboCop
         def bad?(node)
           action?(node) &&
             !configured_action_name?(node)
+        end
+
+        # @param node [RuboCop::AST::DefNode]
+        # @return [Boolean]
+        def class_method?(node)
+          node.each_ancestor do |ancestor|
+            return true if class_methods_block?(ancestor) || ancestor.sclass_type?
+            return false if ancestor.type?(:class, :module)
+          end
+
+          false
+        end
+
+        # @param node [RuboCop::AST::Node]
+        # @return [Boolean]
+        def class_methods_block?(node)
+          node.type?(:block, :numblock) && node.method?(:class_methods)
         end
 
         # @param node [RuboCop::AST::DefNode]

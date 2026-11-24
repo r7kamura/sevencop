@@ -63,4 +63,30 @@ RSpec.describe RuboCop::Cop::Sevencop::RailsSpecificActionName, :config do
       RUBY
     end
   end
+
+  context 'when non configured name is used for class method in class_methods block' do
+    it 'registers no offense' do
+      expect_no_offenses(<<~RUBY)
+        module UsersConcern
+          class_methods do
+            def articles
+            end
+          end
+        end
+      RUBY
+    end
+  end
+
+  context 'when non configured name is used for class method in class << self' do
+    it 'registers no offense' do
+      expect_no_offenses(<<~RUBY)
+        class UsersController < ApplicationController
+          class << self
+            def articles
+            end
+          end
+        end
+      RUBY
+    end
+  end
 end
