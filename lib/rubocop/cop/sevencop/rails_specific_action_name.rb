@@ -75,7 +75,7 @@ module RuboCop
         def class_method?(node)
           node.each_ancestor do |ancestor|
             return true if class_methods_block?(ancestor) || ancestor.sclass_type?
-            return false if ancestor.class_type? || ancestor.module_type?
+            return false if ancestor.type?(:class, :module)
           end
 
           false
@@ -84,7 +84,7 @@ module RuboCop
         # @param node [RuboCop::AST::Node]
         # @return [Boolean]
         def class_methods_block?(node)
-          (node.block_type? || node.numblock_type?) && node.method?(:class_methods)
+          node.type?(:block, :numblock) && node.method?(:class_methods)
         end
 
         # @param node [RuboCop::AST::DefNode]
